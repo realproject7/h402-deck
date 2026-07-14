@@ -7,6 +7,9 @@ Web assets for **Hunt Town's GASOK (GIWA) accelerator application**.
 - `index.html` — **Field Manifest**. Dark **Blueprint** system inherited from
   `town-web-2` / h402: canvas `#0a0a0b`, single coral accent `#fc6f6f`, Geist /
   Geist Mono, blueprint grid, soft coral top-glow. Centered display hero.
+- `editor.html` — **Editor (v3, current pick)**. Ulysses-dark markdown document, dark-matte
+  gray + green accent, JetBrains Mono, KO/EN language toggle (default KO), media-rich core
+  strengths, x402-on-GIWA diagram, chronological 19-entry timeline with thumbnails.
 - `terminal.html` — **Terminal / TUI**. Monotone (grayscale + minimal terminal green),
   JetBrains Mono throughout, Hacker-News-builder aesthetic: a status line, `$` prompt
   section headers (`cat team.txt`, `ls -la track-record/`), `[NN]` records, an

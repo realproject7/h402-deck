@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko" data-lang="ko">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -7,107 +7,131 @@
 <meta name="description" content="Team H402 — the team bringing the x402 payment rail and Agentic Commerce to GIWA. Team dossier for the GASOK application." />
 <meta property="og:title" content="Team H402 · GASOK" />
 <meta property="og:description" content="The team bringing the x402 payment rail and Agentic Commerce to GIWA." />
-<meta name="theme-color" content="#1e1f22" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231e1f22'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='%235ca1e0' font-family='monospace' font-weight='bold'%3E4%3C/text%3E%3C/svg%3E" />
+<meta name="theme-color" content="#1a1b1c" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231a1b1c'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='%235fbf88' font-family='monospace' font-weight='bold'%3E4%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
 <style>
-/* ============ Ulysses-dark "Editor" tokens ============ */
+/* ============ Editor concept · dark-matte + green ============ */
 :root{
-  --bg:#1e1f22;          /* warm editor canvas, not pure black */
-  --chrome:#242528;      /* title bar */
-  --inset:#232428;       /* cards / code insets */
-  --line:#303136; --line-2:#3a3b41;
-  --text:#d9dadc; --text-2:#a2a3a9; --text-3:#77787e; --text-4:#57585e;
-  --blue:#5ca1e0; --blue-dim:rgba(92,161,224,.14);   /* Ulysses selection blue */
-  --green:#66b78c; --amber:#c9a05c;
-  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif;
-  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --bg:#1a1b1c;          /* dark matte gray canvas */
+  --chrome:#1f2022;      /* title bar */
+  --inset:#202123;       /* cards / insets */
+  --line:#2b2c2f; --line-2:#38393d;
+  --text:#d7d8da; --text-2:#a0a1a6; --text-3:#77787d; --text-4:#56575c;
+  --grn:#5fbf88; --grn-dim:rgba(95,191,136,.12); --grn-line:rgba(95,191,136,.3);
+  --amber:#c9a05c;
+  --mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);
-  font-size:17px;line-height:1.72;letter-spacing:.001em;-webkit-font-smoothing:antialiased}
-a{color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(92,161,224,.28)}
-a:hover{border-color:var(--blue)}
-::selection{background:var(--blue-dim)}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--mono);
+  font-size:14px;line-height:1.75;-webkit-font-smoothing:antialiased}
+a{color:var(--grn);text-decoration:none;border-bottom:1px solid rgba(95,191,136,.28)}
+a:hover{border-color:var(--grn)}
+::selection{background:var(--grn-dim)}
 b,strong{color:#fff;font-weight:600}
-h1,h2,h3{font-weight:700;letter-spacing:-.012em;color:#fff}
+h1,h2,h3{font-weight:700;letter-spacing:-.01em;color:#fff}
 img{max-width:100%}
+
+/* language switching */
+html[data-lang="ko"] [data-l="en"]{display:none}
+html[data-lang="en"] [data-l="ko"]{display:none}
 
 /* ============ editor chrome bar ============ */
 .chrome{position:sticky;top:0;z-index:30;background:var(--chrome);border-bottom:1px solid var(--line)}
-.chrome .in{max-width:760px;margin-inline:auto;padding:10px 24px;display:flex;align-items:center;gap:12px;
-  font-size:12.5px;color:var(--text-3)}
+.chrome .in{max-width:780px;margin-inline:auto;padding:9px 24px;display:flex;align-items:center;gap:12px;
+  font-size:12px;color:var(--text-3)}
 .chrome .dots{display:flex;gap:6px}
-.chrome .dots i{width:11px;height:11px;border-radius:50%;background:#3c3d42;display:block}
-.chrome .file{color:var(--text-2);font-family:var(--mono);font-size:12px}
-.chrome .count{margin-left:auto;font-variant-numeric:tabular-nums}
+.chrome .dots i{width:11px;height:11px;border-radius:50%;background:#3a3b3f;display:block}
+.chrome .file{color:var(--text-2);font-size:12px}
+.chrome .lang{margin-left:auto;display:flex;border:1px solid var(--line-2);border-radius:7px;overflow:hidden}
+.chrome .lang button{appearance:none;border:0;background:transparent;color:var(--text-3);
+  font-family:var(--mono);font-size:11px;padding:4px 11px;cursor:pointer;letter-spacing:.04em}
+.chrome .lang button.on{background:var(--grn-dim);color:var(--grn)}
+.chrome .count{font-variant-numeric:tabular-nums;min-width:82px;text-align:right}
+@media(max-width:560px){.chrome .count{display:none}}
 
 /* ============ document body ============ */
-main{max-width:760px;margin-inline:auto;padding:56px 24px 40px}
-.doc-title{font-size:clamp(30px,5vw,40px);line-height:1.15;margin:0}
+main{max-width:780px;margin-inline:auto;padding:54px 24px 40px}
+.doc-title{font-size:clamp(26px,4.6vw,36px);line-height:1.15;margin:0}
 .doc-title .hh{color:var(--text-4);font-weight:400;margin-right:14px}
-.doc-sub{margin:16px 0 0;color:var(--text-2);font-size:17px}
+.doc-sub{margin:18px 0 0;color:var(--text-2);font-size:14.5px;line-height:1.8}
 p{margin:0 0 1.15em}
-h2{font-size:23px;margin:64px 0 18px;display:flex;align-items:baseline;gap:12px}
-h2 .hh{color:var(--text-4);font-weight:400;font-size:19px;flex:none}
-h3{font-size:17.5px;margin:34px 0 10px}
-hr{border:0;border-top:1px solid var(--line);margin:56px 0}
-.small{font-size:14px;color:var(--text-3)}
-ul.clean{margin:0 0 1.15em;padding-left:1.35em}
-ul.clean li{margin:.3em 0}
+h2{font-size:20px;margin:64px 0 18px;display:flex;align-items:baseline;gap:12px}
+h2 .hh{color:var(--text-4);font-weight:400;font-size:17px;flex:none}
+h3{font-size:15.5px;margin:34px 0 10px}
+.small{font-size:13px;color:var(--text-3)}
 
 /* markdown-ish blockquote (proof callout) */
-blockquote{margin:26px 0;padding:14px 20px;border-left:3px solid var(--blue);
-  background:var(--blue-dim);border-radius:0 8px 8px 0;color:var(--text)}
-blockquote .q1{font-weight:600;color:#fff}
-blockquote .q2{font-size:14px;color:var(--text-2);margin-top:2px}
+blockquote{margin:26px 0;padding:14px 20px;border-left:3px solid var(--grn);
+  background:var(--grn-dim);border-radius:0 8px 8px 0;color:var(--text)}
+blockquote .q1{font-weight:600;color:#fff;font-size:13.5px}
+blockquote .q2{font-size:12.5px;color:var(--text-2);margin-top:3px;line-height:1.7}
 
-/* core strengths */
+/* core strengths — text + media */
 .strengths{counter-reset:s;display:flex;flex-direction:column;gap:14px;margin:22px 0 8px}
-.strength{counter-increment:s;position:relative;border:1px solid var(--line);background:var(--inset);
-  border-radius:10px;padding:18px 20px 18px 62px}
-.strength::before{content:counter(s,decimal-leading-zero);position:absolute;left:20px;top:19px;
-  font-family:var(--mono);font-size:13px;color:var(--blue);font-weight:600}
-.strength h3{margin:0 0 6px;font-size:16.5px}
-.strength p{margin:0;font-size:14.5px;line-height:1.6;color:var(--text-2)}
+.strength{counter-increment:s;position:relative;display:grid;grid-template-columns:1fr 216px;gap:18px;
+  border:1px solid var(--line);background:var(--inset);border-radius:10px;padding:20px 20px 20px 60px}
+.strength::before{content:counter(s,decimal-leading-zero);position:absolute;left:20px;top:21px;
+  font-size:12px;color:var(--grn);font-weight:700}
+.strength h3{margin:0 0 8px;font-size:14.5px;line-height:1.5}
+.strength p{margin:0;font-size:12.8px;line-height:1.75;color:var(--text-2)}
 .strength p b{color:var(--text)}
+.strength .sm{display:flex;flex-direction:column;gap:8px;justify-content:center}
+@media(max-width:660px){.strength{grid-template-columns:1fr}.strength .sm{margin-top:6px}}
+
+/* s1 media: handshake steps */
+.steps{display:flex;flex-direction:column;gap:0;border:1px solid var(--line-2);border-radius:8px;
+  background:var(--bg);padding:12px 14px}
+.steps .st{font-size:11px;color:var(--text-2);line-height:1.5;padding:5px 0}
+.steps .st .c{color:var(--amber)}
+.steps .st .k{color:var(--grn)}
+.steps .ar{color:var(--text-4);font-size:10px;padding-left:2px;line-height:1}
+/* s2/s3 media */
+.shot{border:1px solid var(--line-2);border-radius:8px;width:100%;height:112px;object-fit:cover;object-position:top}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{border:1px solid var(--line-2);background:var(--bg);border-radius:6px;padding:2px 8px;
+  font-size:10.5px;color:var(--text-2);white-space:nowrap}
+.chip b{color:var(--grn);font-weight:600}
+.avarow{display:flex;align-items:center}
+.avarow img{width:52px;height:52px;border-radius:50%;border:2px solid var(--inset);object-fit:cover}
+.avarow img+img{margin-left:-12px}
 
 /* member blocks */
-.member{display:grid;grid-template-columns:64px 1fr;gap:18px;margin:30px 0 0;padding:24px 0 26px;border-top:1px solid var(--line)}
+.member{display:grid;grid-template-columns:60px 1fr;gap:18px;margin:30px 0 0;padding:24px 0 26px;border-top:1px solid var(--line)}
 .member:first-of-type{border-top:none;padding-top:6px}
-.member .ava{width:64px;height:64px;border-radius:50%;object-fit:cover;border:1px solid var(--line-2)}
+.member .ava{width:60px;height:60px;border-radius:50%;object-fit:cover;border:1px solid var(--line-2)}
 .member .hd{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px}
-.member .hd h3{margin:0;font-size:19px}
-.member .hd .role{color:var(--text-2);font-size:14px}
-.member .hd .nat{font-family:var(--mono);font-size:11.5px;color:var(--text-3);
-  border:1px solid var(--line-2);border-radius:5px;padding:1px 7px}
-.member .career{margin:10px 0 0;font-size:15px;line-height:1.65;color:var(--text-2)}
+.member .hd h3{margin:0;font-size:17px}
+.member .hd .role{color:var(--text-2);font-size:12.5px}
+.member .hd .nat{font-size:10.5px;color:var(--text-3);border:1px solid var(--line-2);border-radius:5px;padding:1px 7px}
+.member .career{margin:10px 0 0;font-size:12.8px;line-height:1.75;color:var(--text-2)}
 .member .career b{color:var(--text)}
-.member .ks{margin:12px 0 0;font-size:14.5px;line-height:1.6}
-.member .ks .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--blue);display:block;margin-bottom:4px}
+.member .ks{margin:12px 0 0;font-size:12.8px;line-height:1.7}
+.member .ks .lbl{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--grn);display:block;margin-bottom:4px}
 .member .plist{margin:14px 0 0;display:flex;flex-wrap:wrap;gap:7px}
-.member .plist a{font-size:12.5px;font-family:var(--mono);color:var(--text-2);border:1px solid var(--line-2);
-  border-bottom-color:var(--line-2);border-radius:6px;padding:4px 10px;transition:all .15s}
-.member .plist a:hover{color:var(--blue);border-color:rgba(92,161,224,.5);background:var(--blue-dim)}
-.member .plist .grp{flex-basis:100%;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--text-4);margin-top:6px}
-@media(max-width:560px){.member{grid-template-columns:1fr}.member .ava{width:56px;height:56px}}
+.member .plist a{font-size:11px;color:var(--text-2);border:1px solid var(--line-2);
+  border-radius:6px;padding:4px 10px;transition:all .15s}
+.member .plist a:hover{color:var(--grn);border-color:var(--grn-line);background:var(--grn-dim)}
+.member .plist .grp{flex-basis:100%;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-4);margin-top:6px}
+@media(max-width:560px){.member{grid-template-columns:1fr}.member .ava{width:54px;height:54px}}
 
 /* diagram */
 .diagram{border:1px solid var(--line);background:var(--inset);border-radius:10px;padding:22px 18px 14px;margin:24px 0 8px;overflow-x:auto}
 .diagram svg{display:block;min-width:560px;width:100%;height:auto}
-.diagram .cap{font-size:12.5px;color:var(--text-3);text-align:center;margin:10px 0 2px}
+.diagram .cap{font-size:11.5px;color:var(--text-3);text-align:center;margin:10px 0 2px}
 
 /* main projects */
 .projects{display:flex;flex-direction:column;gap:12px;margin:22px 0 0}
 .proj{display:grid;grid-template-columns:150px 1fr;gap:16px;border:1px solid var(--line);background:var(--inset);
   border-radius:10px;padding:14px;align-items:center}
 .proj img{width:150px;height:92px;object-fit:cover;object-position:top;border-radius:6px;border:1px solid var(--line-2)}
-.proj .nm{font-weight:600;color:#fff;font-size:16px}
-.proj .st{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;margin-left:8px}
-.proj .st.live{color:var(--green)} .proj .st.soon{color:var(--amber)}
-.proj .ds{font-size:14px;color:var(--text-2);line-height:1.55;margin-top:4px}
+.proj .nm{font-weight:600;color:#fff;font-size:14.5px}
+.proj .st{font-size:10px;letter-spacing:.08em;text-transform:uppercase;margin-left:8px}
+.proj .st.live{color:var(--grn)} .proj .st.soon{color:var(--amber)}
+.proj .ds{font-size:12.5px;color:var(--text-2);line-height:1.65;margin-top:4px}
 @media(max-width:560px){.proj{grid-template-columns:1fr}.proj img{width:100%;height:130px}}
 
 /* timeline */
@@ -116,26 +140,26 @@ blockquote .q2{font-size:14px;color:var(--text-2);margin-top:2px}
 .tl{position:relative;display:grid;grid-template-columns:1fr 190px;gap:8px 20px;padding:0 0 34px}
 .tl::before{content:"";position:absolute;left:-26px;top:8px;width:9px;height:9px;border-radius:50%;
   background:var(--bg);border:2px solid var(--text-4)}
-.tl.live::before{border-color:var(--green)}
-.tl.hl::before{border-color:var(--blue);background:var(--blue)}
-.tl .yr{font-family:var(--mono);font-size:12px;color:var(--text-3);grid-column:1/-1}
-.tl .yr .st{margin-left:10px;letter-spacing:.06em;text-transform:uppercase;font-size:10.5px}
-.tl .yr .st.live{color:var(--green)} .tl .yr .st.sun{color:var(--text-4)} .tl .yr .st.col{color:var(--amber)} .tl .yr .st.soon{color:var(--amber)}
+.tl.live::before{border-color:var(--grn)}
+.tl.hl::before{border-color:var(--grn);background:var(--grn)}
+.tl .yr{font-size:11.5px;color:var(--text-3);grid-column:1/-1}
+.tl .yr .st{margin-left:10px;letter-spacing:.06em;text-transform:uppercase;font-size:10px}
+.tl .yr .st.live{color:var(--grn)} .tl .yr .st.sun{color:var(--text-4)} .tl .yr .st.col{color:var(--amber)} .tl .yr .st.soon{color:var(--amber)}
 .tl .bd{grid-column:1;grid-row:2}
-.tl .bd .nm{font-weight:600;color:#fff;font-size:16px}
-.tl .bd .ds{font-size:14px;color:var(--text-2);line-height:1.6;margin-top:3px}
-.tl .bd .mt{font-size:13.5px;margin-top:6px;color:var(--text-2)}
-.tl .bd .mt::before{content:"↳ ";color:var(--blue)}
+.tl .bd .nm{font-weight:600;color:#fff;font-size:14.5px}
+.tl .bd .ds{font-size:12.5px;color:var(--text-2);line-height:1.7;margin-top:3px}
+.tl .bd .mt{font-size:12px;margin-top:6px;color:var(--text-2)}
+.tl .bd .mt::before{content:"↳ ";color:var(--grn)}
 .tl .bd .mt b{color:#fff}
 .tl .th{grid-column:2;grid-row:2/4}
 .tl .th img{width:190px;height:118px;object-fit:cover;object-position:top;border-radius:7px;border:1px solid var(--line-2)}
-.tl.milestone{border:1px solid rgba(92,161,224,.35);background:var(--blue-dim);border-radius:10px;
+.tl.milestone{border:1px solid var(--grn-line);background:var(--grn-dim);border-radius:10px;
   padding:16px 18px 18px;margin-left:-8px;grid-template-columns:1fr}
 .tl.milestone::before{left:-18px}
 @media(max-width:620px){.tl{grid-template-columns:1fr}.tl .bd{grid-row:auto}.tl .th{grid-column:1;grid-row:auto}.tl .th img{width:100%;height:150px}}
 
 /* footer */
-footer{border-top:1px solid var(--line);margin-top:70px;padding:22px 0 60px;font-size:13px;color:var(--text-3);
+footer{border-top:1px solid var(--line);margin-top:70px;padding:22px 0 60px;font-size:12px;color:var(--text-3);
   display:flex;gap:16px;flex-wrap:wrap}
 footer .right{margin-left:auto}
 </style>
@@ -146,11 +170,425 @@ footer .right{margin-left:auto}
   <div class="in">
     <span class="dots"><i></i><i></i><i></i></span>
     <span class="file">team-h402.md</span>
+    <span class="lang" role="group" aria-label="Language">
+      <button id="btn-ko" onclick="setLang('ko')">한국어</button>
+      <button id="btn-en" onclick="setLang('en')">EN</button>
+    </span>
     <span class="count" id="wc"></span>
   </div>
 </div>
 
-<main id="doc">
+<!-- ================================================================ -->
+<!-- ============================ KOREAN ============================ -->
+<!-- ================================================================ -->
+<main id="doc-ko" data-l="ko">
+
+  <h1 class="doc-title"><span class="hh">#</span>H402 팀</h1>
+  <p class="doc-sub"><b>x402 payment rail — 그리고 x402가 시작한 Agentic Commerce 트렌드 — 를 GIWA로 가져오는 팀</b>입니다.
+  에이전트 capability를 위한 x402 라우터 <a href="https://h402-test.hunt.town/" target="_blank" rel="noopener">h402</a>를 만들고,
+  2018년부터 제품을 출시해온 온체인 Builder &amp; Agent Economy 프로덕트 스튜디오
+  <a href="https://hunt.town" target="_blank" rel="noopener">Hunt Town</a>을 운영합니다.
+  이 문서는 우리가 누구인지, 무엇을 만들어왔는지, 왜 GASOK에 적합한 팀인지에 답합니다.</p>
+
+  <blockquote>
+    <div class="q1">✓ 업비트 생태계에서의 사전 검증</div>
+    <div class="q2">우리 팀의 컨셉 <em>InTime</em>이 <b>업비트 해커톤(2019.10) 1위</b>를 수상 — 이후 파트너 tx0x가
+    우리 프로토콜 위에서 1s.market으로 상용화했습니다.
+    <a href="https://youtu.be/FZMxNNxPcPA?t=67" target="_blank" rel="noopener">피칭 영상 ↗</a></div>
+  </blockquote>
+
+  <!-- 핵심 강점 -->
+  <h2 id="strengths-ko"><span class="hh">##</span>핵심 강점</h2>
+  <div class="strengths">
+    <div class="strength">
+      <div>
+        <h3>Agentic Commerce를 GIWA로 가져올 수 있는 실전 팀</h3>
+        <p>x402는 HTTP 402를 에이전트 네이티브 결제 표준으로 만들었고, 우리는 이미 프로덕션에서 그 위에 빌드하고
+        있습니다. h402는 x402 핸드셰이크 전체(402 견적 → 로컬 <b>EIP-3009</b> 서명 → facilitator 정산,
+        논커스터디얼, API 키 없음)를 구현했습니다. 이 레일을 GIWA로 포팅하고 <b>GIWA의 x402 facilitator를
+        직접 구축·운영</b>하는 것은 이 팀에게 리서치가 아니라 실행 과제입니다.</p>
+      </div>
+      <div class="sm">
+        <div class="steps">
+          <div class="st"><span class="c">402</span> Payment Required</div>
+          <div class="ar">↓</div>
+          <div class="st">EIP-3009 sign <span style="color:var(--text-4)">(local key)</span></div>
+          <div class="ar">↓</div>
+          <div class="st"><span class="k">✓ settle on GIWA</span> · 200 OK</div>
+        </div>
+      </div>
+    </div>
+    <div class="strength">
+      <div>
+        <h3>레일만 남은 제품 완성 단계 — GIWA에 열리는 신시장</h3>
+        <p>h402는 이미 제품 레벨로 완성되어 <b>최종 테스트 중</b>입니다(정식 런칭 약 2–3주 내). 라이브 카탈로그에
+        <b>152 capabilities · 74 providers</b>, 전 라우트 실결제 검증, 실시간 품질·가격 기준 자동 라우팅.
+        GIWA에 payment rail이 놓이는 순간 <b>수백–수천 개의 에이전트 호출형 API가 GIWA 위에서 pay-per-call로
+        정산되는 신시장</b>이 첫날부터 열립니다 — 약속이 아니라 트랜잭션으로.</p>
+      </div>
+      <div class="sm">
+        <img class="shot" src="assets/timeline/h402.png" alt="h402 제품 화면" />
+        <div class="chips"><span class="chip"><b>152</b> capabilities</span><span class="chip"><b>74</b> providers</span><span class="chip"><b>100%</b> 실결제 검증</span></div>
+      </div>
+    </div>
+    <div class="strength">
+      <div>
+        <h3>린한 팀 — 3인 전원이 AI × Web3 제품을 이미 출시·운영</h3>
+        <p>엔지니어·디자이너·마케터 세 명 — 전원이 <b>다수의 AI × Web3 제품을 파운딩하고 운영</b>해왔습니다
+        (아래 개인 프로젝트와 19개 트랙 레코드 참조). 온체인 이코노미와 에이전트 툴링, 양쪽 생태계 모두에
+        대한 깊은 이해를 갖추고 있습니다.</p>
+      </div>
+      <div class="sm">
+        <div class="avarow">
+          <img src="assets/avatar-sebastian.jpg" alt="Sebastian Kim" />
+          <img src="assets/avatar-younghwi.jpg" alt="YoungHwi Cho" />
+          <img src="assets/avatar-woojin.png" alt="Woojin Chang" />
+        </div>
+        <div class="chips"><span class="chip"><b>3</b>인 빌더</span><span class="chip"><b>19</b>개 제품</span><span class="chip">since <b>2018</b></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GIWA에서 만들 것 -->
+  <h2 id="giwa-ko"><span class="hh">##</span>GIWA에서 만들 것</h2>
+  <p style="font-size:13.5px">두 가지 딜리버러블입니다. <b>(1)</b> h402가 GIWA를 정산 체인으로 추가 — 카탈로그의 모든
+  capability가 GIWA 위 스테이블코인으로 호출당 결제됩니다. <b>(2)</b> <b>GIWA x402 facilitator</b>를 직접
+  구축·운영 — 서명된 결제 페이로드를 검증하고 온체인에 정산하는 서비스로, GIWA 위 어떤 판매자든 노드 운영 없이
+  에이전트 결제를 받을 수 있게 됩니다. GIWA의 1초 블록과 낮은 수수료는 에이전트 마이크로페이먼트에 정확히
+  맞는 환경입니다.</p>
+
+  <div class="diagram">
+    <svg viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono','Apple SD Gothic Neo',monospace,sans-serif">
+      <g fill="none" stroke="#38393d">
+        <rect x="10" y="28" width="150" height="52" rx="8" fill="#202123"/>
+        <rect x="285" y="28" width="150" height="52" rx="8" fill="#202123" stroke="#5fbf88" stroke-opacity=".55"/>
+        <rect x="560" y="28" width="150" height="52" rx="8" fill="#202123"/>
+      </g>
+      <text x="85" y="50" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="600">AI 에이전트</text>
+      <text x="85" y="68" text-anchor="middle" fill="#77787d" font-size="10">키 없이, 어떤 클라이언트든</text>
+      <text x="360" y="50" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="600">h402 라우터</text>
+      <text x="360" y="68" text-anchor="middle" fill="#77787d" font-size="10">152 capabilities · 74 providers</text>
+      <text x="635" y="50" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="600">최적 프로바이더</text>
+      <text x="635" y="68" text-anchor="middle" fill="#77787d" font-size="10">실결제로 사전 검증</text>
+      <g stroke="#77787d" stroke-width="1.2">
+        <line x1="160" y1="54" x2="278" y2="54"/><path d="M278 54 l-7 -4 v8 z" fill="#77787d" stroke="none"/>
+        <line x1="435" y1="54" x2="553" y2="54"/><path d="M553 54 l-7 -4 v8 z" fill="#77787d" stroke="none"/>
+      </g>
+      <text x="219" y="44" text-anchor="middle" fill="#a0a1a6" font-size="10">태스크 호출</text>
+      <text x="494" y="44" text-anchor="middle" fill="#a0a1a6" font-size="10">자동 라우팅</text>
+      <g fill="none" stroke="#5fbf88" stroke-opacity=".5">
+        <rect x="180" y="128" width="360" height="46" rx="8" fill="rgba(95,191,136,.07)"/>
+      </g>
+      <text x="360" y="147" text-anchor="middle" fill="#5fbf88" font-size="12" font-weight="600">x402 정산 on GIWA</text>
+      <text x="360" y="164" text-anchor="middle" fill="#a0a1a6" font-size="10">402 견적 → EIP-3009 서명 → GIWA facilitator가 호출당 스테이블코인 정산</text>
+      <g stroke="#5fbf88" stroke-opacity=".4" stroke-dasharray="3 3">
+        <line x1="85" y1="80" x2="85" y2="151"/><line x1="85" y1="151" x2="176" y2="151"/>
+        <line x1="635" y1="80" x2="635" y2="151"/><line x1="635" y1="151" x2="544" y2="151"/>
+      </g>
+    </svg>
+    <div class="cap">에이전트는 라우터 호출 한 번 — 견적·서명·온체인 정산은 아래 레이어가 자동 처리합니다.</div>
+  </div>
+
+  <!-- 멤버 -->
+  <h2 id="members-ko"><span class="hh">##</span>멤버</h2>
+
+  <div class="member">
+    <img class="ava" src="assets/avatar-sebastian.jpg" alt="Sebastian Kim" />
+    <div>
+      <div class="hd"><h3>Sebastian Kim</h3><span class="role">풀스택 엔지니어</span><span class="nat">대한민국</span></div>
+      <p class="career">Hunt Town &amp; Mint Club 엔지니어링을 <b>7년간 리드</b> — 스튜디오 아카이브 15개 중 8개 제품과
+      다수 외부 파트너 팀이 올라탄 Mint Club 본딩커브 프로토콜(CertiK 감사)의 저자. Base·Ethereum·BNB 등
+      멀티체인 배포 경험. h402의 x402/EIP-3009 결제 플로우 전체를 구현.</p>
+      <p class="ks"><span class="lbl">핵심 강점</span>온체인 엔드투엔드 실행력 — <b>GIWA x402 facilitator와 정산
+      통합을 단독으로 구축</b>할 수 있습니다.</p>
+      <div class="plist">
+        <a href="https://github.com/sebayaki" target="_blank" rel="noopener">github/sebayaki</a>
+        <a href="https://x.com/0xsebayaki" target="_blank" rel="noopener">x/0xsebayaki</a>
+        <a href="https://farcaster.xyz/if" target="_blank" rel="noopener">farcaster/if</a>
+        <a href="https://sebayaki.com" target="_blank" rel="noopener">sebayaki.com</a>
+        <span class="grp">개인 프로젝트</span>
+        <a href="https://onchat.sebayaki.com" target="_blank" rel="noopener">OnChat — 퍼미션리스 온체인 챗</a>
+        <a href="https://signet.sebayaki.com" target="_blank" rel="noopener">Signet — 온체인 캐스트 스포트라이트</a>
+        <a href="https://mfer.sebayaki.com" target="_blank" rel="noopener">mfermoon — 디플레이셔너리 토큰</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="member">
+    <img class="ava" src="assets/avatar-younghwi.jpg" alt="YoungHwi Cho" />
+    <div>
+      <div class="hd"><h3>YoungHwi Cho</h3><span class="role">디자이너</span><span class="nat">대한민국</span></div>
+      <p class="career">디자이너 출신 AI 빌더. <b>에이전트 협업 오픈소스 툴 스위트</b> — QuadWork(npm), Agent Gather,
+      Session Glue(PyPI) — 의 파운더이자 LiveCap, Toony, SVGSmith 등 AI 제품 빌더. 매일 멀티 에이전트 빌드
+      파이프라인을 운영하며 h402의 프로덕트 표면을 디자인합니다.</p>
+      <p class="ks"><span class="lbl">핵심 강점</span>디자인 역량 + <b>에이전트 네이티브 제품 감각</b> — h402의
+      핵심 고객은 에이전트 그 자체이고, 그는 매일 에이전트를 위해 만듭니다.</p>
+      <div class="plist">
+        <a href="https://github.com/realproject7" target="_blank" rel="noopener">github/realproject7</a>
+        <a href="https://x.com/heyproject7" target="_blank" rel="noopener">x/heyproject7</a>
+        <a href="https://farcaster.xyz/project7" target="_blank" rel="noopener">farcaster/project7</a>
+        <span class="grp">개인 프로젝트</span>
+        <a href="https://github.com/realproject7/quadwork" target="_blank" rel="noopener">QuadWork — 4-agent 코딩 팀</a>
+        <a href="https://github.com/realproject7/agentgather" target="_blank" rel="noopener">Agent Gather — 에이전트 룸</a>
+        <a href="https://pypi.org/project/session-glue/" target="_blank" rel="noopener">Session Glue — 세션 핸드오프</a>
+        <a href="https://livecap.app" target="_blank" rel="noopener">LiveCap — 로컬 라이브 캡션</a>
+        <a href="https://github.com/realproject7/toony" target="_blank" rel="noopener">Toony — 에이전트 웹툰 툴</a>
+        <a href="https://github.com/realproject7/svgsmith" target="_blank" rel="noopener">SVGSmith — 자가검증 벡터라이저</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="member">
+    <img class="ava" src="assets/avatar-woojin.png" alt="Woojin Chang" />
+    <div>
+      <div class="hd"><h3>Woojin Chang</h3><span class="role">마케터</span><span class="nat">대한민국</span></div>
+      <p class="career">그로스와 유통 담당. <b>前 Binance 마케팅 매니저</b>. OpenAds(온체인 USDC 정산 web3 광고
+      네트워크)와 Breaking News(Base 위 read-to-earn Farcaster 미니앱)의 파운더. 마케팅과 함께 AI 빌딩
+      활동도 활발히 하고 있습니다.</p>
+      <p class="ks"><span class="lbl">핵심 강점</span><b>거래소급 그로스</b> — GASOK KPI 그로스 단계(트랜잭션·유저·
+      생태계 확산)를 이끌 고투마켓 엔진.</p>
+      <div class="plist">
+        <a href="https://github.com/openadsseries" target="_blank" rel="noopener">github/openadsseries</a>
+        <a href="https://x.com/hunt16z" target="_blank" rel="noopener">x/hunt16z</a>
+        <span class="grp">개인 프로젝트</span>
+        <a href="https://www.openads.world/" target="_blank" rel="noopener">OpenAds — web3 광고 네트워크</a>
+        <a href="https://farcaster.xyz/miniapps/AUbiI41WCmj-/breaking-news" target="_blank" rel="noopener">Breaking News — read-to-earn 미니앱</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 메인 프로젝트 -->
+  <h2 id="projects-ko"><span class="hh">##</span>메인 프로젝트</h2>
+  <div class="projects">
+    <div class="proj">
+      <img src="assets/timeline/h402.png" alt="h402" />
+      <div>
+        <span class="nm">h402</span><span class="st soon">최종 테스트 중 · 정식 런칭 ~2–3주</span>
+        <p class="ds">에이전트 capability를 위한 x402 라우터 — 태스크당 하나의 엔드포인트, 최적 프로바이더로
+        자동 라우팅, 호출당 스테이블코인 정산. 152 capabilities · 74 providers, 전 라우트 실결제 검증.
+        <a href="https://h402-test.hunt.town/" target="_blank" rel="noopener">앱 ↗</a> ·
+        <a href="https://h402-test.hunt.town/docs" target="_blank" rel="noopener">문서 ↗</a></p>
+      </div>
+    </div>
+    <div class="proj">
+      <img src="assets/timeline/mint-club.png" alt="Mint Club" />
+      <div>
+        <span class="nm">Mint Club</span><span class="st live">Live</span>
+        <p class="ds">토큰·NFT를 위한 노코드 본딩커브 프로토콜 — 아카이브 15개 중 8개 제품과 다수 파트너 팀의
+        기반. CertiK 감사 완료, KYC Gold Badge.
+        <a href="https://mint.club" target="_blank" rel="noopener">mint.club ↗</a></p>
+      </div>
+    </div>
+    <div class="proj">
+      <img src="assets/timeline/co-op.png" alt="Hunt Town Co-op" />
+      <div>
+        <span class="nm">Hunt Town · Co-op</span><span class="st live">Live</span>
+        <p class="ds">우리의 프로덕트 스튜디오와 그 온체인 협동조합 — 빌더가 HUNT 기반 프로젝트 토큰을 런칭하고
+        배커가 매일 후원합니다. 우리가 만드는 모든 것의 커뮤니티 엔진.
+        <a href="https://hunt.town" target="_blank" rel="noopener">hunt.town ↗</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 트랙 레코드 -->
+  <h2 id="track-ko"><span class="hh">##</span>트랙 레코드 — 2018 → now</h2>
+  <p class="small">우리가 출시한 모든 제품을 시간순으로. 전부 살아남지는 못했습니다 — 그럼에도 아카이브를 공개적이고
+  정직하게 유지하는 이유는, 각 제품이 다음 제품의 씨앗이 되었기 때문입니다. 🤝 = 우리 프로토콜 위의 파트너 빌드.</p>
+
+  <div class="timeline">
+
+    <div class="tl live">
+      <div class="yr">2018 <span class="st live">운영 중</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://steemhunt.com" target="_blank" rel="noopener">Steemhunt</a></div>
+        <div class="ds">큐레이터가 멋진 제품을 공유·업보트하고 크립토를 버는 Product Hunt 스타일 데일리 리더보드. 모든 것의 시작.</div>
+        <div class="mt">세계 <b>7위 DApp</b> · 최고 <b>~414K MAU</b></div>
+      </div>
+      <div class="th"><img src="assets/timeline/steemhunt.png" alt="Steemhunt" /></div>
+    </div>
+
+    <div class="tl milestone hl">
+      <div class="yr">2019 · 10월</div>
+      <div class="bd">
+        <div class="nm">🏆 업비트 해커톤 — 1위</div>
+        <div class="ds">시간 토큰화 컨셉 <em>InTime</em>으로 1위 수상 — 이후 파트너 tx0x가 우리 프로토콜 위에서
+        1s.market으로 상용화. <a href="https://youtu.be/FZMxNNxPcPA?t=67" target="_blank" rel="noopener">영상 ↗</a></div>
+      </div>
+    </div>
+
+    <div class="tl live">
+      <div class="yr">2019 <span class="st live">운영 중</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://lol.hunt.town/" target="_blank" rel="noopener">LOL Hunt</a></div>
+        <div class="ds">가장 웃긴 클립을 크라우드 큐레이션하는 데일리 차트 — 탈중앙 신원·스토리지 기반.</div>
+        <div class="mt">Blockstack "Can't Be Evil" <b>2위</b> · Product Hunt 오늘의 제품 <b>#5</b></div>
+      </div>
+      <div class="th"><img src="assets/timeline/lol-hunt.png" alt="LOL Hunt" /></div>
+    </div>
+
+    <div class="tl live">
+      <div class="yr">2020 <span class="st live">운영 중</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://nomadtask.com" target="_blank" rel="noopener">Nomadtask</a></div>
+        <div class="ds">글로벌 디지털 노마드를 위한 바운티 마케팅 태스크 마켓플레이스 (구 ReviewHunt).</div>
+        <div class="mt">가입 <b>80,000+</b> · <b>1M+ 조회</b> 유튜브 바이럴</div>
+      </div>
+      <div class="th"><img src="assets/timeline/nomadtask.png" alt="Nomadtask" /></div>
+    </div>
+
+    <div class="tl live">
+      <div class="yr">2020 <span class="st live">운영 중</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://neverlose.money" target="_blank" rel="noopener">Neverlose.money</a></div>
+        <div class="ds">게임화된 HODL — 중도 해지 페널티가 장기 보유자의 보너스가 되는 구조.</div>
+        <div class="mt">누적 락업 최고 <b>~$24.15M</b></div>
+      </div>
+      <div class="th"><img src="assets/timeline/neverlose.png" alt="Neverlose.money" /></div>
+    </div>
+
+    <div class="tl">
+      <div class="yr">2021 <span class="st col">🤝 파트너 · 종료</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://news.hunt.town/p/the-official-launch-of-1smarket-the" target="_blank" rel="noopener">1s.market</a></div>
+        <div class="ds">누구나의 시간을 토큰화해 거래 — Mint Club 최초의 서드파티 빌드 (파트너 tx0x).</div>
+        <div class="mt">시간 자산 <b>~130만 "초"</b> 생성 · 업비트 해커톤 1위 컨셉에서 출발</div>
+      </div>
+      <div class="th"><img src="assets/timeline/1s-market.png" alt="1s.market" /></div>
+    </div>
+
+    <div class="tl live">
+      <div class="yr">2022 <span class="st live">운영 중</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://dixel.club" target="_blank" rel="noopener">Dixel Club</a></div>
+        <div class="ds">본딩커브 위 100% 온체인 커뮤니티 픽셀아트 NFT.</div>
+        <div class="mt">시드 투자 (VistaLabs + Edimus Capital) · <b>Klaytn Incubation Program</b> 선정</div>
+      </div>
+      <div class="th"><img src="assets/timeline/dixel.png" alt="Dixel Club" /></div>
+    </div>
+
+    <div class="tl">
+      <div class="yr">2024 <span class="st col">🤝 파트너 · 종료</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://x.com/gami_vc/status/1755414573858062796" target="_blank" rel="noopener">Memberify</a></div>
+        <div class="ds">Mint Club 기반 개인 본딩커브 멤버십 NFT (Base).</div>
+        <div class="mt"><b>1,383개 컬렉션</b> · Base 공동창업자 <b>Jesse Pollak</b>이 직접 민팅</div>
+      </div>
+      <div class="th"><img src="assets/timeline/memberify.png" alt="Memberify" /></div>
+    </div>
+
+    <div class="tl live">
+      <div class="yr">2024 <span class="st col">🤝 파트너 · 운영 중</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://far.cards" target="_blank" rel="noopener">Farcards</a></div>
+        <div class="ds">Farcaster 프로필이 거래 가능한 카드가 되는 컬렉터블 (Mint Club ERC-1155).</div>
+        <div class="mt"><b>18,000+ 카드</b> · Base 공동창업자 <b>Jesse Pollak</b>도 자신의 Farcard 민팅</div>
+      </div>
+      <div class="th"><img src="assets/timeline/farcards.png" alt="Farcards" /></div>
+    </div>
+
+    <div class="tl">
+      <div class="yr">2024 <span class="st sun">종료 → Co-op으로 계승</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://news.hunt.town/p/introducing-hunt-tip-v2" target="_blank" rel="noopener">Hunt Tip</a></div>
+        <div class="ds">Building NFT 홀더가 일일 팁 한도로 빌더를 후원 — 17시즌 운영.</div>
+        <div class="mt"><b>306M+ 팁</b> 지급 · <b>921명 빌더</b> 그랜트 지원</div>
+      </div>
+      <div class="th"><img src="assets/timeline/hunt-tip.png" alt="Hunt Tip" /></div>
+    </div>
+
+    <div class="tl">
+      <div class="yr">2024 <span class="st col">🤝 Degen 협업 · 종료</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://news.hunt.town/p/buy-tokens-with-your-degen-tips" target="_blank" rel="noopener">MCDegen</a></div>
+        <div class="ds">Farcaster $DEGEN 팁 한도로 Degen Chain(L3) 위 Mint Club 토큰 민팅.</div>
+        <div class="mt">피크 시 <b>전체 일일 $DEGEN 팁의 ⅓ 이상</b>이 경유</div>
+      </div>
+      <div class="th"><img src="assets/timeline/mcdegen.png" alt="MCDegen" /></div>
+    </div>
+
+    <div class="tl">
+      <div class="yr">2024 <span class="st col">🤝 파트너 · 종료</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://hamcaster.com/" target="_blank" rel="noopener">Hamcaster</a></div>
+        <div class="ds">Farcaster 프로필 토큰화 SocialFi — deployer(현 BankrCoin 파운더)가 Mint Club 위에 구축.</div>
+        <div class="mt">서드파티 <b>SocialFi 경제를 타 체인에서 구동</b>한 증명</div>
+      </div>
+      <div class="th"><img src="assets/timeline/hamcaster.png" alt="Hamcaster" /></div>
+    </div>
+
+    <div class="tl">
+      <div class="yr">2024 <span class="st sun">종료</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://x.com/MintClubPro/status/1867095408494997644" target="_blank" rel="noopener">PumpSea</a></div>
+        <div class="ds">NFT를 밈코인처럼 본딩커브로 트레이딩 — Pump.fun 스타일.</div>
+        <div class="mt">초기 폭발적 거래 — NFT당 <b>20–30 ETH 볼륨</b></div>
+      </div>
+      <div class="th"><img src="assets/timeline/pumpsea.png" alt="PumpSea" /></div>
+    </div>
+
+    <div class="tl">
+      <div class="yr">2025 <span class="st sun">종료</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://x.com/hypedtokens/status/1904429282723811548" target="_blank" rel="noopener">Hyped.club</a></div>
+        <div class="ds">기초 토큰의 변동성을 증폭하도록 설계된 "hToken" 트레이딩.</div>
+        <div class="mt">24시간 <b>+4,985%</b> 기록 · <b>Base 앱 Top 12</b> 진입</div>
+      </div>
+      <div class="th"><img src="assets/timeline/hyped-club.png" alt="Hyped.club" /></div>
+    </div>
+
+    <div class="tl">
+      <div class="yr">2025 <span class="st sun">종료</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://x.com/MintClubPro/status/1910261260052296134" target="_blank" rel="noopener">MintDrop</a></div>
+        <div class="ds">Mint Club 유입 퍼널이 된 데일리 스핀-투-언 Farcaster 미니앱.</div>
+        <div class="mt">Mint Club을 <b>Farcaster·Base 앱 종합 #1</b>로 견인</div>
+      </div>
+      <div class="th"><img src="assets/timeline/mintdrop.png" alt="MintDrop" /></div>
+    </div>
+
+    <div class="tl">
+      <div class="yr">2025 <span class="st sun">종료</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://news.hunt.town/p/introducing-clap-swipe-right-clap" target="_blank" rel="noopener">Clap</a></div>
+        <div class="ds">Farcaster 스와이프-투-언 빌더 콘텐츠 발견 앱.</div>
+        <div class="mt">첫 주 Building NFT 민팅 <b>+65%</b> · <b>852,700 HUNT</b> 락업</div>
+      </div>
+      <div class="th"><img src="assets/timeline/clap.png" alt="Clap" /></div>
+    </div>
+
+    <div class="tl live">
+      <div class="yr">NOW <span class="st live">Live</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://coop.hunt.town" target="_blank" rel="noopener">Hunt Town Co-op</a></div>
+        <div class="ds">최초의 온체인 협동조합 — 빌더는 런칭하고, 배커는 민팅하고, Co-op이 타운을 만듭니다.</div>
+        <div class="mt"><b>306M 팁 / 921 빌더</b> 커뮤니티를 계승</div>
+      </div>
+      <div class="th"><img src="assets/timeline/co-op.png" alt="Hunt Town Co-op" /></div>
+    </div>
+
+    <div class="tl hl">
+      <div class="yr">NOW <span class="st soon">최종 테스트 중 · 정식 런칭 ~2–3주</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://h402-test.hunt.town/" target="_blank" rel="noopener">h402</a></div>
+        <div class="ds">에이전트 capability를 위한 x402 라우터 — GASOK과 함께 이 payment rail을 GIWA로 가져갑니다.</div>
+        <div class="mt"><b>152 capabilities · 74 providers</b> · 전 라우트 실결제 검증</div>
+      </div>
+      <div class="th"><img src="assets/timeline/h402.png" alt="h402" /></div>
+    </div>
+
+  </div>
+
+  <footer>
+    <span>Team H402 — GASOK / GIWA 지원용 팀 소개 문서</span>
+    <span class="right">2026</span>
+  </footer>
+
+</main>
+
+<!-- ================================================================ -->
+<!-- ============================ ENGLISH =========================== -->
+<!-- ================================================================ -->
+<main id="doc-en" data-l="en">
 
   <h1 class="doc-title"><span class="hh">#</span>Team H402</h1>
   <p class="doc-sub">The team bringing the <b>x402 payment rail — and the Agentic Commerce trend it started — to GIWA</b>.
@@ -161,72 +599,97 @@ footer .right{margin-left:auto}
 
   <blockquote>
     <div class="q1">✓ Prior validation inside the Upbit ecosystem</div>
-    <div class="q2">Our concept <em>InTime</em> won <b>1st place at the Upbit Hackathon (Oct 2019)</b> — later shipped
-    as 1s.market. <a href="https://youtu.be/FZMxNNxPcPA?t=67" target="_blank" rel="noopener">Watch the pitch ↗</a></div>
+    <div class="q2">Our concept <em>InTime</em> won <b>1st place at the Upbit Hackathon (Oct 2019)</b> — later
+    commercialized by our partner tx0x as 1s.market, built on our protocol.
+    <a href="https://youtu.be/FZMxNNxPcPA?t=67" target="_blank" rel="noopener">Watch the pitch ↗</a></div>
   </blockquote>
 
-  <!-- ============ CORE STRENGTHS ============ -->
-  <h2 id="strengths"><span class="hh">##</span>Core strengths</h2>
+  <!-- CORE STRENGTHS -->
+  <h2 id="strengths-en"><span class="hh">##</span>Core strengths</h2>
   <div class="strengths">
     <div class="strength">
-      <h3>The team that can actually bring Agentic Commerce to GIWA</h3>
-      <p>x402 turned HTTP 402 into a live, agent-native payment standard — and we already build on it in production.
-      h402 implements the full x402 handshake (402 quote → local <b>EIP-3009</b> signing → facilitator settlement,
-      non-custodial, no API keys). Porting this rail to GIWA — including <b>operating GIWA's x402 facilitator</b> —
-      is an execution task for this team, not research.</p>
+      <div>
+        <h3>The team that can actually bring Agentic Commerce to GIWA</h3>
+        <p>x402 turned HTTP 402 into a live, agent-native payment standard — and we already build on it in production.
+        h402 implements the full x402 handshake (402 quote → local <b>EIP-3009</b> signing → facilitator settlement,
+        non-custodial, no API keys). Porting this rail to GIWA — including <b>operating GIWA's x402 facilitator</b> —
+        is an execution task for this team, not research.</p>
+      </div>
+      <div class="sm">
+        <div class="steps">
+          <div class="st"><span class="c">402</span> Payment Required</div>
+          <div class="ar">↓</div>
+          <div class="st">EIP-3009 sign <span style="color:var(--text-4)">(local key)</span></div>
+          <div class="ar">↓</div>
+          <div class="st"><span class="k">✓ settle on GIWA</span> · 200 OK</div>
+        </div>
+      </div>
     </div>
     <div class="strength">
-      <h3>A product-level router, waiting for a rail — a new market for GIWA</h3>
-      <p>h402 is already at product completeness: <b>166 capabilities across 75 providers</b> on the live catalog,
-      every route verified with real paid calls, best-provider routing by live quality-adjusted price. Once the
-      payment rail lands on GIWA, <b>hundreds-to-thousands of agent-callable APIs form a new pay-per-call market
-      settling on GIWA</b> from day one — transaction volume, not promises.</p>
+      <div>
+        <h3>A product-level router, waiting for a rail — a new market for GIWA</h3>
+        <p>h402 is already built to product level and in <b>final testing</b> (official launch expected in ~2–3 weeks):
+        <b>152 capabilities across 74 providers</b> on the live catalog, every route verified with real paid calls,
+        best-provider routing by live quality-adjusted price. Once the payment rail lands on GIWA,
+        <b>hundreds-to-thousands of agent-callable APIs form a new pay-per-call market settling on GIWA</b>
+        from day one — transaction volume, not promises.</p>
+      </div>
+      <div class="sm">
+        <img class="shot" src="assets/timeline/h402.png" alt="h402 product screen" />
+        <div class="chips"><span class="chip"><b>152</b> capabilities</span><span class="chip"><b>74</b> providers</span><span class="chip"><b>100%</b> paid-tested</span></div>
+      </div>
     </div>
     <div class="strength">
-      <h3>Lean team, all three already shipping AI × Web3</h3>
-      <p>Three people — engineer, designer, marketer — and every one of us has <b>founded and operated multiple
-      AI × Web3 products</b> (see the personal-projects lists and the 19-entry track record below). Deep ecosystem
-      literacy on both sides: onchain economics and agent tooling.</p>
+      <div>
+        <h3>Lean team, all three already shipping AI × Web3</h3>
+        <p>Three people — engineer, designer, marketer — and every one of us has <b>founded and operated multiple
+        AI × Web3 products</b> (see the personal-project lists and the 19-entry track record below). Deep ecosystem
+        literacy on both sides: onchain economics and agent tooling.</p>
+      </div>
+      <div class="sm">
+        <div class="avarow">
+          <img src="assets/avatar-sebastian.jpg" alt="Sebastian Kim" />
+          <img src="assets/avatar-younghwi.jpg" alt="YoungHwi Cho" />
+          <img src="assets/avatar-woojin.png" alt="Woojin Chang" />
+        </div>
+        <div class="chips"><span class="chip"><b>3</b> builders</span><span class="chip"><b>19</b> products</span><span class="chip">since <b>2018</b></span></div>
+      </div>
     </div>
   </div>
 
-  <!-- ============ WHAT WE BUILD ON GIWA ============ -->
-  <h2 id="giwa"><span class="hh">##</span>What we're building on GIWA</h2>
-  <p>Two deliverables: <b>(1)</b> h402 adds GIWA as a settlement chain — every capability in the catalog becomes
+  <!-- WHAT WE BUILD ON GIWA -->
+  <h2 id="giwa-en"><span class="hh">##</span>What we're building on GIWA</h2>
+  <p style="font-size:13.5px">Two deliverables: <b>(1)</b> h402 adds GIWA as a settlement chain — every capability in the catalog becomes
   payable in stablecoins on GIWA, per call; <b>(2)</b> we build and operate the <b>GIWA x402 facilitator</b> — the
   service that verifies signed payment payloads and settles them onchain, so any seller on GIWA can accept
   agent payments without touching a node. GIWA's 1-second blocks and low fees are exactly the environment
   agent micropayments need.</p>
 
   <div class="diagram">
-    <svg viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,BlinkMacSystemFont,'SF Pro Text',sans-serif">
-      <!-- top row boxes -->
-      <g fill="none" stroke="#3a3b41">
-        <rect x="10" y="28" width="150" height="52" rx="8" fill="#232428"/>
-        <rect x="285" y="28" width="150" height="52" rx="8" fill="#232428" stroke="#5ca1e0" stroke-opacity=".6"/>
-        <rect x="560" y="28" width="150" height="52" rx="8" fill="#232428"/>
+    <svg viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono',monospace">
+      <g fill="none" stroke="#38393d">
+        <rect x="10" y="28" width="150" height="52" rx="8" fill="#202123"/>
+        <rect x="285" y="28" width="150" height="52" rx="8" fill="#202123" stroke="#5fbf88" stroke-opacity=".55"/>
+        <rect x="560" y="28" width="150" height="52" rx="8" fill="#202123"/>
       </g>
-      <text x="85" y="50" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="600">AI Agent</text>
-      <text x="85" y="68" text-anchor="middle" fill="#77787e" font-size="11">any client, no keys</text>
-      <text x="360" y="50" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="600">h402 router</text>
-      <text x="360" y="68" text-anchor="middle" fill="#77787e" font-size="11">166 capabilities · 75 providers</text>
-      <text x="635" y="50" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="600">Best provider</text>
-      <text x="635" y="68" text-anchor="middle" fill="#77787e" font-size="11">verified, paid-tested</text>
-      <!-- arrows -->
-      <g stroke="#77787e" stroke-width="1.2">
-        <line x1="160" y1="54" x2="278" y2="54"/><path d="M278 54 l-7 -4 v8 z" fill="#77787e" stroke="none"/>
-        <line x1="435" y1="54" x2="553" y2="54"/><path d="M553 54 l-7 -4 v8 z" fill="#77787e" stroke="none"/>
+      <text x="85" y="50" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="600">AI Agent</text>
+      <text x="85" y="68" text-anchor="middle" fill="#77787d" font-size="10">any client, no keys</text>
+      <text x="360" y="50" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="600">h402 router</text>
+      <text x="360" y="68" text-anchor="middle" fill="#77787d" font-size="10">152 capabilities · 74 providers</text>
+      <text x="635" y="50" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="600">Best provider</text>
+      <text x="635" y="68" text-anchor="middle" fill="#77787d" font-size="10">verified, paid-tested</text>
+      <g stroke="#77787d" stroke-width="1.2">
+        <line x1="160" y1="54" x2="278" y2="54"/><path d="M278 54 l-7 -4 v8 z" fill="#77787d" stroke="none"/>
+        <line x1="435" y1="54" x2="553" y2="54"/><path d="M553 54 l-7 -4 v8 z" fill="#77787d" stroke="none"/>
       </g>
-      <text x="219" y="46" text-anchor="middle" fill="#a2a3a9" font-size="11">calls a task</text>
-      <text x="494" y="46" text-anchor="middle" fill="#a2a3a9" font-size="11">auto-routes</text>
-      <!-- settlement rail -->
-      <g fill="none" stroke="#5ca1e0" stroke-opacity=".55">
-        <rect x="180" y="128" width="360" height="46" rx="8" fill="rgba(92,161,224,.08)"/>
+      <text x="219" y="44" text-anchor="middle" fill="#a0a1a6" font-size="10">calls a task</text>
+      <text x="494" y="44" text-anchor="middle" fill="#a0a1a6" font-size="10">auto-routes</text>
+      <g fill="none" stroke="#5fbf88" stroke-opacity=".5">
+        <rect x="180" y="128" width="360" height="46" rx="8" fill="rgba(95,191,136,.07)"/>
       </g>
-      <text x="360" y="147" text-anchor="middle" fill="#5ca1e0" font-size="12.5" font-weight="600">x402 settlement on GIWA</text>
-      <text x="360" y="164" text-anchor="middle" fill="#a2a3a9" font-size="11">402 quote → EIP-3009 signature → GIWA facilitator settles stablecoin, per call</text>
-      <!-- vertical connectors -->
-      <g stroke="#5ca1e0" stroke-opacity=".45" stroke-dasharray="3 3">
+      <text x="360" y="147" text-anchor="middle" fill="#5fbf88" font-size="12" font-weight="600">x402 settlement on GIWA</text>
+      <text x="360" y="164" text-anchor="middle" fill="#a0a1a6" font-size="10">402 quote → EIP-3009 signature → GIWA facilitator settles stablecoin, per call</text>
+      <g stroke="#5fbf88" stroke-opacity=".4" stroke-dasharray="3 3">
         <line x1="85" y1="80" x2="85" y2="151"/><line x1="85" y1="151" x2="176" y2="151"/>
         <line x1="635" y1="80" x2="635" y2="151"/><line x1="635" y1="151" x2="544" y2="151"/>
       </g>
@@ -234,8 +697,8 @@ footer .right{margin-left:auto}
     <div class="cap">One router call for the agent — quote, signature, and onchain settlement handled underneath.</div>
   </div>
 
-  <!-- ============ MEMBERS ============ -->
-  <h2 id="members"><span class="hh">##</span>Members</h2>
+  <!-- MEMBERS -->
+  <h2 id="members-en"><span class="hh">##</span>Members</h2>
 
   <div class="member">
     <img class="ava" src="assets/avatar-sebastian.jpg" alt="Sebastian Kim" />
@@ -297,20 +760,20 @@ footer .right{margin-left:auto}
         <a href="https://x.com/hunt16z" target="_blank" rel="noopener">x/hunt16z</a>
         <span class="grp">Personal projects</span>
         <a href="https://www.openads.world/" target="_blank" rel="noopener">OpenAds — web3 ad network</a>
-        <a href="https://github.com/openadsseries/Breaking-News" target="_blank" rel="noopener">Breaking News — read-to-earn</a>
+        <a href="https://farcaster.xyz/miniapps/AUbiI41WCmj-/breaking-news" target="_blank" rel="noopener">Breaking News — read-to-earn mini app</a>
       </div>
     </div>
   </div>
 
-  <!-- ============ MAIN PROJECTS ============ -->
-  <h2 id="projects"><span class="hh">##</span>Main projects</h2>
+  <!-- MAIN PROJECTS -->
+  <h2 id="projects-en"><span class="hh">##</span>Main projects</h2>
   <div class="projects">
     <div class="proj">
       <img src="assets/timeline/h402.png" alt="h402" />
       <div>
-        <span class="nm">h402</span><span class="st soon">Launching</span>
+        <span class="nm">h402</span><span class="st soon">Final testing · launch in ~2–3 weeks</span>
         <p class="ds">The x402 router for agent capabilities — one endpoint per task, routed to the best API provider,
-        settled per call in stablecoins. 166 capabilities · 75 providers, every route verified with real paid calls.
+        settled per call in stablecoins. 152 capabilities · 74 providers, every route verified with real paid calls.
         <a href="https://h402-test.hunt.town/" target="_blank" rel="noopener">app ↗</a> ·
         <a href="https://h402-test.hunt.town/docs" target="_blank" rel="noopener">docs ↗</a></p>
       </div>
@@ -335,8 +798,8 @@ footer .right{margin-left:auto}
     </div>
   </div>
 
-  <!-- ============ TRACK RECORD ============ -->
-  <h2 id="track-record"><span class="hh">##</span>Track record — 2018 → now</h2>
+  <!-- TRACK RECORD -->
+  <h2 id="track-en"><span class="hh">##</span>Track record — 2018 → now</h2>
   <p class="small">Every product we've shipped, in order. Not all of them survived — we keep the archive public and
   honest on purpose: each one seeded what came next. 🤝 = partner build on our protocol.</p>
 
@@ -356,7 +819,8 @@ footer .right{margin-left:auto}
       <div class="yr">2019 · OCT</div>
       <div class="bd">
         <div class="nm">🏆 Upbit Hackathon — 1st place</div>
-        <div class="ds"><em>InTime</em>, our time-tokenization concept, won first place — later shipped as 1s.market.
+        <div class="ds"><em>InTime</em>, our time-tokenization concept, won first place — later commercialized by
+        partner tx0x as 1s.market on our protocol.
         <a href="https://youtu.be/FZMxNNxPcPA?t=67" target="_blank" rel="noopener">watch ↗</a></div>
       </div>
     </div>
@@ -512,22 +976,16 @@ footer .right{margin-left:auto}
     </div>
 
     <div class="tl hl">
-      <div class="yr">NOW <span class="st soon">Launching</span></div>
+      <div class="yr">NOW <span class="st soon">Final testing · launch in ~2–3 weeks</span></div>
       <div class="bd">
         <div class="nm"><a href="https://h402-test.hunt.town/" target="_blank" rel="noopener">h402</a></div>
         <div class="ds">The x402 router for agent capabilities — and, with GASOK, the payment rail we bring to GIWA.</div>
-        <div class="mt"><b>166 capabilities · 75 providers</b>, every route verified with real paid calls</div>
+        <div class="mt"><b>152 capabilities · 74 providers</b>, every route verified with real paid calls</div>
       </div>
       <div class="th"><img src="assets/timeline/h402.png" alt="h402" /></div>
     </div>
 
   </div>
-
-  <hr />
-  <p class="small">Studio archive with full write-ups (the bet / what worked / what broke / what it seeded) for every
-  entry: <a href="https://hunt.town" target="_blank" rel="noopener">hunt.town</a> · protocol:
-  <a href="https://mint.club" target="_blank" rel="noopener">mint.club</a> · router:
-  <a href="https://h402-test.hunt.town/" target="_blank" rel="noopener">h402-test.hunt.town</a></p>
 
   <footer>
     <span>Team H402 — prepared for the GASOK / GIWA application</span>
@@ -537,11 +995,30 @@ footer .right{margin-left:auto}
 </main>
 
 <script>
-/* live word count in the chrome bar, like an editor */
+function updateCount(){
+  var lang = document.documentElement.getAttribute('data-lang');
+  var el = document.getElementById(lang === 'ko' ? 'doc-ko' : 'doc-en');
+  var t = el.innerText || '';
+  var out;
+  if(lang === 'ko'){
+    out = t.replace(/\s+/g,'').length.toLocaleString('en-US') + '자';
+  }else{
+    out = t.split(/\s+/).filter(Boolean).length.toLocaleString('en-US') + ' Words';
+  }
+  document.getElementById('wc').textContent = out;
+}
+function setLang(lang){
+  document.documentElement.setAttribute('data-lang', lang);
+  document.documentElement.setAttribute('lang', lang);
+  document.getElementById('btn-ko').classList.toggle('on', lang === 'ko');
+  document.getElementById('btn-en').classList.toggle('on', lang === 'en');
+  try{ localStorage.setItem('h402-lang', lang); }catch(e){}
+  updateCount();
+}
 (function(){
-  var t = document.getElementById('doc').innerText || '';
-  var n = t.split(/\s+/).filter(Boolean).length;
-  document.getElementById('wc').textContent = n.toLocaleString('en-US') + ' Words';
+  var saved = null;
+  try{ saved = localStorage.getItem('h402-lang'); }catch(e){}
+  setLang(saved === 'en' ? 'en' : 'ko');
 })();
 </script>
 </body>
