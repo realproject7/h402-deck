@@ -2,18 +2,23 @@
 
 Web assets for **Hunt Town's GASOK (GIWA) accelerator application**.
 
-## Pages
+## Pages (two design concepts — pick one to submit)
 
-- `index.html` — **Team dossier** (design concept: *Field Manifest*). A single static
-  page introducing the team, submitted as the "Team introduction" link on the GASOK
-  application form.
+- `index.html` — **Field Manifest**. Dark **Blueprint** system inherited from
+  `town-web-2` / h402: canvas `#0a0a0b`, single coral accent `#fc6f6f`, Geist /
+  Geist Mono, blueprint grid, soft coral top-glow. Centered display hero.
+- `terminal.html` — **Terminal / TUI**. Monotone (grayscale + minimal terminal green),
+  JetBrains Mono throughout, Hacker-News-builder aesthetic: a status line, `$` prompt
+  section headers (`cat team.txt`, `ls -la track-record/`), `[NN]` records, an
+  aligned data table, blinking caret. Left-aligned, information-dense.
+
+Both are the same content (team intro + track record) submitted as the "Team
+introduction" link on the GASOK application form.
 
 ## Design
 
-Dark **Blueprint** system inherited from `town-web-2` / h402: canvas `#0a0a0b`, single
-coral accent `#fc6f6f`, Geist / Geist Mono, faint blueprint grid, soft coral top-glow.
-Terminal / markdown-native aesthetic — reads like a builder's manifest. No build step,
-no dependencies; fonts load from Google Fonts.
+No build step, no dependencies; fonts load from Google Fonts. Both pages share the
+same copy source (`team-intro`) and only differ in visual concept.
 
 ## Local preview
 
