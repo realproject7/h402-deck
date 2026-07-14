@@ -1,27 +1,19 @@
 # giwa-gasok
 
-Web assets for **Hunt Town's GASOK (GIWA) accelerator application**.
+Team dossier for **h402's GASOK (GIWA accelerator) application**, submitted as the
+"Team introduction" link on the application form.
 
-## Pages (two design concepts — pick one to submit)
+## What's here
 
-- `index.html` — **Field Manifest**. Dark **Blueprint** system inherited from
-  `town-web-2` / h402: canvas `#0a0a0b`, single coral accent `#fc6f6f`, Geist /
-  Geist Mono, blueprint grid, soft coral top-glow. Centered display hero.
-- `editor.html` — **Editor (v3, current pick)**. Ulysses-dark markdown document, dark-matte
-  gray + green accent, JetBrains Mono, KO/EN language toggle (default KO), media-rich core
-  strengths, x402-on-GIWA diagram, chronological 19-entry timeline with thumbnails.
-- `terminal.html` — **Terminal / TUI**. Monotone (grayscale + minimal terminal green),
-  JetBrains Mono throughout, Hacker-News-builder aesthetic: a status line, `$` prompt
-  section headers (`cat team.txt`, `ls -la track-record/`), `[NN]` records, an
-  aligned data table, blinking caret. Left-aligned, information-dense.
+- `index.html` — the dossier. A single static page, no build step, no dependencies
+  (system fonts only). EN/KO language toggle in the top bar (default EN, choice saved
+  in localStorage). Sections: intro + Upbit-hackathon proof, core strengths (with
+  handshake diagram, product shot, team avatars), what we build on GIWA (x402 flow
+  diagram), members, main projects, and a chronological 2018 → now track record.
+- `assets/` — member avatars and project screenshots (downscaled from `town-web-2`).
 
-Both are the same content (team intro + track record) submitted as the "Team
-introduction" link on the GASOK application form.
-
-## Design
-
-No build step, no dependencies; fonts load from Google Fonts. Both pages share the
-same copy source (`team-intro`) and only differ in visual concept.
+Earlier design concepts (Field Manifest, Terminal/TUI) were moved out of the repo to
+`~/Projects/z-others/giwa-gasok-archive/`.
 
 ## Local preview
 
@@ -30,7 +22,11 @@ python3 -m http.server 8747
 # → http://127.0.0.1:8747/
 ```
 
-## Deploy (Vercel — static)
+## Deploy (Vercel, static)
 
-No framework. Import the repo in Vercel and set **Framework Preset: Other** (root
-directory `/`, no build command, output = repo root). Vercel serves `index.html` at `/`.
+1. Vercel → Add New → Project → Import `realproject7/giwa-gasok`
+2. Framework Preset: **Other** · no build command · root directory `/`
+3. Deploy. `index.html` is served at `/`.
+
+Make sure Deployment Protection / Vercel Authentication is **off** so reviewers can
+open the link without logging in.
