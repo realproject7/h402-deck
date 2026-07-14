@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hunt Town — Team · GASOK</title>
+<meta name="description" content="Hunt Town — a product studio for the onchain Builder & Agent Economy. Team dossier for the GASOK (GIWA) application." />
+<meta property="og:title" content="Hunt Town — Team · GASOK" />
+<meta property="og:description" content="A product studio for the onchain Builder & Agent Economy. Bringing the x402 payment rail to GIWA." />
+<meta name="theme-color" content="#0a0a0b" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#0a0a0b; --surface:#101013; --surface-2:#15151a;
+  --border:#202026; --border-2:#2c2c34;
+  --text:#fafafa; --text-2:#9fa0a8; --text-3:#76767f; --text-muted:#5c5c65;
+  --accent:#fc6f6f; --accent-hover:#ff8a8a; --accent-ink:#240909; --accent-dim:rgba(252,111,111,.1);
+  --grid-line:rgba(255,255,255,.026); --grid-size:62px;
+  --sans:"Geist",system-ui,-apple-system,sans-serif;
+  --mono:"Geist Mono",ui-monospace,"SF Mono",monospace;
+  --e:cubic-bezier(.22,.61,.36,1);
+  --success:#33d17a;
+}
+*{box-sizing:border-box;border-color:var(--border)}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:var(--sans);font-size:16px;line-height:1.6;letter-spacing:-.005em;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+/* fixed blueprint grid + coral top glow */
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);
+  background-size:var(--grid-size) var(--grid-size);
+  -webkit-mask-image:radial-gradient(120% 70% at 50% 0%,#000 18%,transparent 68%);
+  mask-image:radial-gradient(120% 70% at 50% 0%,#000 18%,transparent 68%);
+}
+body::after{
+  content:"";position:fixed;left:0;right:0;top:0;height:60vh;z-index:0;pointer-events:none;
+  background:radial-gradient(50% 60% at 50% 0%,rgba(252,111,111,.10),transparent 70%);
+}
+.wrap{position:relative;z-index:1;max-width:940px;margin-inline:auto;padding:0 24px}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{margin:0;font-weight:600}
+.mono{font-family:var(--mono)}
+.accent{color:var(--accent)}
+.t2{color:var(--text-2)} .t3{color:var(--text-3)}
+
+/* ---- rise-in (respects reduced motion) ---- */
+.rise{opacity:0;transform:translateY(16px);animation:rise .7s var(--e) forwards}
+.rise.d1{animation-delay:.06s}.rise.d2{animation-delay:.12s}.rise.d3{animation-delay:.18s}.rise.d4{animation-delay:.24s}
+@keyframes rise{to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.rise{animation:none;opacity:1;transform:none}}
+
+/* ---- manifest bar ---- */
+.bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  border-bottom:1px solid var(--border);padding:16px 0;font-family:var(--mono);font-size:12px;color:var(--text-3)}
+.bar .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(252,111,111,.5);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(252,111,111,.5)}70%{box-shadow:0 0 0 6px rgba(252,111,111,0)}100%{box-shadow:0 0 0 0 rgba(252,111,111,0)}}
+.bar .brand{color:var(--text);font-weight:500}
+.bar .sep{color:var(--border-2)}
+.bar .right{margin-left:auto;letter-spacing:.06em}
+
+/* ---- hero ---- */
+.hero{padding:64px 0 40px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.hero h1{margin-top:18px;font-size:clamp(34px,6vw,60px);line-height:1.04;letter-spacing:-.025em;text-wrap:balance}
+.hero h1 .em{font-style:normal;background:linear-gradient(96deg,#ffd9d0,var(--accent) 55%,#ff9f7a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lede{margin-top:22px;max-width:44rem;font-size:18px;line-height:1.6;color:var(--text-2)}
+.hero .lede b{color:var(--text);font-weight:600}
+
+/* verified badge */
+.verified{display:inline-flex;align-items:center;gap:12px;margin-top:28px;
+  border:1px solid rgba(252,111,111,.28);background:linear-gradient(180deg,rgba(252,111,111,.08),rgba(252,111,111,.02));
+  border-radius:12px;padding:12px 16px;transition:border-color .25s var(--e),transform .25s var(--e)}
+.verified:hover{border-color:rgba(252,111,111,.5);transform:translateY(-1px)}
+.verified .chk{flex:none;width:26px;height:26px;border-radius:7px;background:var(--accent);color:var(--accent-ink);
+  display:grid;place-items:center;font-size:14px;font-weight:700}
+.verified .vt{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.verified .vd{font-size:14px;color:var(--text);font-weight:500}
+.verified .arrow{margin-left:6px;color:var(--text-3);font-family:var(--mono);font-size:12px}
+
+/* ---- section marker ---- */
+.section{padding:40px 0;border-top:1px solid var(--border)}
+.marker{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--text-3);margin-bottom:26px}
+.marker .hash{color:var(--accent)}
+.marker .note{color:var(--text-muted)}
+
+/* ---- team ---- */
+.trifecta{font-size:16px;color:var(--text-2);max-width:44rem;margin:-8px 0 30px}
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:820px){.team{grid-template-columns:1fr}}
+.member{position:relative;display:flex;flex-direction:column;border:1px solid var(--border);
+  background:linear-gradient(180deg,var(--surface),rgba(16,16,19,.5));border-radius:16px;padding:22px;overflow:hidden;
+  transition:border-color .25s var(--e),transform .25s var(--e),box-shadow .25s var(--e)}
+.member:hover{border-color:var(--border-2);transform:translateY(-3px);
+  box-shadow:0 20px 44px -24px rgba(0,0,0,.8),0 0 0 1px rgba(252,111,111,.06)}
+.member .num{position:absolute;right:18px;top:16px;font-family:var(--mono);font-size:11px;color:var(--text-muted);letter-spacing:.1em}
+.member .role{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.member .name{margin-top:10px;font-size:21px;font-weight:600;letter-spacing:-.01em}
+.member .nat{font-family:var(--mono);font-size:12px;color:var(--text-3);margin-top:3px}
+.member .bio{margin-top:14px;font-size:13.5px;line-height:1.55;color:var(--text-2)}
+.links{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.links a{font-family:var(--mono);font-size:11px;color:var(--text-2);border:1px solid var(--border);
+  border-radius:6px;padding:4px 9px;transition:all .2s var(--e)}
+.links a:hover{border-color:rgba(252,111,111,.4);color:var(--accent);background:var(--accent-dim)}
+.member .strength{margin-top:16px;padding-top:14px;border-top:1px solid var(--border);
+  font-size:13px;line-height:1.5;color:var(--text-2)}
+.member .strength b{color:var(--text);font-weight:600}
+.member .strength .lbl{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+
+/* ---- track record ---- */
+.record{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--surface)}
+.rrow{display:flex;gap:16px;align-items:baseline;padding:16px 20px;border-top:1px solid var(--border);transition:background .2s var(--e)}
+.rrow:first-child{border-top:none}
+.rrow:hover{background:var(--surface-2)}
+.rrow .key{flex:none;width:190px;font-weight:600;font-size:14.5px;display:flex;align-items:baseline;gap:8px}
+.rrow .key .yr{font-family:var(--mono);font-size:11px;color:var(--text-muted);font-weight:400}
+.rrow .val{flex:1;font-size:14px;color:var(--text-2);line-height:1.5}
+.rrow .val a{color:var(--accent);border-bottom:1px solid rgba(252,111,111,.25)}
+.rrow .val a:hover{border-color:var(--accent)}
+.rrow .val .metric{color:var(--text);font-weight:500}
+@media(max-width:640px){.rrow{flex-direction:column;gap:4px}.rrow .key{width:auto}}
+
+/* ---- footer ---- */
+footer{border-top:1px solid var(--border);margin-top:12px;padding:32px 0 60px;
+  font-family:var(--mono);font-size:12px;color:var(--text-3);display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+footer a{color:var(--text-2)}footer a:hover{color:var(--accent)}
+footer .right{margin-left:auto;color:var(--text-muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- manifest bar -->
+  <div class="bar">
+    <span class="dot"></span>
+    <span class="brand">hunt.town</span>
+    <span class="sep">/</span>
+    <span>team dossier</span>
+    <span class="right">GASOK · GIWA · x402</span>
+  </div>
+
+  <!-- hero -->
+  <header class="hero">
+    <div class="eyebrow rise">Product studio · since 2018</div>
+    <h1 class="rise d1">We build products for the<br /><span class="em">onchain Builder &amp; Agent Economy.</span></h1>
+    <p class="lede rise d2">
+      Applying to <b>GASOK</b> to bring the <b>x402 payment rail to GIWA</b> — and to build and
+      operate <b>GIWA's x402 facilitator</b>, the settlement layer that lets any agent pay per
+      API call on GIWA. Behind it: a 7-year studio, a live protocol partners build on, and
+      <b>h402</b> — the x402 router for agent capabilities.
+    </p>
+    <a class="verified rise d3" href="https://youtu.be/FZMxNNxPcPA?t=67" target="_blank" rel="noopener">
+      <span class="chk">✓</span>
+      <span>
+        <span class="vt">Verified · Upbit ecosystem</span><br />
+        <span class="vd">1st place — Upbit Hackathon 2019</span>
+      </span>
+      <span class="arrow">↗</span>
+    </a>
+  </header>
+
+  <!-- team -->
+  <section class="section">
+    <div class="marker"><span class="hash">##</span> team &nbsp;<span class="note">// a builder trifecta — build + design + growth</span></div>
+    <p class="trifecta">Three complementary operators — a 7-year onchain engineer, a designer / AI-builder,
+      and an ex-Binance growth lead — the exact shape to <b style="color:var(--text)">build and scale</b> an
+      agent-payments product on GIWA.</p>
+
+    <div class="team">
+      <!-- 01 -->
+      <article class="member rise d1">
+        <div class="num">01</div>
+        <div class="role">Full-Stack Engineer</div>
+        <div class="name">Sebastian Kim</div>
+        <div class="nat">Korea</div>
+        <p class="bio">The onchain engine. Seven years leading Hunt Town &amp; Mint Club — author of the
+          battle-tested Mint Club bonding-curve protocol partner teams build on across chains. Ships solo
+          products too (OnChat, Signet).</p>
+        <div class="links">
+          <a href="https://github.com/sebayaki" target="_blank" rel="noopener">github</a>
+          <a href="https://x.com/0xsebayaki" target="_blank" rel="noopener">x</a>
+          <a href="https://farcaster.xyz/if" target="_blank" rel="noopener">farcaster</a>
+          <a href="https://sebayaki.com" target="_blank" rel="noopener">sebayaki.com</a>
+        </div>
+        <div class="strength"><span class="lbl">Key strength</span>
+          Deep full-stack / on-chain execution — can build the <b>GIWA x402 facilitator</b> and settlement
+          integration end-to-end.</div>
+      </article>
+
+      <!-- 02 -->
+      <article class="member rise d2">
+        <div class="num">02</div>
+        <div class="role">Designer</div>
+        <div class="name">YoungHwi Cho</div>
+        <div class="nat">Korea</div>
+        <p class="bio">Designer turned AI-builder. Founder of agent-collaboration open-source tools —
+          QuadWork, Agent Gather, Session Glue — and builder of Livecap, Toony, SVGSmith. Design craft plus
+          hands-on agent tooling.</p>
+        <div class="links">
+          <a href="https://github.com/realproject7" target="_blank" rel="noopener">github</a>
+          <a href="https://x.com/heyproject7" target="_blank" rel="noopener">x</a>
+          <a href="https://farcaster.xyz/project7" target="_blank" rel="noopener">farcaster</a>
+        </div>
+        <div class="strength"><span class="lbl">Key strength</span>
+          Design + <b>agent-native product intuition</b> — h402's core customer is the agent itself.</div>
+      </article>
+
+      <!-- 03 -->
+      <article class="member rise d3">
+        <div class="num">03</div>
+        <div class="role">Marketer</div>
+        <div class="name">Woojin Chang</div>
+        <div class="nat">Korea</div>
+        <p class="bio">Growth and distribution. Former marketing manager at Binance; founder of OpenAds and
+          Breaking News. An active AI-builder alongside marketing.</p>
+        <div class="links">
+          <a href="https://github.com/openadsseries" target="_blank" rel="noopener">github</a>
+          <a href="https://x.com/hunt16z" target="_blank" rel="noopener">x</a>
+        </div>
+        <div class="strength"><span class="lbl">Key strength</span>
+          <b>Exchange-grade growth</b> and go-to-market for GASOK's KPI / growth phase.</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- track record -->
+  <section class="section">
+    <div class="marker"><span class="hash">##</span> track record &nbsp;<span class="note">// proof, not promises — 15+ products shipped since 2018</span></div>
+    <div class="record">
+      <div class="rrow">
+        <div class="key">Upbit Hackathon <span class="yr">2019</span></div>
+        <div class="val"><span class="metric">1st place</span> — <em>InTime</em>, ancestor of 1s.market. Prior validation inside the Upbit ecosystem. <a href="https://youtu.be/FZMxNNxPcPA?t=67" target="_blank" rel="noopener">watch ↗</a></div>
+      </div>
+      <div class="rrow">
+        <div class="key">Steemhunt <span class="yr">2018</span></div>
+        <div class="val">World's <span class="metric">7th-biggest DApp</span> at peak · <span class="metric">~414K MAU</span>. Where the studio's thesis began. <a href="https://steemhunt.com" target="_blank" rel="noopener">steemhunt.com ↗</a></div>
+      </div>
+      <div class="rrow">
+        <div class="key">Mint Club <span class="yr">live</span></div>
+        <div class="val">Bonding-curve protocol partners build on — <span class="metric">18,000+</span> Farcards created; Base co-founder Jesse Pollak minted on partner builds. <a href="https://mint.club" target="_blank" rel="noopener">mint.club ↗</a></div>
+      </div>
+      <div class="rrow">
+        <div class="key">Hunt Tip <span class="yr">17 seasons</span></div>
+        <div class="val"><span class="metric">306M+</span> tips distributed · <span class="metric">921 builders</span> funded — the Base + Farcaster builder community.</div>
+      </div>
+      <div class="rrow">
+        <div class="key">MintDrop <span class="yr">2025</span></div>
+        <div class="val">Drove the Mint Club app to <span class="metric">#1</span> on Farcaster and the Base app.</div>
+      </div>
+      <div class="rrow">
+        <div class="key">Dixel Club <span class="yr">2022</span></div>
+        <div class="val">Seed-funded (VistaLabs + Edimus Capital) and selected for the <span class="metric">Klaytn Incubation Program</span>. <a href="https://dixel.club" target="_blank" rel="noopener">dixel.club ↗</a></div>
+      </div>
+      <div class="rrow">
+        <div class="key">h402 <span class="yr">now</span></div>
+        <div class="val">The x402 router for agent capabilities — <span class="metric">166 capabilities</span> live, per-call USDC settlement, no keys / no subscriptions. <a href="https://h402-test.hunt.town" target="_blank" rel="noopener">h402-test.hunt.town ↗</a></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>hunt.town — product studio</span>
+    <a href="https://hunt.town" target="_blank" rel="noopener">hunt.town ↗</a>
+    <span class="right">Team dossier · GASOK / GIWA application</span>
+  </footer>
+
+</div>
+</body>
+</html>
