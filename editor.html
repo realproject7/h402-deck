@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Team H402 · GASOK</title>
+<meta name="description" content="Team H402 — the team bringing the x402 payment rail and Agentic Commerce to GIWA. Team dossier for the GASOK application." />
+<meta property="og:title" content="Team H402 · GASOK" />
+<meta property="og:description" content="The team bringing the x402 payment rail and Agentic Commerce to GIWA." />
+<meta name="theme-color" content="#1e1f22" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231e1f22'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='%235ca1e0' font-family='monospace' font-weight='bold'%3E4%3C/text%3E%3C/svg%3E" />
+<style>
+/* ============ Ulysses-dark "Editor" tokens ============ */
+:root{
+  --bg:#1e1f22;          /* warm editor canvas, not pure black */
+  --chrome:#242528;      /* title bar */
+  --inset:#232428;       /* cards / code insets */
+  --line:#303136; --line-2:#3a3b41;
+  --text:#d9dadc; --text-2:#a2a3a9; --text-3:#77787e; --text-4:#57585e;
+  --blue:#5ca1e0; --blue-dim:rgba(92,161,224,.14);   /* Ulysses selection blue */
+  --green:#66b78c; --amber:#c9a05c;
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);
+  font-size:17px;line-height:1.72;letter-spacing:.001em;-webkit-font-smoothing:antialiased}
+a{color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(92,161,224,.28)}
+a:hover{border-color:var(--blue)}
+::selection{background:var(--blue-dim)}
+b,strong{color:#fff;font-weight:600}
+h1,h2,h3{font-weight:700;letter-spacing:-.012em;color:#fff}
+img{max-width:100%}
+
+/* ============ editor chrome bar ============ */
+.chrome{position:sticky;top:0;z-index:30;background:var(--chrome);border-bottom:1px solid var(--line)}
+.chrome .in{max-width:760px;margin-inline:auto;padding:10px 24px;display:flex;align-items:center;gap:12px;
+  font-size:12.5px;color:var(--text-3)}
+.chrome .dots{display:flex;gap:6px}
+.chrome .dots i{width:11px;height:11px;border-radius:50%;background:#3c3d42;display:block}
+.chrome .file{color:var(--text-2);font-family:var(--mono);font-size:12px}
+.chrome .count{margin-left:auto;font-variant-numeric:tabular-nums}
+
+/* ============ document body ============ */
+main{max-width:760px;margin-inline:auto;padding:56px 24px 40px}
+.doc-title{font-size:clamp(30px,5vw,40px);line-height:1.15;margin:0}
+.doc-title .hh{color:var(--text-4);font-weight:400;margin-right:14px}
+.doc-sub{margin:16px 0 0;color:var(--text-2);font-size:17px}
+p{margin:0 0 1.15em}
+h2{font-size:23px;margin:64px 0 18px;display:flex;align-items:baseline;gap:12px}
+h2 .hh{color:var(--text-4);font-weight:400;font-size:19px;flex:none}
+h3{font-size:17.5px;margin:34px 0 10px}
+hr{border:0;border-top:1px solid var(--line);margin:56px 0}
+.small{font-size:14px;color:var(--text-3)}
+ul.clean{margin:0 0 1.15em;padding-left:1.35em}
+ul.clean li{margin:.3em 0}
+
+/* markdown-ish blockquote (proof callout) */
+blockquote{margin:26px 0;padding:14px 20px;border-left:3px solid var(--blue);
+  background:var(--blue-dim);border-radius:0 8px 8px 0;color:var(--text)}
+blockquote .q1{font-weight:600;color:#fff}
+blockquote .q2{font-size:14px;color:var(--text-2);margin-top:2px}
+
+/* core strengths */
+.strengths{counter-reset:s;display:flex;flex-direction:column;gap:14px;margin:22px 0 8px}
+.strength{counter-increment:s;position:relative;border:1px solid var(--line);background:var(--inset);
+  border-radius:10px;padding:18px 20px 18px 62px}
+.strength::before{content:counter(s,decimal-leading-zero);position:absolute;left:20px;top:19px;
+  font-family:var(--mono);font-size:13px;color:var(--blue);font-weight:600}
+.strength h3{margin:0 0 6px;font-size:16.5px}
+.strength p{margin:0;font-size:14.5px;line-height:1.6;color:var(--text-2)}
+.strength p b{color:var(--text)}
+
+/* member blocks */
+.member{display:grid;grid-template-columns:64px 1fr;gap:18px;margin:30px 0 0;padding:24px 0 26px;border-top:1px solid var(--line)}
+.member:first-of-type{border-top:none;padding-top:6px}
+.member .ava{width:64px;height:64px;border-radius:50%;object-fit:cover;border:1px solid var(--line-2)}
+.member .hd{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px}
+.member .hd h3{margin:0;font-size:19px}
+.member .hd .role{color:var(--text-2);font-size:14px}
+.member .hd .nat{font-family:var(--mono);font-size:11.5px;color:var(--text-3);
+  border:1px solid var(--line-2);border-radius:5px;padding:1px 7px}
+.member .career{margin:10px 0 0;font-size:15px;line-height:1.65;color:var(--text-2)}
+.member .career b{color:var(--text)}
+.member .ks{margin:12px 0 0;font-size:14.5px;line-height:1.6}
+.member .ks .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--blue);display:block;margin-bottom:4px}
+.member .plist{margin:14px 0 0;display:flex;flex-wrap:wrap;gap:7px}
+.member .plist a{font-size:12.5px;font-family:var(--mono);color:var(--text-2);border:1px solid var(--line-2);
+  border-bottom-color:var(--line-2);border-radius:6px;padding:4px 10px;transition:all .15s}
+.member .plist a:hover{color:var(--blue);border-color:rgba(92,161,224,.5);background:var(--blue-dim)}
+.member .plist .grp{flex-basis:100%;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--text-4);margin-top:6px}
+@media(max-width:560px){.member{grid-template-columns:1fr}.member .ava{width:56px;height:56px}}
+
+/* diagram */
+.diagram{border:1px solid var(--line);background:var(--inset);border-radius:10px;padding:22px 18px 14px;margin:24px 0 8px;overflow-x:auto}
+.diagram svg{display:block;min-width:560px;width:100%;height:auto}
+.diagram .cap{font-size:12.5px;color:var(--text-3);text-align:center;margin:10px 0 2px}
+
+/* main projects */
+.projects{display:flex;flex-direction:column;gap:12px;margin:22px 0 0}
+.proj{display:grid;grid-template-columns:150px 1fr;gap:16px;border:1px solid var(--line);background:var(--inset);
+  border-radius:10px;padding:14px;align-items:center}
+.proj img{width:150px;height:92px;object-fit:cover;object-position:top;border-radius:6px;border:1px solid var(--line-2)}
+.proj .nm{font-weight:600;color:#fff;font-size:16px}
+.proj .st{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;margin-left:8px}
+.proj .st.live{color:var(--green)} .proj .st.soon{color:var(--amber)}
+.proj .ds{font-size:14px;color:var(--text-2);line-height:1.55;margin-top:4px}
+@media(max-width:560px){.proj{grid-template-columns:1fr}.proj img{width:100%;height:130px}}
+
+/* timeline */
+.timeline{position:relative;margin:28px 0 0;padding-left:30px}
+.timeline::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:1px;background:var(--line-2)}
+.tl{position:relative;display:grid;grid-template-columns:1fr 190px;gap:8px 20px;padding:0 0 34px}
+.tl::before{content:"";position:absolute;left:-26px;top:8px;width:9px;height:9px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--text-4)}
+.tl.live::before{border-color:var(--green)}
+.tl.hl::before{border-color:var(--blue);background:var(--blue)}
+.tl .yr{font-family:var(--mono);font-size:12px;color:var(--text-3);grid-column:1/-1}
+.tl .yr .st{margin-left:10px;letter-spacing:.06em;text-transform:uppercase;font-size:10.5px}
+.tl .yr .st.live{color:var(--green)} .tl .yr .st.sun{color:var(--text-4)} .tl .yr .st.col{color:var(--amber)} .tl .yr .st.soon{color:var(--amber)}
+.tl .bd{grid-column:1;grid-row:2}
+.tl .bd .nm{font-weight:600;color:#fff;font-size:16px}
+.tl .bd .ds{font-size:14px;color:var(--text-2);line-height:1.6;margin-top:3px}
+.tl .bd .mt{font-size:13.5px;margin-top:6px;color:var(--text-2)}
+.tl .bd .mt::before{content:"↳ ";color:var(--blue)}
+.tl .bd .mt b{color:#fff}
+.tl .th{grid-column:2;grid-row:2/4}
+.tl .th img{width:190px;height:118px;object-fit:cover;object-position:top;border-radius:7px;border:1px solid var(--line-2)}
+.tl.milestone{border:1px solid rgba(92,161,224,.35);background:var(--blue-dim);border-radius:10px;
+  padding:16px 18px 18px;margin-left:-8px;grid-template-columns:1fr}
+.tl.milestone::before{left:-18px}
+@media(max-width:620px){.tl{grid-template-columns:1fr}.tl .bd{grid-row:auto}.tl .th{grid-column:1;grid-row:auto}.tl .th img{width:100%;height:150px}}
+
+/* footer */
+footer{border-top:1px solid var(--line);margin-top:70px;padding:22px 0 60px;font-size:13px;color:var(--text-3);
+  display:flex;gap:16px;flex-wrap:wrap}
+footer .right{margin-left:auto}
+</style>
+</head>
+<body>
+
+<div class="chrome">
+  <div class="in">
+    <span class="dots"><i></i><i></i><i></i></span>
+    <span class="file">team-h402.md</span>
+    <span class="count" id="wc"></span>
+  </div>
+</div>
+
+<main id="doc">
+
+  <h1 class="doc-title"><span class="hh">#</span>Team H402</h1>
+  <p class="doc-sub">The team bringing the <b>x402 payment rail — and the Agentic Commerce trend it started — to GIWA</b>.
+  We build <a href="https://h402-test.hunt.town/" target="_blank" rel="noopener">h402</a>, the x402 router for agent
+  capabilities, and operate <a href="https://hunt.town" target="_blank" rel="noopener">Hunt Town</a>, a product studio
+  for the onchain Builder &amp; Agent Economy shipping since 2018. This document answers: who we are, what we've shipped,
+  and why we're the right team for GASOK.</p>
+
+  <blockquote>
+    <div class="q1">✓ Prior validation inside the Upbit ecosystem</div>
+    <div class="q2">Our concept <em>InTime</em> won <b>1st place at the Upbit Hackathon (Oct 2019)</b> — later shipped
+    as 1s.market. <a href="https://youtu.be/FZMxNNxPcPA?t=67" target="_blank" rel="noopener">Watch the pitch ↗</a></div>
+  </blockquote>
+
+  <!-- ============ CORE STRENGTHS ============ -->
+  <h2 id="strengths"><span class="hh">##</span>Core strengths</h2>
+  <div class="strengths">
+    <div class="strength">
+      <h3>The team that can actually bring Agentic Commerce to GIWA</h3>
+      <p>x402 turned HTTP 402 into a live, agent-native payment standard — and we already build on it in production.
+      h402 implements the full x402 handshake (402 quote → local <b>EIP-3009</b> signing → facilitator settlement,
+      non-custodial, no API keys). Porting this rail to GIWA — including <b>operating GIWA's x402 facilitator</b> —
+      is an execution task for this team, not research.</p>
+    </div>
+    <div class="strength">
+      <h3>A product-level router, waiting for a rail — a new market for GIWA</h3>
+      <p>h402 is already at product completeness: <b>166 capabilities across 75 providers</b> on the live catalog,
+      every route verified with real paid calls, best-provider routing by live quality-adjusted price. Once the
+      payment rail lands on GIWA, <b>hundreds-to-thousands of agent-callable APIs form a new pay-per-call market
+      settling on GIWA</b> from day one — transaction volume, not promises.</p>
+    </div>
+    <div class="strength">
+      <h3>Lean team, all three already shipping AI × Web3</h3>
+      <p>Three people — engineer, designer, marketer — and every one of us has <b>founded and operated multiple
+      AI × Web3 products</b> (see the personal-projects lists and the 19-entry track record below). Deep ecosystem
+      literacy on both sides: onchain economics and agent tooling.</p>
+    </div>
+  </div>
+
+  <!-- ============ WHAT WE BUILD ON GIWA ============ -->
+  <h2 id="giwa"><span class="hh">##</span>What we're building on GIWA</h2>
+  <p>Two deliverables: <b>(1)</b> h402 adds GIWA as a settlement chain — every capability in the catalog becomes
+  payable in stablecoins on GIWA, per call; <b>(2)</b> we build and operate the <b>GIWA x402 facilitator</b> — the
+  service that verifies signed payment payloads and settles them onchain, so any seller on GIWA can accept
+  agent payments without touching a node. GIWA's 1-second blocks and low fees are exactly the environment
+  agent micropayments need.</p>
+
+  <div class="diagram">
+    <svg viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,BlinkMacSystemFont,'SF Pro Text',sans-serif">
+      <!-- top row boxes -->
+      <g fill="none" stroke="#3a3b41">
+        <rect x="10" y="28" width="150" height="52" rx="8" fill="#232428"/>
+        <rect x="285" y="28" width="150" height="52" rx="8" fill="#232428" stroke="#5ca1e0" stroke-opacity=".6"/>
+        <rect x="560" y="28" width="150" height="52" rx="8" fill="#232428"/>
+      </g>
+      <text x="85" y="50" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="600">AI Agent</text>
+      <text x="85" y="68" text-anchor="middle" fill="#77787e" font-size="11">any client, no keys</text>
+      <text x="360" y="50" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="600">h402 router</text>
+      <text x="360" y="68" text-anchor="middle" fill="#77787e" font-size="11">166 capabilities · 75 providers</text>
+      <text x="635" y="50" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="600">Best provider</text>
+      <text x="635" y="68" text-anchor="middle" fill="#77787e" font-size="11">verified, paid-tested</text>
+      <!-- arrows -->
+      <g stroke="#77787e" stroke-width="1.2">
+        <line x1="160" y1="54" x2="278" y2="54"/><path d="M278 54 l-7 -4 v8 z" fill="#77787e" stroke="none"/>
+        <line x1="435" y1="54" x2="553" y2="54"/><path d="M553 54 l-7 -4 v8 z" fill="#77787e" stroke="none"/>
+      </g>
+      <text x="219" y="46" text-anchor="middle" fill="#a2a3a9" font-size="11">calls a task</text>
+      <text x="494" y="46" text-anchor="middle" fill="#a2a3a9" font-size="11">auto-routes</text>
+      <!-- settlement rail -->
+      <g fill="none" stroke="#5ca1e0" stroke-opacity=".55">
+        <rect x="180" y="128" width="360" height="46" rx="8" fill="rgba(92,161,224,.08)"/>
+      </g>
+      <text x="360" y="147" text-anchor="middle" fill="#5ca1e0" font-size="12.5" font-weight="600">x402 settlement on GIWA</text>
+      <text x="360" y="164" text-anchor="middle" fill="#a2a3a9" font-size="11">402 quote → EIP-3009 signature → GIWA facilitator settles stablecoin, per call</text>
+      <!-- vertical connectors -->
+      <g stroke="#5ca1e0" stroke-opacity=".45" stroke-dasharray="3 3">
+        <line x1="85" y1="80" x2="85" y2="151"/><line x1="85" y1="151" x2="176" y2="151"/>
+        <line x1="635" y1="80" x2="635" y2="151"/><line x1="635" y1="151" x2="544" y2="151"/>
+      </g>
+    </svg>
+    <div class="cap">One router call for the agent — quote, signature, and onchain settlement handled underneath.</div>
+  </div>
+
+  <!-- ============ MEMBERS ============ -->
+  <h2 id="members"><span class="hh">##</span>Members</h2>
+
+  <div class="member">
+    <img class="ava" src="assets/avatar-sebastian.jpg" alt="Sebastian Kim" />
+    <div>
+      <div class="hd"><h3>Sebastian Kim</h3><span class="role">Full-Stack Engineer</span><span class="nat">South Korea</span></div>
+      <p class="career"><b>7 years</b> leading Hunt Town &amp; Mint Club engineering — author of the Mint Club bonding-curve
+      protocol (CertiK-audited) that 8 of the studio's 15 archive products and multiple external partner teams were
+      built on, across Base, Ethereum, BNB and more. Full x402/EIP-3009 payment-flow implementation in h402.</p>
+      <p class="ks"><span class="lbl">Key strength</span>End-to-end onchain execution — can single-handedly build the
+      <b>GIWA x402 facilitator and settlement integration</b>.</p>
+      <div class="plist">
+        <a href="https://github.com/sebayaki" target="_blank" rel="noopener">github/sebayaki</a>
+        <a href="https://x.com/0xsebayaki" target="_blank" rel="noopener">x/0xsebayaki</a>
+        <a href="https://farcaster.xyz/if" target="_blank" rel="noopener">farcaster/if</a>
+        <a href="https://sebayaki.com" target="_blank" rel="noopener">sebayaki.com</a>
+        <span class="grp">Personal projects</span>
+        <a href="https://onchat.sebayaki.com" target="_blank" rel="noopener">OnChat — permissionless onchain chat</a>
+        <a href="https://signet.sebayaki.com" target="_blank" rel="noopener">Signet — onchain cast spotlight</a>
+        <a href="https://mfer.sebayaki.com" target="_blank" rel="noopener">mfermoon — deflationary child token</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="member">
+    <img class="ava" src="assets/avatar-younghwi.jpg" alt="YoungHwi Cho" />
+    <div>
+      <div class="hd"><h3>YoungHwi Cho</h3><span class="role">Designer</span><span class="nat">South Korea</span></div>
+      <p class="career">Designer turned AI-builder. Founder of a suite of <b>agent-collaboration open-source tools</b> —
+      QuadWork (npm), Agent Gather, Session Glue (PyPI) — plus AI products LiveCap, Toony, and SVGSmith. Runs
+      multi-agent build pipelines daily; designs h402's product surface.</p>
+      <p class="ks"><span class="lbl">Key strength</span>Design craft + <b>agent-native product intuition</b> —
+      h402's core customer is the agent itself, and he builds for agents every day.</p>
+      <div class="plist">
+        <a href="https://github.com/realproject7" target="_blank" rel="noopener">github/realproject7</a>
+        <a href="https://x.com/heyproject7" target="_blank" rel="noopener">x/heyproject7</a>
+        <a href="https://farcaster.xyz/project7" target="_blank" rel="noopener">farcaster/project7</a>
+        <span class="grp">Personal projects</span>
+        <a href="https://github.com/realproject7/quadwork" target="_blank" rel="noopener">QuadWork — 4-agent coding team</a>
+        <a href="https://github.com/realproject7/agentgather" target="_blank" rel="noopener">Agent Gather — agent group rooms</a>
+        <a href="https://pypi.org/project/session-glue/" target="_blank" rel="noopener">Session Glue — session handoffs</a>
+        <a href="https://livecap.app" target="_blank" rel="noopener">LiveCap — local live captions</a>
+        <a href="https://github.com/realproject7/toony" target="_blank" rel="noopener">Toony — agent webtoon tool</a>
+        <a href="https://github.com/realproject7/svgsmith" target="_blank" rel="noopener">SVGSmith — self-verifying vectorizer</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="member">
+    <img class="ava" src="assets/avatar-woojin.png" alt="Woojin Chang" />
+    <div>
+      <div class="hd"><h3>Woojin Chang</h3><span class="role">Marketer</span><span class="nat">South Korea</span></div>
+      <p class="career">Growth and distribution. <b>Former marketing manager at Binance</b>; founder of OpenAds
+      (web3 ad network with onchain USDC settlement) and Breaking News (read-to-earn Farcaster mini app on Base).
+      An active AI-builder alongside marketing.</p>
+      <p class="ks"><span class="lbl">Key strength</span><b>Exchange-grade growth</b> — the go-to-market engine for
+      GASOK's KPI-driven growth phase (transactions, users, ecosystem adoption).</p>
+      <div class="plist">
+        <a href="https://github.com/openadsseries" target="_blank" rel="noopener">github/openadsseries</a>
+        <a href="https://x.com/hunt16z" target="_blank" rel="noopener">x/hunt16z</a>
+        <span class="grp">Personal projects</span>
+        <a href="https://www.openads.world/" target="_blank" rel="noopener">OpenAds — web3 ad network</a>
+        <a href="https://github.com/openadsseries/Breaking-News" target="_blank" rel="noopener">Breaking News — read-to-earn</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ MAIN PROJECTS ============ -->
+  <h2 id="projects"><span class="hh">##</span>Main projects</h2>
+  <div class="projects">
+    <div class="proj">
+      <img src="assets/timeline/h402.png" alt="h402" />
+      <div>
+        <span class="nm">h402</span><span class="st soon">Launching</span>
+        <p class="ds">The x402 router for agent capabilities — one endpoint per task, routed to the best API provider,
+        settled per call in stablecoins. 166 capabilities · 75 providers, every route verified with real paid calls.
+        <a href="https://h402-test.hunt.town/" target="_blank" rel="noopener">app ↗</a> ·
+        <a href="https://h402-test.hunt.town/docs" target="_blank" rel="noopener">docs ↗</a></p>
+      </div>
+    </div>
+    <div class="proj">
+      <img src="assets/timeline/mint-club.png" alt="Mint Club" />
+      <div>
+        <span class="nm">Mint Club</span><span class="st live">Live</span>
+        <p class="ds">No-code bonding-curve protocol for tokens and NFTs — the foundation 8 of our 15 archive products
+        and multiple partner teams built on. CertiK-audited, KYC Gold Badge.
+        <a href="https://mint.club" target="_blank" rel="noopener">mint.club ↗</a></p>
+      </div>
+    </div>
+    <div class="proj">
+      <img src="assets/timeline/co-op.png" alt="Hunt Town Co-op" />
+      <div>
+        <span class="nm">Hunt Town · Co-op</span><span class="st live">Live</span>
+        <p class="ds">Our product studio and its onchain cooperative — builders launch HUNT-backed project tokens,
+        backers support them daily. The community engine behind everything we ship.
+        <a href="https://hunt.town" target="_blank" rel="noopener">hunt.town ↗</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ TRACK RECORD ============ -->
+  <h2 id="track-record"><span class="hh">##</span>Track record — 2018 → now</h2>
+  <p class="small">Every product we've shipped, in order. Not all of them survived — we keep the archive public and
+  honest on purpose: each one seeded what came next. 🤝 = partner build on our protocol.</p>
+
+  <div class="timeline">
+
+    <div class="tl live">
+      <div class="yr">2018 <span class="st live">Still live</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://steemhunt.com" target="_blank" rel="noopener">Steemhunt</a></div>
+        <div class="ds">Product-Hunt-style daily leaderboard where curators earn crypto. Where it all started.</div>
+        <div class="mt">World's <b>7th-biggest DApp</b> · peak <b>~414K MAU</b></div>
+      </div>
+      <div class="th"><img src="assets/timeline/steemhunt.png" alt="Steemhunt" /></div>
+    </div>
+
+    <div class="tl milestone hl">
+      <div class="yr">2019 · OCT</div>
+      <div class="bd">
+        <div class="nm">🏆 Upbit Hackathon — 1st place</div>
+        <div class="ds"><em>InTime</em>, our time-tokenization concept, won first place — later shipped as 1s.market.
+        <a href="https://youtu.be/FZMxNNxPcPA?t=67" target="_blank" rel="noopener">watch ↗</a></div>
+      </div>
+    </div>
+
+    <div class="tl live">
+      <div class="yr">2019 <span class="st live">Still live</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://lol.hunt.town/" target="_blank" rel="noopener">LOL Hunt</a></div>
+        <div class="ds">Daily crowd-curated chart of the funniest clips, on decentralized identity/storage.</div>
+        <div class="mt"><b>2nd Prize</b>, Blockstack "Can't Be Evil" · <b>#5</b> Product of the Day on Product Hunt</div>
+      </div>
+      <div class="th"><img src="assets/timeline/lol-hunt.png" alt="LOL Hunt" /></div>
+    </div>
+
+    <div class="tl live">
+      <div class="yr">2020 <span class="st live">Still live</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://nomadtask.com" target="_blank" rel="noopener">Nomadtask</a></div>
+        <div class="ds">Bounty marketing-task marketplace for a global pool of digital nomads (ex-ReviewHunt).</div>
+        <div class="mt"><b>80,000+ sign-ups</b> · viral YouTube feature with <b>1M+ views</b></div>
+      </div>
+      <div class="th"><img src="assets/timeline/nomadtask.png" alt="Nomadtask" /></div>
+    </div>
+
+    <div class="tl live">
+      <div class="yr">2020 <span class="st live">Still live</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://neverlose.money" target="_blank" rel="noopener">Neverlose.money</a></div>
+        <div class="ds">Gamified HODL — early-exit penalties fund bonuses for disciplined lockers.</div>
+        <div class="mt">Peak <b>~$24.15M</b> cumulative lock-ups</div>
+      </div>
+      <div class="th"><img src="assets/timeline/neverlose.png" alt="Neverlose.money" /></div>
+    </div>
+
+    <div class="tl">
+      <div class="yr">2021 <span class="st col">🤝 Partner · sunset</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://news.hunt.town/p/the-official-launch-of-1smarket-the" target="_blank" rel="noopener">1s.market</a></div>
+        <div class="ds">Tokenize and trade anyone's time — the first-ever third-party build on Mint Club (with tx0x).</div>
+        <div class="mt"><b>~1.3M "seconds"</b> of time assets generated · born from our Upbit-hackathon-winning concept</div>
+      </div>
+      <div class="th"><img src="assets/timeline/1s-market.png" alt="1s.market" /></div>
+    </div>
+
+    <div class="tl live">
+      <div class="yr">2022 <span class="st live">Still live</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://dixel.club" target="_blank" rel="noopener">Dixel Club</a></div>
+        <div class="ds">Fully onchain, community-made pixel-art NFTs on a bonding curve.</div>
+        <div class="mt">Seed-funded (VistaLabs + Edimus Capital) · selected for the <b>Klaytn Incubation Program</b></div>
+      </div>
+      <div class="th"><img src="assets/timeline/dixel.png" alt="Dixel Club" /></div>
+    </div>
+
+    <div class="tl">
+      <div class="yr">2024 <span class="st col">🤝 Partner · sunset</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://x.com/gami_vc/status/1755414573858062796" target="_blank" rel="noopener">Memberify</a></div>
+        <div class="ds">Personal bonding-curve membership NFTs on Mint Club (Base).</div>
+        <div class="mt"><b>1,383 collections</b> · Base co-founder <b>Jesse Pollak</b> minted his own member NFT</div>
+      </div>
+      <div class="th"><img src="assets/timeline/memberify.png" alt="Memberify" /></div>
+    </div>
+
+    <div class="tl live">
+      <div class="yr">2024 <span class="st col">🤝 Partner · still live</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://far.cards" target="_blank" rel="noopener">Farcards</a></div>
+        <div class="ds">Collectible trading cards on Farcaster — your profile becomes a tradable ERC-1155 on Mint Club.</div>
+        <div class="mt"><b>18,000+ cards created</b> · Base co-founder <b>Jesse Pollak</b> minted his own Farcard</div>
+      </div>
+      <div class="th"><img src="assets/timeline/farcards.png" alt="Farcards" /></div>
+    </div>
+
+    <div class="tl">
+      <div class="yr">2024 <span class="st sun">Sunset → Co-op</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://news.hunt.town/p/introducing-hunt-tip-v2" target="_blank" rel="noopener">Hunt Tip</a></div>
+        <div class="ds">Building-NFT holders reward builders with daily tip allowances — 17 seasons.</div>
+        <div class="mt"><b>306M+ tips</b> distributed · <b>921 builders</b> funded through grants</div>
+      </div>
+      <div class="th"><img src="assets/timeline/hunt-tip.png" alt="Hunt Tip" /></div>
+    </div>
+
+    <div class="tl">
+      <div class="yr">2024 <span class="st col">🤝 With Degen · sunset</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://news.hunt.town/p/buy-tokens-with-your-degen-tips" target="_blank" rel="noopener">MCDegen</a></div>
+        <div class="ds">Spend Farcaster $DEGEN tip allowances to mint Mint Club tokens on Degen Chain (L3).</div>
+        <div class="mt">At peak, <b>over ⅓ of ALL daily $DEGEN tips</b> flowed through it</div>
+      </div>
+      <div class="th"><img src="assets/timeline/mcdegen.png" alt="MCDegen" /></div>
+    </div>
+
+    <div class="tl">
+      <div class="yr">2024 <span class="st col">🤝 Partner · sunset</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://hamcaster.com/" target="_blank" rel="noopener">Hamcaster</a></div>
+        <div class="ds">SocialFi: tokenize your Farcaster profile, share $HAM — built by deployer (now BankrCoin) on Mint Club.</div>
+        <div class="mt">Proof our protocol powers full <b>third-party SocialFi economies</b> on other chains</div>
+      </div>
+      <div class="th"><img src="assets/timeline/hamcaster.png" alt="Hamcaster" /></div>
+    </div>
+
+    <div class="tl">
+      <div class="yr">2024 <span class="st sun">Sunset</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://x.com/MintClubPro/status/1867095408494997644" target="_blank" rel="noopener">PumpSea</a></div>
+        <div class="ds">Trade NFTs like meme coins on bonding curves, Pump.fun-style.</div>
+        <div class="mt">Explosive early trading — NFTs hitting <b>20–30 ETH volume</b> each</div>
+      </div>
+      <div class="th"><img src="assets/timeline/pumpsea.png" alt="PumpSea" /></div>
+    </div>
+
+    <div class="tl">
+      <div class="yr">2025 <span class="st sun">Sunset</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://x.com/hypedtokens/status/1904429282723811548" target="_blank" rel="noopener">Hyped.club</a></div>
+        <div class="ds">"hTokens" engineered to amplify a base token's volatility.</div>
+        <div class="mt">An hToken ran <b>+4,985% / 24h</b> · ranked in the <b>Base app's top 12</b></div>
+      </div>
+      <div class="th"><img src="assets/timeline/hyped-club.png" alt="Hyped.club" /></div>
+    </div>
+
+    <div class="tl">
+      <div class="yr">2025 <span class="st sun">Sunset</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://x.com/MintClubPro/status/1910261260052296134" target="_blank" rel="noopener">MintDrop</a></div>
+        <div class="ds">Daily spin-to-earn Farcaster mini-app funneling users into Mint Club.</div>
+        <div class="mt">Pushed Mint Club to <b>#1 overall on Farcaster AND the Base app</b></div>
+      </div>
+      <div class="th"><img src="assets/timeline/mintdrop.png" alt="MintDrop" /></div>
+    </div>
+
+    <div class="tl">
+      <div class="yr">2025 <span class="st sun">Sunset</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://news.hunt.town/p/introducing-clap-swipe-right-clap" target="_blank" rel="noopener">Clap</a></div>
+        <div class="ds">Swipe-to-earn builder-content discovery on Farcaster.</div>
+        <div class="mt">Week one: Building-NFT minting <b>+65%</b>, <b>852,700 HUNT</b> locked</div>
+      </div>
+      <div class="th"><img src="assets/timeline/clap.png" alt="Clap" /></div>
+    </div>
+
+    <div class="tl live">
+      <div class="yr">NOW <span class="st live">Live</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://coop.hunt.town" target="_blank" rel="noopener">Hunt Town Co-op</a></div>
+        <div class="ds">The first onchain cooperative — builders launch, backers mint, the Co-op builds the town.</div>
+        <div class="mt">Successor to Hunt Tip's <b>306M-tip / 921-builder</b> community</div>
+      </div>
+      <div class="th"><img src="assets/timeline/co-op.png" alt="Hunt Town Co-op" /></div>
+    </div>
+
+    <div class="tl hl">
+      <div class="yr">NOW <span class="st soon">Launching</span></div>
+      <div class="bd">
+        <div class="nm"><a href="https://h402-test.hunt.town/" target="_blank" rel="noopener">h402</a></div>
+        <div class="ds">The x402 router for agent capabilities — and, with GASOK, the payment rail we bring to GIWA.</div>
+        <div class="mt"><b>166 capabilities · 75 providers</b>, every route verified with real paid calls</div>
+      </div>
+      <div class="th"><img src="assets/timeline/h402.png" alt="h402" /></div>
+    </div>
+
+  </div>
+
+  <hr />
+  <p class="small">Studio archive with full write-ups (the bet / what worked / what broke / what it seeded) for every
+  entry: <a href="https://hunt.town" target="_blank" rel="noopener">hunt.town</a> · protocol:
+  <a href="https://mint.club" target="_blank" rel="noopener">mint.club</a> · router:
+  <a href="https://h402-test.hunt.town/" target="_blank" rel="noopener">h402-test.hunt.town</a></p>
+
+  <footer>
+    <span>Team H402 — prepared for the GASOK / GIWA application</span>
+    <span class="right">2026</span>
+  </footer>
+
+</main>
+
+<script>
+/* live word count in the chrome bar, like an editor */
+(function(){
+  var t = document.getElementById('doc').innerText || '';
+  var n = t.split(/\s+/).filter(Boolean).length;
+  document.getElementById('wc').textContent = n.toLocaleString('en-US') + ' Words';
+})();
+</script>
+</body>
+</html>
