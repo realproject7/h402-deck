@@ -8,7 +8,7 @@
 <meta property="og:title" content="Team h402 · GASOK" />
 <meta property="og:description" content="The team bringing the x402 payment rail and Agentic Commerce to GIWA." />
 <meta name="theme-color" content="#1a1b1c" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231a1b1c'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='%235fbf88' font-family='monospace' font-weight='bold'%3E4%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23fc6f6f'/%3E%3Ctext x='50' y='70' font-size='58' text-anchor='middle' fill='white' font-family='-apple-system,sans-serif' font-weight='800'%3Eh%3C/text%3E%3C/svg%3E" />
 <style>
 /* ============ Editor concept · dark-matte + green ============ */
 :root{
@@ -17,7 +17,7 @@
   --inset:#202123;       /* cards / insets */
   --line:#2b2c2f; --line-2:#38393d;
   --text:#d9dadc; --text-2:#a4a5aa; --text-3:#7a7b80; --text-4:#58595e;
-  --grn:#5fbf88; --grn-dim:rgba(95,191,136,.12); --grn-line:rgba(95,191,136,.3);
+  --grn:#fc6f6f; --grn-dim:rgba(252,111,111,.1); --grn-line:rgba(252,111,111,.32); --live:#33d17a;
   --amber:#c9a05c;
   --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Segoe UI",Helvetica,Arial,sans-serif;
   --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
@@ -26,7 +26,7 @@
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);
   font-size:17px;line-height:1.65;letter-spacing:-.022em;-webkit-font-smoothing:antialiased}
-a{color:var(--grn);text-decoration:none;border-bottom:1px solid rgba(95,191,136,.28)}
+a{color:var(--grn);text-decoration:none;border-bottom:1px solid rgba(252,111,111,.3)}
 a:hover{border-color:var(--grn)}
 ::selection{background:var(--grn-dim)}
 b,strong{color:#fff;font-weight:600}
@@ -130,7 +130,7 @@ blockquote .q2{font-size:14.5px;color:var(--text-2);margin-top:4px;line-height:1
 .proj img{width:156px;height:96px;object-fit:cover;object-position:top;border-radius:7px;border:1px solid var(--line-2)}
 .proj .nm{font-weight:600;color:#fff;font-size:17px}
 .proj .st{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;margin-left:9px}
-.proj .st.live{color:var(--grn)} .proj .st.soon{color:var(--amber)}
+.proj .st.live{color:var(--live)} .proj .st.soon{color:var(--amber)}
 .proj .ds{font-size:14.5px;color:var(--text-2);line-height:1.6;margin-top:5px}
 @media(max-width:560px){.proj{grid-template-columns:1fr}.proj img{width:100%;height:130px}}
 
@@ -140,11 +140,11 @@ blockquote .q2{font-size:14.5px;color:var(--text-2);margin-top:4px;line-height:1
 .tl{position:relative;display:grid;grid-template-columns:1fr 196px;gap:8px 22px;padding:0 0 36px}
 .tl::before{content:"";position:absolute;left:-26px;top:8px;width:9px;height:9px;border-radius:50%;
   background:var(--bg);border:2px solid var(--text-4)}
-.tl.live::before{border-color:var(--grn)}
+.tl.live::before{border-color:var(--live)}
 .tl.hl::before{border-color:var(--grn);background:var(--grn)}
 .tl .yr{font-family:var(--mono);font-size:12.5px;letter-spacing:0;color:var(--text-3);grid-column:1/-1}
 .tl .yr .st{margin-left:10px;letter-spacing:.05em;text-transform:uppercase;font-size:10.5px}
-.tl .yr .st.live{color:var(--grn)} .tl .yr .st.sun{color:var(--text-4)} .tl .yr .st.col{color:var(--amber)} .tl .yr .st.soon{color:var(--amber)}
+.tl .yr .st.live{color:var(--live)} .tl .yr .st.sun{color:var(--text-4)} .tl .yr .st.col{color:var(--amber)} .tl .yr .st.soon{color:var(--amber)}
 .tl .bd{grid-column:1;grid-row:2}
 .tl .bd .nm{font-weight:600;color:#fff;font-size:17px}
 .tl .bd .ds{font-size:14.5px;color:var(--text-2);line-height:1.62;margin-top:4px}
@@ -221,8 +221,7 @@ footer .right{margin-left:auto}
     <div class="strength">
       <div>
         <h3>The capability market is already built. GIWA gets its economy on day one</h3>
-        <p>h402 is built to product level and in <b>final testing</b>, with the official launch expected in
-        2-3 weeks. One mount brings <b>152 capabilities across 74 providers</b> online, every route verified with
+        <p>h402 is built to product level and in <b>final testing</b>, with the official launch about 20 days out. One mount brings <b>152 capabilities across 74 providers</b> online, every route verified with
         real paid calls and routed to the best provider by live quality-adjusted price. Once the payment rail lands
         on GIWA, every one of those calls settles there: <b>hundreds to thousands of agent capabilities forming a
         new pay-per-call economy on GIWA</b> from day one. Transaction volume, not promises.</p>
@@ -252,17 +251,18 @@ footer .right{margin-left:auto}
 
   <!-- WHAT WE BUILD ON GIWA -->
   <h2 id="giwa-en"><span class="hh">##</span>What we're building on GIWA</h2>
-  <p style="font-size:16px">Two deliverables. <b>(1)</b> h402 adds GIWA as a settlement chain, so every capability in the catalog
+  <p style="font-size:16px">Two rails we mount on the GIWA chain. <b>(1)</b> h402 adds GIWA as a settlement chain, so every capability in the catalog
   becomes payable in stablecoins on GIWA, per call. <b>(2)</b> We build and operate the <b>GIWA x402 facilitator</b>:
   the service that verifies signed payment payloads and settles them onchain, so any seller on GIWA can accept
   agent payments without touching a node. GIWA's 1-second blocks and low fees are exactly the environment
-  agent micropayments need.</p>
+  agent micropayments need. Add the Upbit ecosystem behind it, and GIWA gains a new edge as the
+  Agent Commerce Layer.</p>
 
   <div class="diagram">
     <svg viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace,'SF Mono',Menlo,monospace">
       <g fill="none" stroke="#38393d">
         <rect x="10" y="28" width="150" height="52" rx="8" fill="#202123"/>
-        <rect x="285" y="28" width="150" height="52" rx="8" fill="#202123" stroke="#5fbf88" stroke-opacity=".55"/>
+        <rect x="285" y="28" width="150" height="52" rx="8" fill="#202123" stroke="#fc6f6f" stroke-opacity=".55"/>
         <rect x="560" y="28" width="150" height="52" rx="8" fill="#202123"/>
       </g>
       <text x="85" y="50" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="600">AI Agent</text>
@@ -277,12 +277,12 @@ footer .right{margin-left:auto}
       </g>
       <text x="219" y="44" text-anchor="middle" fill="#a4a5aa" font-size="10">calls a task</text>
       <text x="494" y="44" text-anchor="middle" fill="#a4a5aa" font-size="10">auto-routes</text>
-      <g fill="none" stroke="#5fbf88" stroke-opacity=".5">
-        <rect x="180" y="128" width="360" height="46" rx="8" fill="rgba(95,191,136,.07)"/>
+      <g fill="none" stroke="#fc6f6f" stroke-opacity=".5">
+        <rect x="180" y="128" width="360" height="46" rx="8" fill="rgba(252,111,111,.07)"/>
       </g>
-      <text x="360" y="147" text-anchor="middle" fill="#5fbf88" font-size="12" font-weight="600">x402 settlement on GIWA</text>
+      <text x="360" y="147" text-anchor="middle" fill="#fc6f6f" font-size="12" font-weight="600">x402 settlement on GIWA</text>
       <text x="360" y="164" text-anchor="middle" fill="#a4a5aa" font-size="10">402 quote → EIP-3009 signature → GIWA facilitator settles stablecoin, per call</text>
-      <g stroke="#5fbf88" stroke-opacity=".4" stroke-dasharray="3 3">
+      <g stroke="#fc6f6f" stroke-opacity=".4" stroke-dasharray="3 3">
         <line x1="85" y1="80" x2="85" y2="151"/><line x1="85" y1="151" x2="176" y2="151"/>
         <line x1="635" y1="80" x2="635" y2="151"/><line x1="635" y1="151" x2="544" y2="151"/>
       </g>
@@ -297,7 +297,7 @@ footer .right{margin-left:auto}
     <img class="ava" src="assets/avatar-sebastian.jpg" alt="Sebastian Kim" />
     <div>
       <div class="hd"><h3>Sebastian Kim</h3><span class="role">Full-Stack Engineer</span><span class="nat">South Korea</span></div>
-      <p class="career"><b>9 years</b> leading Hunt Town &amp; Mint Club engineering. Author of the Mint Club bonding-curve
+      <p class="career">Leads Hunt Town &amp; Mint Club engineering. Author of the Mint Club bonding-curve
       protocol that 8 of the studio's 15 archive products and multiple external partner teams were built on, across
       Base, Ethereum, BNB and more. Built h402's full x402/EIP-3009 payment flow.</p>
       <p class="ks"><span class="lbl">Key strength</span>End-to-end onchain execution. Can single-handedly build the
@@ -322,7 +322,7 @@ footer .right{margin-left:auto}
       <p class="career">Designer turned AI-builder. Founder of <b>agent-collaboration open-source tools</b> (QuadWork on
       npm, Agent Gather, Session Glue on PyPI) plus AI products LiveCap, Toony, and SVGSmith. Runs multi-agent build
       pipelines daily and designs h402's product surface.</p>
-      <p class="ks"><span class="lbl">Key strength</span>Design craft plus <b>agent-native product intuition</b>.
+      <p class="ks"><span class="lbl">Key strength</span>Beyond human UX: a specialist in <b>AX (Agent Experience)</b>.
       h402's core customer is the agent itself, and he builds for agents every day.</p>
       <div class="plist">
         <a href="https://github.com/realproject7" target="_blank" rel="noopener">github/realproject7</a>
@@ -364,7 +364,7 @@ footer .right{margin-left:auto}
     <div class="proj">
       <img src="assets/timeline/h402.png" alt="h402" />
       <div>
-        <span class="nm">h402</span><span class="st soon">Final testing · launch in 2-3 weeks</span>
+        <span class="nm">h402</span><span class="st soon">Final testing · launch in ~20 days</span>
         <p class="ds">The Agent Capability Market: mount h402 once and every listed capability comes online, routed
         to the best provider and settled per call in stablecoins over x402. 152 capabilities · 74 providers, every
         route verified with real paid calls.
@@ -377,7 +377,8 @@ footer .right{margin-left:auto}
       <div>
         <span class="nm">Mint Club</span><span class="st live">Live</span>
         <p class="ds">No-code bonding-curve protocol for tokens and NFTs, the foundation that 8 of our 15 archive
-        products and multiple partner teams built on. CertiK-audited with KYC Gold Badge.
+        products and multiple partner teams built on. Hit overall #1 of the week on the Base app and Farcaster
+        multiple times. CertiK-audited with KYC Gold Badge.
         <a href="https://mint.club" target="_blank" rel="noopener">mint.club ↗</a></p>
       </div>
     </div>
@@ -386,7 +387,7 @@ footer .right{margin-left:auto}
       <div>
         <span class="nm">Hunt Town · Co-op</span><span class="st live">Live</span>
         <p class="ds">Our product studio and its onchain cooperative. Builders launch HUNT-backed project tokens and
-        backers support them daily. The community engine behind everything we ship.
+        backers support them daily. 100,452 monthly active backers: the community engine behind everything we ship.
         <a href="https://hunt.town" target="_blank" rel="noopener">hunt.town ↗</a></p>
       </div>
     </div>
@@ -494,7 +495,7 @@ footer .right{margin-left:auto}
       <div class="bd">
         <div class="nm"><a href="https://news.hunt.town/p/introducing-hunt-tip-v2" target="_blank" rel="noopener">Hunt Tip</a></div>
         <div class="ds">Building-NFT holders reward builders with daily tip allowances, across 17 seasons.</div>
-        <div class="mt"><b>306M+ tips</b> distributed · <b>921 builders</b> funded through grants</div>
+        <div class="mt"><b>306M+ tips</b> distributed across <b>17 seasons</b></div>
       </div>
       <div class="th"><img src="assets/timeline/hunt-tip.png" alt="Hunt Tip" /></div>
     </div>
@@ -564,13 +565,13 @@ footer .right{margin-left:auto}
       <div class="bd">
         <div class="nm"><a href="https://coop.hunt.town" target="_blank" rel="noopener">Hunt Town Co-op</a></div>
         <div class="ds">The first onchain cooperative. Builders launch, backers mint, the Co-op builds the town.</div>
-        <div class="mt">Successor to Hunt Tip's <b>306M-tip / 921-builder</b> community</div>
+        <div class="mt"><b>100,452</b> monthly active backers</div>
       </div>
       <div class="th"><img src="assets/timeline/co-op.png" alt="Hunt Town Co-op" /></div>
     </div>
 
     <div class="tl hl">
-      <div class="yr">NOW <span class="st soon">Final testing · launch in 2-3 weeks</span></div>
+      <div class="yr">NOW <span class="st soon">Final testing · launch in ~20 days</span></div>
       <div class="bd">
         <div class="nm"><a href="https://h402-test.hunt.town/" target="_blank" rel="noopener">h402</a></div>
         <div class="ds">The Agent Capability Market, and the pay-per-call economy we bring to GIWA with GASOK.</div>
@@ -583,6 +584,7 @@ footer .right{margin-left:auto}
 
   <footer>
     <span>Team h402 · prepared for the GASOK / GIWA application</span>
+    <a href="deck.pdf" target="_blank" rel="noopener">Pitch deck (PDF) ↗</a>
     <span class="right">2026</span>
   </footer>
 
@@ -633,7 +635,7 @@ footer .right{margin-left:auto}
     <div class="strength">
       <div>
         <h3>Capability Market은 이미 완성 단계. GIWA는 첫날부터 경제를 얻습니다</h3>
-        <p>h402는 제품 레벨로 완성되어 마지막 테스트를 진행 중이며, 정식 런칭까지 약 2~3주 남았습니다.
+        <p>h402는 제품 레벨로 완성되어 마지막 테스트를 진행 중이며, 정식 런칭까지 약 20일 남았습니다.
         에이전트가 h402를 한 번 장착하면 <b>152개 capability와 74개 provider</b>가 즉시 열리고, 모든 라우트는
         실제 결제 호출로 검증을 마쳤습니다. GIWA에 payment rail이 연결되는 순간 이 호출 하나하나가 GIWA에서
         정산됩니다. <b>수백에서 수천 개의 에이전트 능력이 GIWA 위에 pay-per-call 경제를 만드는 것</b>이
@@ -664,17 +666,18 @@ footer .right{margin-left:auto}
 
   <!-- GIWA에서 만들 것 -->
   <h2 id="giwa-ko"><span class="hh">##</span>GIWA에서 만들 것</h2>
-  <p style="font-size:16px">저희가 GIWA에서 만들 것은 두 가지입니다. <b>첫째</b>, h402에 GIWA를 정산 체인으로 추가합니다.
+  <p style="font-size:16px">GIWA 체인에 장착할 두 개의 레일입니다. <b>첫째</b>, h402에 GIWA를 정산 체인으로 추가합니다.
   카탈로그의 모든 capability가 GIWA 위에서 스테이블코인으로, 호출 단위로 결제됩니다. <b>둘째</b>,
   <b>GIWA x402 facilitator</b>를 직접 구축하고 운영합니다. 서명된 결제 페이로드를 검증해 온체인에 정산하는
   서비스로, GIWA 위의 어떤 판매자든 노드 운영 없이 에이전트 결제를 받을 수 있게 됩니다. 1초 블록과 낮은
-  수수료를 갖춘 GIWA는 에이전트 마이크로페이먼트에 꼭 맞는 환경입니다.</p>
+  수수료를 갖춘 GIWA는 에이전트 마이크로페이먼트에 꼭 맞는 환경입니다. 여기에 업비트 생태계와의 시너지가
+  더해지면 GIWA는 Agent Commerce Layer라는 새로운 경쟁력을 갖게 됩니다.</p>
 
   <div class="diagram">
     <svg viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace,'SF Mono','Apple SD Gothic Neo',Menlo,monospace">
       <g fill="none" stroke="#38393d">
         <rect x="10" y="28" width="150" height="52" rx="8" fill="#202123"/>
-        <rect x="285" y="28" width="150" height="52" rx="8" fill="#202123" stroke="#5fbf88" stroke-opacity=".55"/>
+        <rect x="285" y="28" width="150" height="52" rx="8" fill="#202123" stroke="#fc6f6f" stroke-opacity=".55"/>
         <rect x="560" y="28" width="150" height="52" rx="8" fill="#202123"/>
       </g>
       <text x="85" y="50" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="600">AI 에이전트</text>
@@ -689,12 +692,12 @@ footer .right{margin-left:auto}
       </g>
       <text x="219" y="44" text-anchor="middle" fill="#a4a5aa" font-size="10">태스크 호출</text>
       <text x="494" y="44" text-anchor="middle" fill="#a4a5aa" font-size="10">자동 라우팅</text>
-      <g fill="none" stroke="#5fbf88" stroke-opacity=".5">
-        <rect x="180" y="128" width="360" height="46" rx="8" fill="rgba(95,191,136,.07)"/>
+      <g fill="none" stroke="#fc6f6f" stroke-opacity=".5">
+        <rect x="180" y="128" width="360" height="46" rx="8" fill="rgba(252,111,111,.07)"/>
       </g>
-      <text x="360" y="147" text-anchor="middle" fill="#5fbf88" font-size="12" font-weight="600">x402 정산 on GIWA</text>
+      <text x="360" y="147" text-anchor="middle" fill="#fc6f6f" font-size="12" font-weight="600">x402 정산 on GIWA</text>
       <text x="360" y="164" text-anchor="middle" fill="#a4a5aa" font-size="10">402 견적 → EIP-3009 서명 → GIWA facilitator가 호출 단위로 스테이블코인 정산</text>
-      <g stroke="#5fbf88" stroke-opacity=".4" stroke-dasharray="3 3">
+      <g stroke="#fc6f6f" stroke-opacity=".4" stroke-dasharray="3 3">
         <line x1="85" y1="80" x2="85" y2="151"/><line x1="85" y1="151" x2="176" y2="151"/>
         <line x1="635" y1="80" x2="635" y2="151"/><line x1="635" y1="151" x2="544" y2="151"/>
       </g>
@@ -709,7 +712,7 @@ footer .right{margin-left:auto}
     <img class="ava" src="assets/avatar-sebastian.jpg" alt="Sebastian Kim" />
     <div>
       <div class="hd"><h3>Sebastian Kim</h3><span class="role">풀스택 엔지니어</span><span class="nat">대한민국</span></div>
-      <p class="career">Hunt Town과 Mint Club의 엔지니어링을 <b>9년간</b> 이끌어 왔습니다. 스튜디오 아카이브 15개 중
+      <p class="career">Hunt Town과 Mint Club의 엔지니어링을 이끌어 왔습니다. 스튜디오 아카이브 15개 중
       8개 제품과 여러 외부 파트너 팀이 올라탄 Mint Club 본딩커브 프로토콜을 직접 설계하고 구현했으며,
       Base, Ethereum, BNB 등 멀티체인 배포 경험이 있습니다. h402의 x402/EIP-3009 결제 플로우 전체를 만들었습니다.</p>
       <p class="ks"><span class="lbl">핵심 강점</span>온체인 개발의 처음부터 끝까지. <b>GIWA x402 facilitator와
@@ -734,8 +737,8 @@ footer .right{margin-left:auto}
       <p class="career">디자이너로 시작해 AI 빌더가 됐습니다. QuadWork(npm), Agent Gather, Session Glue(PyPI) 같은
       <b>에이전트 협업 오픈소스 툴</b>을 만들었고, LiveCap, Toony, SVGSmith 같은 AI 제품도 만들었습니다.
       매일 멀티 에이전트 빌드 파이프라인을 직접 돌리면서 h402의 프로덕트 디자인을 맡고 있습니다.</p>
-      <p class="ks"><span class="lbl">핵심 강점</span>디자인 역량에 <b>에이전트 네이티브 제품 감각</b>을 더했습니다.
-      h402의 핵심 고객은 에이전트이고, 그는 매일 에이전트를 위한 도구를 만듭니다.</p>
+      <p class="ks"><span class="lbl">핵심 강점</span>사람의 UX를 넘어 <b>AX(Agent Experience)</b>를 다루는 디자이너입니다.
+      h402의 핵심 고객은 에이전트이고, 매일 에이전트를 위한 도구를 만듭니다.</p>
       <div class="plist">
         <a href="https://github.com/realproject7" target="_blank" rel="noopener">github/realproject7</a>
         <a href="https://x.com/heyproject7" target="_blank" rel="noopener">x/heyproject7</a>
@@ -776,7 +779,7 @@ footer .right{margin-left:auto}
     <div class="proj">
       <img src="assets/timeline/h402.png" alt="h402" />
       <div>
-        <span class="nm">h402</span><span class="st soon">최종 테스트 중 · 정식 런칭 약 2~3주</span>
+        <span class="nm">h402</span><span class="st soon">최종 테스트 중 · 정식 런칭 D-20일</span>
         <p class="ds">에이전트에게 능력을 입히는 Agent Capability Market입니다. h402를 한 번 장착하면 리스팅된
         모든 capability가 열리고, 최적 provider로 라우팅되어 x402로 호출당 정산됩니다. 152개 capability와
         74개 provider, 모든 라우트는 실결제로 검증했습니다.
@@ -789,7 +792,7 @@ footer .right{margin-left:auto}
       <div>
         <span class="nm">Mint Club</span><span class="st live">Live</span>
         <p class="ds">토큰과 NFT를 위한 노코드 본딩커브 프로토콜입니다. 아카이브 15개 중 8개 제품과 여러 파트너
-        팀이 이 위에서 만들어졌습니다. CertiK 감사 완료, KYC Gold Badge 보유.
+        팀이 이 위에서 만들어졌습니다. Base 앱과 Farcaster 앱 전체 주간 1위를 여러 차례 기록했고, CertiK 감사와 KYC Gold Badge를 보유하고 있습니다.
         <a href="https://mint.club" target="_blank" rel="noopener">mint.club ↗</a></p>
       </div>
     </div>
@@ -798,7 +801,7 @@ footer .right{margin-left:auto}
       <div>
         <span class="nm">Hunt Town · Co-op</span><span class="st live">Live</span>
         <p class="ds">저희의 프로덕트 스튜디오이자 온체인 협동조합입니다. 빌더가 HUNT 기반 프로젝트 토큰을
-        런칭하면 배커가 매일 후원합니다. 저희가 만드는 모든 것의 커뮤니티 엔진입니다.
+        런칭하면 배커가 매일 후원합니다. 월간 활성 배커 100,452명, 저희가 만드는 모든 것의 커뮤니티 엔진입니다.
         <a href="https://hunt.town" target="_blank" rel="noopener">hunt.town ↗</a></p>
       </div>
     </div>
@@ -806,8 +809,8 @@ footer .right{margin-left:auto}
 
   <!-- 트랙 레코드 -->
   <h2 id="track-ko"><span class="hh">##</span>트랙 레코드 · 2018 → now</h2>
-  <p class="small">지금까지 출시한 모든 제품을 시간순으로 정리했습니다. 전부 살아남지는 못했지만, 이 아카이브를
-  일부러 공개적이고 정직하게 유지합니다. 각 제품이 다음 제품의 씨앗이 되었기 때문입니다. 🤝 표시는 저희
+  <p class="small">지금까지 출시한 모든 제품을 시간순으로 정리했습니다. 전부 살아남지는 못했지만, 실패한 제품도
+  그대로 남겨둡니다. 각 제품이 다음 제품의 씨앗이 되었기 때문입니다. 🤝 표시는 저희
   프로토콜 위에서 파트너가 만든 제품입니다.</p>
 
   <div class="timeline">
@@ -856,7 +859,7 @@ footer .right{margin-left:auto}
       <div class="yr">2020 <span class="st live">운영 중</span></div>
       <div class="bd">
         <div class="nm"><a href="https://neverlose.money" target="_blank" rel="noopener">Neverlose.money</a></div>
-        <div class="ds">중도 해지 페널티가 오래 버틴 사람의 보너스가 되는, 게임화된 HODL 프로토콜.</div>
+        <div class="ds">중도 해지 페널티가 장기 보유자의 보너스로 돌아가는 게임화된 HODL 프로토콜.</div>
         <div class="mt">누적 락업 최고 <b>~$24.15M</b></div>
       </div>
       <div class="th"><img src="assets/timeline/neverlose.png" alt="Neverlose.money" /></div>
@@ -907,7 +910,7 @@ footer .right{margin-left:auto}
       <div class="bd">
         <div class="nm"><a href="https://news.hunt.town/p/introducing-hunt-tip-v2" target="_blank" rel="noopener">Hunt Tip</a></div>
         <div class="ds">Building NFT 홀더가 매일 주어지는 팁으로 빌더를 후원하는 시스템. 17개 시즌을 운영했습니다.</div>
-        <div class="mt">누적 팁 <b>306M+</b> · 빌더 <b>921명</b> 그랜트 지원</div>
+        <div class="mt">누적 팁 <b>306M+</b> · <b>17개 시즌</b> 운영</div>
       </div>
       <div class="th"><img src="assets/timeline/hunt-tip.png" alt="Hunt Tip" /></div>
     </div>
@@ -977,13 +980,13 @@ footer .right{margin-left:auto}
       <div class="bd">
         <div class="nm"><a href="https://coop.hunt.town" target="_blank" rel="noopener">Hunt Town Co-op</a></div>
         <div class="ds">최초의 온체인 협동조합. 빌더가 런칭하고, 배커가 민팅하고, Co-op이 타운을 만듭니다.</div>
-        <div class="mt"><b>306M 팁, 921명 빌더</b> 커뮤니티를 이어받았습니다</div>
+        <div class="mt">월간 활성 배커 <b>100,452명</b></div>
       </div>
       <div class="th"><img src="assets/timeline/co-op.png" alt="Hunt Town Co-op" /></div>
     </div>
 
     <div class="tl hl">
-      <div class="yr">NOW <span class="st soon">최종 테스트 중 · 정식 런칭 약 2~3주</span></div>
+      <div class="yr">NOW <span class="st soon">최종 테스트 중 · 정식 런칭 D-20일</span></div>
       <div class="bd">
         <div class="nm"><a href="https://h402-test.hunt.town/" target="_blank" rel="noopener">h402</a></div>
         <div class="ds">에이전트에게 능력을 입히는 Agent Capability Market. GASOK과 함께 이 pay-per-call 경제를 GIWA로 가져가려 합니다.</div>
@@ -996,6 +999,7 @@ footer .right{margin-left:auto}
 
   <footer>
     <span>h402 팀 · GASOK / GIWA 지원용 팀 소개 문서</span>
+    <a href="deck.pdf" target="_blank" rel="noopener">피치덱 (PDF) ↗</a>
     <span class="right">2026</span>
   </footer>
 
