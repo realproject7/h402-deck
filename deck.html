@@ -33,7 +33,7 @@ b{color:#fff;font-weight:600}
 .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--muted2);text-transform:uppercase;margin-bottom:16px}
 .eyebrow .n{color:var(--accent);margin-right:12px;font-weight:600}
 h2{font-size:38px;line-height:1.2;letter-spacing:-.024em;font-weight:700}
-h2 .em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0;color:var(--accent)}
+h2 .em{color:var(--accent)}
 .foot{position:absolute;left:80px;right:80px;bottom:28px;display:flex;align-items:center;gap:10px;
   font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--faint)}
 .foot .fdot{width:14px;height:14px;border-radius:50%;background:var(--accent);display:grid;place-items:center}
@@ -54,7 +54,7 @@ h2 .em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing
 
 /* ================= S1 cover ================= */
 .cover{padding:0}
-.cover .art{position:absolute;inset:0;background:url('assets/art-cover.png') right -40px center / auto 115% no-repeat}
+.cover .art{position:absolute;inset:0;background:url('assets/art-cover.jpg') right -40px center / auto 115% no-repeat}
 .cover .scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,11,.97) 0%,rgba(10,10,11,.9) 36%,rgba(10,10,11,.3) 62%,rgba(10,10,11,0) 78%)}
 .cover .in{position:relative;height:100%;padding:56px 80px;display:flex;flex-direction:column}
 .brand{display:flex;align-items:center;gap:12px}
@@ -107,9 +107,8 @@ h2 .em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing
   display:flex;flex-direction:column;justify-content:center}
 .node .t{font-size:17px;font-weight:700;color:#fff;letter-spacing:-.015em}
 .node .d{font-size:12.5px;color:var(--muted);margin-top:7px;line-height:1.55}
-.hub{border:1px solid var(--accent-line);background:linear-gradient(180deg,rgba(252,111,111,.12),rgba(252,111,111,.05));
-  border-radius:16px;padding:28px 22px;text-align:center;min-height:170px;display:flex;flex-direction:column;justify-content:center;
-  box-shadow:0 0 70px -24px rgba(252,111,111,.5)}
+.hub{border:1px solid var(--accent-line);background:rgba(252,111,111,.08);
+  border-radius:16px;padding:28px 22px;text-align:center;min-height:170px;display:flex;flex-direction:column;justify-content:center}
 .hub .lg{display:flex;align-items:center;gap:9px;justify-content:center}
 .hub .lg svg{width:30px;height:30px}
 .hub .lg .nm{font-size:23px;font-weight:800;letter-spacing:-.03em}
@@ -279,7 +278,7 @@ h2 .em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing
 <!-- ================= S2 · PROBLEM ================= -->
 <section class="slide">
   <div class="eyebrow"><span class="n">01</span>Problem</div>
-  <h2>능력 하나를 붙일 때마다 <span class="em">key와 구독이 하나씩</span> 늘어난다</h2>
+  <h2>에이전트에게 능력을 추가할 때마다 <span class="em">key와 구독이 하나씩 증가</span></h2>
   <div class="fill">
     <div class="prob">
       <div class="plist">
@@ -365,7 +364,7 @@ h2 .em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing
 <!-- ================= S4 · HOW IT WORKS ================= -->
 <section class="slide">
   <div class="eyebrow"><span class="n">03</span>How it works</div>
-  <h2>Call path 하나로 모든 능력 호출. <span class="em">결제는 x402가 아래에서 처리</span></h2>
+  <h2>Call path 하나로 모든 능력 호출. <span class="em">GIWA x402 facilitator를 통한 pay-per-call 결제</span></h2>
   <div class="fill">
     <div class="callflow">
       <div class="node">
@@ -391,7 +390,7 @@ h2 .em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing
         <div class="arr"><svg width="26" height="10" viewBox="0 0 26 10"><line x1="0" y1="5" x2="17" y2="5" stroke="#6b6b73" stroke-width="1.4"/><path d="M17 1 25 5 17 9z" fill="#6b6b73"/></svg></div>
         <div class="rstep"><div class="t">wallet sign</div><div class="d">EIP-3009 · key는 기기 밖 미반출</div></div>
         <div class="arr"><svg width="26" height="10" viewBox="0 0 26 10"><line x1="0" y1="5" x2="17" y2="5" stroke="#6b6b73" stroke-width="1.4"/><path d="M17 1 25 5 17 9z" fill="#6b6b73"/></svg></div>
-        <div class="rstep"><div class="t">facilitator settle</div><div class="d">서명 검증 → 온체인 정산 · 가스 대납</div></div>
+        <div class="rstep"><div class="t">facilitator settle</div><div class="d">서명 검증 → GIWA 온체인 정산 · 가스 대납</div></div>
         <div class="arr"><svg width="26" height="10" viewBox="0 0 26 10"><line x1="0" y1="5" x2="17" y2="5" stroke="#6b6b73" stroke-width="1.4"/><path d="M17 1 25 5 17 9z" fill="#6b6b73"/></svg></div>
         <div class="rstep ok"><div class="t">✓ 200 OK</div><div class="d">결과 반환 · 정산 완료</div></div>
       </div>
@@ -408,7 +407,7 @@ h2 .em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing
 <!-- ================= S5 · WHY GIWA ================= -->
 <section class="slide">
   <div class="eyebrow"><span class="n">04</span>Why GIWA</div>
-  <h2>에이전트 결제에 맞는 조건, <span class="em">아직 비어 있는 레일</span></h2>
+  <h2>h402가 GIWA에 x402를 통한 <span class="em">Agent Capability Market</span> 구축</h2>
   <div class="fill">
     <div class="why">
       <div class="fits">
@@ -471,14 +470,14 @@ h2 .em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing
 <!-- ================= S7 · TRACTION ================= -->
 <section class="slide">
   <div class="eyebrow"><span class="n">06</span>Where we are</div>
-  <h2>최종 테스트 단계, <span class="em">정식 런칭 D-3주</span></h2>
+  <h2>아이디어 단계가 아닌, <span class="em">이미 최종 테스트 단계에 진입한 제품</span></h2>
   <div class="fill">
     <div class="trac">
       <div class="stats">
         <div class="stat"><div class="v">152</div><div class="l">capabilities · mount 1회에 전부 사용 가능</div></div>
         <div class="stat"><div class="v">74</div><div class="l">providers · 품질·가격 실시간 경쟁</div></div>
         <div class="stat"><div class="v">100<span class="u">%</span></div><div class="l">전 라우트 실결제 검증 완료</div></div>
-        <div class="stat"><div class="v">D-3<span class="u">주</span></div><div class="l">정식 런칭 · Base 정산 가동 중</div></div>
+        <div class="stat"><div class="v">D-20<span class="u">일</span></div><div class="l">정식 런칭 · Base 정산 가동 중</div></div>
       </div>
       <div class="shotwrap">
         <img src="assets/timeline/h402.png" alt="h402 라이브 카탈로그" />
@@ -493,7 +492,7 @@ h2 .em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing
 <!-- ================= S8 · REVENUE ================= -->
 <section class="slide">
   <div class="eyebrow"><span class="n">07</span>Revenue model</div>
-  <h2>수익 = <span class="em">호출 수 × 마진</span></h2>
+  <h2>심플한 수익 구조 + <span class="em">GIWA 체인에 Agent Commerce 볼륨 형성</span></h2>
   <div class="fill">
     <div class="revflow">
       <div class="rnode"><div class="t">에이전트</div><div class="d">호출당 지불<br /><b>$0.0042</b></div></div>
@@ -582,7 +581,7 @@ h2 .em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing
         <div class="pt2">제품 완성 단계</div>
         <ul>
           <li><b>152 capabilities</b> 라이브</li>
-          <li>정식 런칭 2~3주 내</li>
+          <li>정식 런칭 D-20일</li>
           <li>Base 정산 가동 중</li>
         </ul>
       </div>
@@ -622,5 +621,9 @@ h2 .em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing
   <div class="foot"><span>h402 · GASOK</span><span class="pg">11 / 11</span></div>
 </section>
 
+<script>
+(function(){var p=new URLSearchParams(location.search).get('slide');
+if(p){document.querySelectorAll('.slide').forEach(function(el,i){if(i!==(+p-1))el.style.display='none';});}})();
+</script>
 </body>
 </html>
