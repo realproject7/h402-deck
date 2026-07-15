@@ -3,254 +3,315 @@
 <head>
 <meta charset="utf-8" />
 <title>h402 · GASOK Pitch Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
 <style>
 @page{size:1280px 720px;margin:0}
 :root{
-  --bg:#1a1b1c; --inset:#202123; --inset2:#242527;
-  --line:#2b2c2f; --line-2:#3a3b3f;
-  --text:#e2e3e5; --text-2:#a7a8ad; --text-3:#7a7b80; --text-4:#58595e;
-  --grn:#5fbf88; --grn-dim:rgba(95,191,136,.12); --grn-line:rgba(95,191,136,.35);
-  --amber:#c9a05c; --red:#d07070;
-  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Segoe UI",Helvetica,Arial,sans-serif;
-  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  /* h402 terminal-luxe tokens */
+  --bg:#0a0a0b; --surface:#0e0e10; --panel:#131316; --panel2:#17171a;
+  --line:#232327; --line-2:#2e2e33;
+  --fg:#f7f7f8; --soft:#d7d7db; --muted:#8b8b93; --muted2:#6b6b73; --faint:#4e4e56;
+  --accent:#fc6f6f; --accent-soft:rgba(252,111,111,.09); --accent-line:rgba(252,111,111,.32);
+  --ember:#ffa26b; --success:#33d17a; --success-soft:rgba(51,209,122,.1);
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,'SF Mono',monospace;
+  --serif:'Instrument Serif',Georgia,serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{background:#0e0f10}
-body{font-family:var(--sans);color:var(--text);-webkit-font-smoothing:antialiased;letter-spacing:-.02em}
+html,body{background:#060607}
+body{font-family:var(--sans);color:var(--fg);-webkit-font-smoothing:antialiased;letter-spacing:-.011em}
 .slide{position:relative;width:1280px;height:720px;background:var(--bg);overflow:hidden;
-  page-break-after:always;break-after:page;margin:0 auto;padding:56px 72px 64px;display:flex;flex-direction:column}
-@media screen{.slide{margin:24px auto;border:1px solid var(--line);border-radius:8px}}
+  page-break-after:always;break-after:page;margin:0 auto;padding:58px 80px 72px;display:flex;flex-direction:column}
+@media screen{.slide{margin:24px auto;border:1px solid var(--line);border-radius:10px}}
 b{color:#fff;font-weight:600}
 .mono{font-family:var(--mono);letter-spacing:0}
-.grn{color:var(--grn)}
+.acc{color:var(--accent)}
 
-/* chrome per slide */
-.eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--grn);text-transform:uppercase;margin-bottom:14px}
-.eyebrow .n{color:var(--text-4);margin-right:10px}
-h1{font-size:54px;line-height:1.12;letter-spacing:-.025em;color:#fff;font-weight:700}
-h2{font-size:38px;line-height:1.18;letter-spacing:-.022em;color:#fff;font-weight:700}
-.sub{margin-top:14px;font-size:19px;line-height:1.55;color:var(--text-2);max-width:1000px}
-.foot{position:absolute;left:72px;right:72px;bottom:26px;display:flex;align-items:center;
-  font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--text-4)}
+/* per-slide chrome */
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--muted2);text-transform:uppercase;margin-bottom:16px}
+.eyebrow .n{color:var(--accent);margin-right:12px;font-weight:600}
+h2{font-size:38px;line-height:1.2;letter-spacing:-.024em;font-weight:700}
+h2 .em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0;color:var(--accent)}
+.foot{position:absolute;left:80px;right:80px;bottom:28px;display:flex;align-items:center;gap:10px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--faint)}
+.foot .fdot{width:14px;height:14px;border-radius:50%;background:var(--accent);display:grid;place-items:center}
+.foot .fdot svg{width:9px;height:9px}
 .foot .pg{margin-left:auto}
 .fill{flex:1;display:flex;flex-direction:column;justify-content:center}
 
-/* shared primitives */
-.card{border:1px solid var(--line);background:var(--inset);border-radius:12px}
-.gcard{border:1px solid var(--grn-line);background:var(--grn-dim);border-radius:12px}
-.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line-2);background:var(--inset);
-  border-radius:999px;padding:6px 16px;font-family:var(--mono);font-size:14px;color:var(--text-2)}
-.chip b{color:var(--grn)}
-.arrow{color:var(--text-4);font-size:22px}
-.klabel{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--grn)}
-.dim{color:var(--text-3)}
+/* primitives */
+.panel{border:1px solid var(--line);background:var(--panel);border-radius:14px}
+.apanel{border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:14px}
+.chip{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line-2);background:var(--panel);
+  border-radius:999px;padding:7px 16px;font-family:var(--mono);font-size:13px;color:var(--soft)}
+.chip b{color:var(--accent);font-weight:600}
+.klabel{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+/* crisp svg arrow */
+.arr{display:grid;place-items:center}
+.arr svg{display:block}
 
-/* ============ S1 cover ============ */
-.cover{justify-content:center;align-items:flex-start}
-.cover .mark{display:flex;align-items:center;gap:14px;margin-bottom:34px}
-.cover .mark .sq{width:44px;height:44px;border-radius:11px;background:var(--grn);color:#0d1a12;
-  display:grid;place-items:center;font-family:var(--mono);font-size:22px;font-weight:700}
-.cover .mark .nm{font-size:26px;font-weight:700;color:#fff}
-.cover h1{font-size:62px;max-width:1050px}
-.cover .chips{display:flex;gap:10px;margin-top:30px}
-.cover .meta{position:absolute;left:72px;bottom:64px;display:flex;align-items:center;gap:16px;color:var(--text-3);font-size:14px}
-.cover .meta img{width:34px;height:34px;border-radius:50%;border:2px solid var(--inset);object-fit:cover}
-.cover .meta .avs{display:flex}
-.cover .meta .avs img+img{margin-left:-9px}
-.cover .tag{position:absolute;right:72px;bottom:64px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;
-  color:var(--grn);border:1px solid var(--grn-line);border-radius:999px;padding:8px 18px}
+/* ================= S1 cover ================= */
+.cover{padding:0}
+.cover .art{position:absolute;inset:0;background:url('assets/art-cover.png') right -40px center / auto 115% no-repeat}
+.cover .scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,11,.97) 0%,rgba(10,10,11,.9) 36%,rgba(10,10,11,.3) 62%,rgba(10,10,11,0) 78%)}
+.cover .in{position:relative;height:100%;padding:56px 80px;display:flex;flex-direction:column}
+.brand{display:flex;align-items:center;gap:12px}
+.brand svg{width:40px;height:40px}
+.brand .wm{font-size:24px;font-weight:800;letter-spacing:-.04em}
+.cover .mid{flex:1;display:flex;flex-direction:column;justify-content:center;max-width:640px}
+.cover h1{font-size:56px;font-weight:800;letter-spacing:-.035em;line-height:1.08}
+.cover h1 .em{display:block;margin-top:8px;font-family:var(--serif);font-weight:400;font-style:italic;letter-spacing:0;font-size:1.04em;color:var(--accent)}
+.cover h1 .on{display:block;margin-top:4px;color:var(--fg);font-family:var(--sans);font-style:normal;font-weight:800;
+  font-size:.86em}
+.cover .badges{margin-top:36px;display:flex;gap:10px}
+.bdg{display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border:1px solid var(--accent-line);
+  background:rgba(252,111,111,.08);border-radius:999px;font-size:14.5px;font-weight:600;color:var(--soft);letter-spacing:-.01em}
+.bdg b{color:var(--accent);font-weight:700}
+.cover .bottom{display:flex;align-items:center}
+.cover .avs{display:flex;margin-right:12px}
+.cover .avs img{width:32px;height:32px;border-radius:50%;border:2px solid #17171a;object-fit:cover}
+.cover .avs img+img{margin-left:-9px}
+.cover .who{font-size:13.5px;color:var(--muted)}
+.cover .tag{margin-left:auto;font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;color:var(--accent);
+  border:1px solid var(--accent-line);border-radius:999px;padding:9px 18px}
 
-/* ============ S2 problem ============ */
-.prob{display:grid;grid-template-columns:230px 1fr 300px;gap:0;align-items:center;margin-top:8px}
-.pnode{border:1px solid var(--line-2);background:var(--inset);border-radius:14px;padding:24px;text-align:center}
-.pnode .ic{font-size:30px;margin-bottom:8px}
-.pnode .t{font-size:17px;font-weight:600;color:#fff}
-.pnode .d{font-size:12.5px;color:var(--text-3);margin-top:4px}
-.pwall{display:flex;flex-direction:column;gap:12px;padding:0 40px}
-.pblock{display:flex;align-items:center;gap:14px;border:1px solid rgba(208,112,112,.35);background:rgba(208,112,112,.07);
-  border-radius:10px;padding:14px 18px}
-.pblock .x{color:var(--red);font-family:var(--mono);font-size:16px;font-weight:700}
-.pblock .bt{font-size:15.5px;color:var(--text)}
-.pblock .bd2{font-size:12.5px;color:var(--text-3);margin-left:auto;font-family:var(--mono)}
-.apis{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.api{border:1px solid var(--line);background:var(--inset);border-radius:8px;padding:10px 8px;text-align:center;
-  font-family:var(--mono);font-size:11.5px;color:var(--text-3)}
-.pmath{margin-top:34px;border:1px solid var(--line);border-radius:12px;background:var(--inset);
-  padding:18px 26px;font-family:var(--mono);font-size:15px;color:var(--text-2);text-align:center}
-.pmath b{color:var(--red)}
+/* ================= S2 problem ================= */
+.prob{display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:stretch}
+.plist{display:flex;flex-direction:column;gap:10px}
+.prow{display:grid;grid-template-columns:200px 1fr;align-items:center;gap:16px;
+  border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:14px 20px}
+.prow .cap{font-family:var(--mono);font-size:13.5px;color:var(--fg)}
+.prow .cap i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:9px;vertical-align:2px}
+.prow .needs{display:flex;gap:8px;justify-content:flex-end}
+.need{font-family:var(--mono);font-size:11.5px;color:var(--muted);border:1px solid var(--line-2);
+  border-radius:7px;padding:5px 11px;display:inline-flex;align-items:center;gap:6px}
+.need .x{color:var(--accent);font-weight:600}
+.pmore{text-align:center;font-family:var(--mono);font-size:13px;color:var(--muted2);padding:8px 0 0}
+.pmore b{color:var(--accent)}
+.pcost{display:flex;flex-direction:column;gap:14px}
+.pcost .eq{flex:1;border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:14px;
+  padding:26px 26px;display:flex;flex-direction:column;justify-content:center}
+.pcost .eq .f{font-family:var(--mono);font-size:19px;line-height:1.75;color:var(--fg)}
+.pcost .eq .f b{color:var(--accent)}
+.pcost .eq .s{margin-top:14px;font-size:13px;color:var(--muted);line-height:1.6}
+.pfacts{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:18px 22px}
+.pfacts .li{font-size:13px;color:var(--soft);line-height:1.65;padding-left:16px;position:relative}
+.pfacts .li+.li{margin-top:8px}
+.pfacts .li::before{content:"·";position:absolute;left:2px;color:var(--accent);font-weight:700}
 
-/* ============ S3 solution ============ */
-.sol{display:grid;grid-template-columns:250px 96px 300px 96px 1fr;align-items:center;margin-top:6px}
-.snode{border:1px solid var(--line-2);background:var(--inset);border-radius:14px;padding:26px 22px;text-align:center}
-.snode .t{font-size:18px;font-weight:600;color:#fff}
-.snode .d{font-size:13px;color:var(--text-3);margin-top:5px}
-.hub{border:1px solid var(--grn-line);background:var(--grn-dim);border-radius:16px;padding:30px 22px;text-align:center;
-  box-shadow:0 0 60px -20px rgba(95,191,136,.35)}
-.hub .nm{font-family:var(--mono);font-size:26px;font-weight:700;color:var(--grn)}
-.hub .d{font-size:13px;color:var(--text-2);margin-top:6px}
-.sarr{text-align:center}
-.sarr .a{font-size:26px;color:var(--grn)}
-.sarr .l{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--text-3);margin-top:4px;text-transform:uppercase}
-.caps{display:grid;grid-template-columns:1fr 1fr;gap:7px}
-.cap{border:1px solid var(--line);background:var(--inset);border-radius:8px;padding:9px 10px;
-  font-family:var(--mono);font-size:11.5px;color:var(--text-2);display:flex;gap:7px;align-items:center}
-.cap i{width:6px;height:6px;border-radius:50%;background:var(--grn);flex:none}
-.solchips{margin-top:36px;display:flex;gap:12px;justify-content:center}
+/* ================= S3 solution ================= */
+.sol{display:grid;grid-template-columns:236px 64px 300px 64px 1fr;align-items:center}
+.node{border:1px solid var(--line-2);background:var(--panel);border-radius:14px;padding:26px 22px;text-align:center;min-height:150px;
+  display:flex;flex-direction:column;justify-content:center}
+.node .t{font-size:17px;font-weight:700;color:#fff;letter-spacing:-.015em}
+.node .d{font-size:12.5px;color:var(--muted);margin-top:7px;line-height:1.55}
+.hub{border:1px solid var(--accent-line);background:linear-gradient(180deg,rgba(252,111,111,.12),rgba(252,111,111,.05));
+  border-radius:16px;padding:28px 22px;text-align:center;min-height:170px;display:flex;flex-direction:column;justify-content:center;
+  box-shadow:0 0 70px -24px rgba(252,111,111,.5)}
+.hub .lg{display:flex;align-items:center;gap:9px;justify-content:center}
+.hub .lg svg{width:30px;height:30px}
+.hub .lg .nm{font-size:23px;font-weight:800;letter-spacing:-.03em}
+.hub .d{font-size:12.5px;color:var(--soft);margin-top:9px;line-height:1.55}
+.arrlab{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--muted2);text-transform:uppercase;margin-top:8px;text-align:center}
+.capgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.capchip{border:1px solid var(--line);background:var(--panel);border-radius:9px;padding:10px 12px;
+  font-family:var(--mono);font-size:12px;color:var(--soft);display:flex;gap:8px;align-items:center}
+.capchip i{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none}
+.capchip.more{color:var(--accent);border-color:var(--accent-line);background:var(--accent-soft)}
+.solchips{margin-top:38px;display:flex;gap:12px;justify-content:center}
 
-/* ============ S4 handshake ============ */
-.hand{display:grid;grid-template-columns:1fr 44px 1fr 44px 1fr 44px 1fr;align-items:stretch;margin-top:10px}
-.step{border:1px solid var(--line-2);background:var(--inset);border-radius:14px;padding:22px 20px;display:flex;flex-direction:column}
-.step .no{font-family:var(--mono);font-size:12px;color:var(--grn);font-weight:700;margin-bottom:10px}
-.step .t{font-size:17px;font-weight:600;color:#fff;line-height:1.35}
-.step .d{font-size:13px;color:var(--text-3);margin-top:8px;line-height:1.5}
-.step .code{margin-top:auto;padding-top:14px;font-family:var(--mono);font-size:12px;color:var(--text-2)}
-.step .code .a{color:var(--amber)} .step .code .g{color:var(--grn)}
-.step.last{border-color:var(--grn-line);background:var(--grn-dim)}
-.harr{display:grid;place-items:center;color:var(--text-4);font-size:20px}
-.handnote{margin-top:30px;display:flex;gap:12px;justify-content:center}
+/* ================= S4 how it works ================= */
+.callflow{display:grid;grid-template-columns:210px 56px 1fr 56px 210px;align-items:center}
+.callpath{border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:14px;padding:22px;text-align:center}
+.callpath .lb{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase}
+.callpath .p{font-family:var(--mono);font-size:21px;color:#fff;margin-top:10px;font-weight:600}
+.callpath .p .v{color:var(--ember)}
+.callpath .d{font-size:12.5px;color:var(--muted);margin-top:8px}
+.railbar{margin-top:30px;border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:20px 26px}
+.railbar .rt{display:flex;align-items:baseline;gap:12px;margin-bottom:16px}
+.railbar .rt .k{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--accent);text-transform:uppercase}
+.railbar .rt .d{font-size:12.5px;color:var(--muted)}
+.railsteps{display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr 40px 1fr;align-items:center}
+.rstep{border:1px solid var(--line-2);background:var(--panel2);border-radius:10px;padding:13px 14px;text-align:center}
+.rstep .t{font-family:var(--mono);font-size:13px;color:#fff}
+.rstep .t .a{color:var(--ember)}
+.rstep .d{font-size:11px;color:var(--muted2);margin-top:4px}
+.rstep.ok{border-color:rgba(51,209,122,.4);background:var(--success-soft)}
+.rstep.ok .t{color:var(--success)}
+.hownote{margin-top:26px;display:flex;gap:12px;justify-content:center}
 
-/* ============ S5 why giwa ============ */
-.why{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;margin-top:6px;align-items:stretch}
+/* ================= S5 why giwa ================= */
+.why{display:grid;grid-template-columns:1.02fr .98fr;gap:22px;align-items:stretch}
 .fits{display:flex;flex-direction:column;gap:12px}
-.fit{border:1px solid var(--line);background:var(--inset);border-radius:12px;padding:18px 22px;display:flex;gap:16px;align-items:baseline}
-.fit .k{font-family:var(--mono);font-size:15px;color:var(--grn);font-weight:700;flex:none;width:120px}
-.fit .t{font-size:15.5px;color:var(--text);font-weight:600}
-.fit .d{font-size:13px;color:var(--text-3);margin-top:3px}
-.rails{border:1px solid var(--line);background:var(--inset);border-radius:14px;padding:22px 24px;display:flex;flex-direction:column}
-.rails .rt{font-size:15px;font-weight:600;color:#fff;margin-bottom:14px}
-.rail{display:flex;align-items:center;gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:14.5px}
+.fit{flex:1;border:1px solid var(--line);background:var(--panel);border-radius:13px;padding:18px 24px;display:flex;gap:20px;align-items:center}
+.fit .k{font-family:var(--mono);font-size:14px;color:var(--accent);font-weight:600;flex:none;width:118px}
+.fit .t{font-size:15.5px;color:#fff;font-weight:600;letter-spacing:-.015em}
+.fit .d{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.55}
+.rails{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:22px 26px;display:flex;flex-direction:column}
+.rails .rt{font-size:14.5px;font-weight:600;color:#fff;margin-bottom:6px}
+.rails .rs{font-size:12px;color:var(--muted2);margin-bottom:14px}
+.rail{display:flex;align-items:center;padding:10px 2px;border-top:1px solid var(--line);font-size:14px}
 .rail:first-of-type{border-top:none}
-.rail .nm2{width:110px;color:var(--text-2)}
-.rail .ok{font-family:var(--mono);font-size:12px;color:var(--text-3)}
-.rail.giwa{border:1px solid var(--grn-line);background:var(--grn-dim);border-radius:9px;padding:12px 14px;margin-top:10px}
+.rail .nm2{width:120px;color:var(--soft)}
+.rail .ok{font-family:var(--mono);font-size:12px;color:var(--muted2);margin-left:auto}
+.rail.giwa{border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:10px;padding:13px 16px;margin-top:12px}
 .rail.giwa .nm2{color:#fff;font-weight:700}
-.rail.giwa .ok{color:var(--grn);font-weight:600}
-.wedge{margin-top:auto;padding-top:16px;font-size:14px;color:var(--text-2)}
-.wedge b{color:var(--grn)}
+.rail.giwa .ok{color:var(--accent);font-weight:600}
+.wedge{margin-top:auto;padding-top:18px;font-size:13.5px;color:var(--soft);line-height:1.6}
+.wedge b{color:var(--accent)}
 
-/* ============ S6 deliverables ============ */
-.dels{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px}
-.del{border:1px solid var(--line-2);background:var(--inset);border-radius:14px;padding:26px 28px}
-.del .no{font-family:var(--mono);font-size:13px;color:var(--grn);font-weight:700}
-.del .t{font-size:21px;font-weight:700;color:#fff;margin-top:8px;line-height:1.3}
-.del .d{font-size:14px;color:var(--text-2);margin-top:10px;line-height:1.6}
-.mods{display:flex;gap:8px;margin-top:16px}
-.mod{flex:1;border:1px solid var(--line);background:var(--bg);border-radius:9px;padding:12px 10px;text-align:center}
-.mod .mt2{font-family:var(--mono);font-size:12.5px;color:var(--grn);font-weight:600}
-.mod .md{font-size:11px;color:var(--text-3);margin-top:3px}
-.wallet{margin-top:20px;border:1px solid var(--grn-line);background:var(--grn-dim);border-radius:12px;
-  padding:16px 24px;display:flex;align-items:center;gap:14px}
-.wallet .wk{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--grn);text-transform:uppercase;flex:none}
-.wallet .wd{font-size:14.5px;color:var(--text)}
+/* ================= S6 rails ================= */
+.dels{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.del{border:1px solid var(--line-2);background:var(--panel);border-radius:16px;padding:28px 30px}
+.del .no{font-family:var(--mono);font-size:12px;letter-spacing:.16em;color:var(--accent);font-weight:600;text-transform:uppercase}
+.del .t{font-size:21px;font-weight:700;color:#fff;margin-top:10px;letter-spacing:-.02em;line-height:1.3}
+.del .d{font-size:13.5px;color:var(--muted);margin-top:12px;line-height:1.7}
+.del .d b{color:var(--soft)}
+.mods{display:flex;gap:9px;margin-top:20px}
+.mod{flex:1;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:13px 10px;text-align:center}
+.mod .mt2{font-family:var(--mono);font-size:12.5px;color:var(--ember);font-weight:600}
+.mod .md{font-size:11px;color:var(--muted2);margin-top:4px}
+.wallet{margin-top:18px;border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:13px;
+  padding:16px 26px;display:flex;align-items:center;gap:16px}
+.wallet .wk{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase;flex:none;font-weight:600}
+.wallet .wd{font-size:13.5px;color:var(--soft)}
 
-/* ============ S7 traction ============ */
-.trac{display:grid;grid-template-columns:1fr 480px;gap:36px;align-items:center;margin-top:6px}
+/* ================= S7 traction ================= */
+.trac{display:grid;grid-template-columns:1fr 470px;gap:36px;align-items:center}
 .stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.stat{border:1px solid var(--line);background:var(--inset);border-radius:14px;padding:24px 22px}
-.stat .v{font-size:44px;font-weight:700;color:#fff;letter-spacing:-.03em}
-.stat .v .u{font-size:20px;color:var(--grn)}
-.stat .l{font-size:13.5px;color:var(--text-3);margin-top:4px}
+.stat{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:24px 24px}
+.stat .v{font-size:46px;font-weight:800;letter-spacing:-.04em;color:#fff}
+.stat .v .u{font-size:20px;color:var(--accent)}
+.stat .l{font-size:13px;color:var(--muted);margin-top:5px}
 .shotwrap{position:relative}
-.shotwrap img{width:100%;border-radius:12px;border:1px solid var(--line-2)}
-.dbadge{position:absolute;top:-14px;right:-10px;background:var(--grn);color:#0d1a12;font-family:var(--mono);
-  font-size:13px;font-weight:700;border-radius:999px;padding:8px 16px}
-.shotcap{margin-top:10px;font-family:var(--mono);font-size:11.5px;color:var(--text-4);text-align:center}
+.shotwrap img{width:100%;border-radius:12px;border:1px solid var(--line-2);display:block}
+.dbadge{position:absolute;top:-13px;right:-10px;background:var(--accent);color:#160707;font-family:var(--mono);
+  font-size:12px;font-weight:700;border-radius:999px;padding:8px 16px;letter-spacing:.08em}
+.shotcap{margin-top:12px;font-family:var(--mono);font-size:11px;color:var(--faint);text-align:center;letter-spacing:.04em}
 
-/* ============ S8 revenue ============ */
-.rev{display:grid;grid-template-columns:1fr;gap:22px;margin-top:8px}
-.revflow{display:grid;grid-template-columns:250px 60px 1fr 60px 250px;align-items:center}
-.rnode{border:1px solid var(--line-2);background:var(--inset);border-radius:14px;padding:22px;text-align:center}
-.rnode .t{font-size:16px;font-weight:600;color:#fff}
-.rnode .d{font-family:var(--mono);font-size:13px;color:var(--text-3);margin-top:6px}
-.rmid{border:1px solid var(--grn-line);background:var(--grn-dim);border-radius:14px;padding:20px;text-align:center}
-.rmid .f{font-family:var(--mono);font-size:17px;color:#fff}
-.rmid .f .g{color:var(--grn);font-weight:700}
-.rmid .d{font-size:12.5px;color:var(--text-2);margin-top:8px}
-.rarr{text-align:center;color:var(--text-4);font-size:22px}
-.revpts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
-.rpt{border:1px solid var(--line);background:var(--inset);border-radius:12px;padding:18px 20px}
-.rpt .t{font-size:15px;font-weight:600;color:#fff}
-.rpt .d{font-size:13px;color:var(--text-3);margin-top:6px;line-height:1.55}
-.rpt.hl{border-color:var(--grn-line);background:var(--grn-dim)}
+/* ================= S8 revenue ================= */
+.revflow{display:grid;grid-template-columns:224px 56px 1fr 56px 224px;align-items:center}
+.rnode{border:1px solid var(--line-2);background:var(--panel);border-radius:14px;padding:22px;text-align:center;min-height:128px;
+  display:flex;flex-direction:column;justify-content:center}
+.rnode .t{font-size:16px;font-weight:700;color:#fff}
+.rnode .d{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.6}
+.rnode .d b{color:var(--ember)}
+.rmid{border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:14px;padding:22px;text-align:center;min-height:128px;
+  display:flex;flex-direction:column;justify-content:center}
+.rmid .f{font-family:var(--mono);font-size:16.5px;color:#fff}
+.rmid .f .g{color:var(--accent);font-weight:600}
+.rmid .d{font-size:12px;color:var(--muted);margin-top:9px}
+.revpts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:26px}
+.rpt{border:1px solid var(--line);background:var(--panel);border-radius:13px;padding:20px 22px}
+.rpt .t{font-size:15px;font-weight:600;color:#fff;letter-spacing:-.015em}
+.rpt .d{font-size:12.5px;color:var(--muted);margin-top:7px;line-height:1.65}
+.rpt.hl{border-color:var(--accent-line);background:var(--accent-soft)}
 
-/* ============ S9 track record ============ */
-.proofs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
-.proof{border:1px solid var(--line);background:var(--inset);border-radius:12px;padding:20px 22px;display:flex;gap:16px;align-items:flex-start}
-.proof .ic{font-size:24px;flex:none}
-.proof .t{font-size:16.5px;font-weight:600;color:#fff;line-height:1.35}
-.proof .d{font-size:13px;color:var(--text-3);margin-top:5px;line-height:1.55}
-.proof .d b{color:var(--text)}
-.strip{margin-top:20px;display:grid;grid-template-columns:repeat(8,1fr);gap:8px}
-.strip img{width:100%;height:64px;object-fit:cover;object-position:top;border-radius:7px;border:1px solid var(--line-2);opacity:.9}
-.stripcap{margin-top:8px;font-family:var(--mono);font-size:11px;color:var(--text-4);text-align:center}
+/* ================= S9 track record ================= */
+.proofs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.proof{border:1px solid var(--line);background:var(--panel);border-radius:13px;padding:20px 24px}
+.proof .k{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase;font-weight:600}
+.proof .t{font-size:16.5px;font-weight:700;color:#fff;margin-top:7px;letter-spacing:-.015em;line-height:1.35}
+.proof .d{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.6}
+.proof .d b{color:var(--soft)}
+.strip{margin-top:18px;display:grid;grid-template-columns:repeat(8,1fr);gap:8px}
+.strip img{width:100%;height:60px;object-fit:cover;object-position:top;border-radius:7px;border:1px solid var(--line-2);opacity:.92;display:block}
+.stripcap{margin-top:9px;font-family:var(--mono);font-size:10.5px;color:var(--faint);text-align:center;letter-spacing:.04em}
 
-/* ============ S10 team ============ */
-.team{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-top:10px}
-.tm{border:1px solid var(--line);background:var(--inset);border-radius:14px;padding:26px 24px;text-align:center}
-.tm img{width:84px;height:84px;border-radius:50%;object-fit:cover;border:2px solid var(--line-2)}
-.tm .nm{font-size:19px;font-weight:700;color:#fff;margin-top:14px}
-.tm .rl{font-family:var(--mono);font-size:12px;color:var(--grn);margin-top:3px;letter-spacing:.06em;text-transform:uppercase}
-.tm .cr{font-size:13px;color:var(--text-2);margin-top:12px;line-height:1.6;text-align:left}
-.tm .ln{font-family:var(--mono);font-size:11px;color:var(--text-4);margin-top:12px}
+/* ================= S10 team ================= */
+.team{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.tm{border:1px solid var(--line);background:var(--panel);border-radius:16px;padding:28px 26px;text-align:center;display:flex;flex-direction:column}
+.tm img{width:80px;height:80px;border-radius:50%;object-fit:cover;border:2px solid var(--line-2);margin:0 auto}
+.tm .nm{font-size:18.5px;font-weight:700;color:#fff;margin-top:14px;letter-spacing:-.015em}
+.tm .rl{font-family:var(--mono);font-size:11px;color:var(--accent);margin-top:4px;letter-spacing:.12em;text-transform:uppercase}
+.tm .cr{font-size:12.5px;color:var(--muted);margin-top:14px;line-height:1.7;text-align:left}
+.tm .cr b{color:var(--soft)}
+.tm .ln{font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:auto;padding-top:14px}
 
-/* ============ S11 roadmap ============ */
-.road{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;margin-top:8px}
-.ph{border:1px solid var(--line);background:var(--inset);border-radius:12px;padding:20px;display:flex;flex-direction:column}
-.ph .pk{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--text-3);text-transform:uppercase}
-.ph .pt2{font-size:16.5px;font-weight:700;color:#fff;margin-top:8px;line-height:1.3}
-.ph ul{margin:12px 0 0;padding-left:16px}
-.ph li{font-size:12.5px;color:var(--text-2);line-height:1.6;margin:4px 0}
-.ph.hl{border-color:var(--grn-line);background:var(--grn-dim)}
-.ph.hl .pk{color:var(--grn)}
-.closing{margin-top:24px;border:1px solid var(--line);background:var(--inset);border-radius:12px;
-  padding:20px 28px;display:flex;align-items:center;gap:18px}
-.closing .big{font-size:18px;color:#fff;font-weight:600}
-.closing .links{margin-left:auto;font-family:var(--mono);font-size:12.5px;color:var(--grn)}
+/* ================= S11 roadmap ================= */
+.road{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px}
+.ph{border:1px solid var(--line);background:var(--panel);border-radius:13px;padding:22px;display:flex;flex-direction:column}
+.ph .pk{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--muted2);text-transform:uppercase}
+.ph .pt2{font-size:16.5px;font-weight:700;color:#fff;margin-top:9px;letter-spacing:-.015em;line-height:1.3}
+.ph ul{margin:14px 0 0;padding-left:15px}
+.ph li{font-size:12px;color:var(--muted);line-height:1.65;margin:5px 0}
+.ph li b{color:var(--soft)}
+.ph.hl{border-color:var(--accent-line);background:var(--accent-soft)}
+.ph.hl .pk{color:var(--accent)}
+.closing{margin-top:22px;border:1px solid var(--line);background:var(--panel);border-radius:13px;
+  padding:20px 30px;display:flex;align-items:center;gap:18px}
+.closing .big{font-size:17.5px;color:#fff;font-weight:600;letter-spacing:-.015em}
+.closing .links{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--accent)}
 </style>
 </head>
 <body>
 
+<!-- shared logo svg (inlined per use) -->
+
 <!-- ================= S1 · COVER ================= -->
 <section class="slide cover">
-  <div class="mark"><span class="sq">4</span><span class="nm">h402</span></div>
-  <h1>에이전트에게 능력을 입히는<br /><span class="grn">Agent Capability Market</span> on GIWA</h1>
-  <div class="chips">
-    <span class="chip"><b>152</b>&nbsp;capabilities</span>
-    <span class="chip"><b>74</b>&nbsp;providers</span>
-    <span class="chip">pay-per-call over&nbsp;<b>x402</b></span>
+  <div class="art"></div><div class="scrim"></div>
+  <div class="in">
+    <div class="brand">
+      <svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle cx="240" cy="240" fill="#fc6f6f" r="240"/><path d="m186.536551 330.698949c0 5.10734-1.757821 9.431103-5.273516 12.971419-3.515694 3.540315-7.809388 5.310447-12.88121 5.310447-4.956554 0-9.192614-1.770132-12.708309-5.310447-3.515695-3.540316-5.273516-7.864079-5.273516-12.971419v-242.017083c0-5.1073405 1.757821-9.4311037 5.273516-12.9714192 3.515695-3.5403156 7.751755-5.3104468 12.708309-5.3104468 4.956553 0 9.192613 1.7701312 12.708308 5.3104468 3.515695 3.5403155 5.331149 7.8640787 5.446418 12.9714192v83.574244c15.330735-11.955819 33.370013-17.93364 54.118376-17.93364 12.103211 0 23.60109 2.379521 34.493981 7.138634 10.89289 4.759113 20.488864 11.230248 28.788209 19.4136 8.299345 8.183353 14.869561 17.81751 19.710846 28.90276s7.261891 22.895798 7.261891 35.431997v85.489488c-.115269 5.10734-1.930723 9.431103-5.446418 12.971419-3.515695 3.540315-7.751756 5.310447-12.708309 5.310447s-9.192614-1.770132-12.708309-5.310447c-3.515694-3.540316-5.273515-7.864079-5.273515-12.971419v-85.489488c0-7.428859-1.440837-14.451346-4.322554-21.067674-2.881717-6.616327-6.771977-12.391018-11.670896-17.324244-4.898919-4.933227-10.63345-8.85073-17.203765-11.752628s-13.543965-4.352826-20.921161-4.352826c-7.492464 0-14.494932 1.421909-21.007612 4.265769-6.512681 2.84386-12.247212 6.761364-17.203765 11.752628-4.956554 4.991265-8.846813 10.794974-11.670896 17.411301-2.824083 6.616328-4.236103 13.638815-4.236103 21.067674zm-17.634044 78.901051c10.104245 0 18.295354-8.248472 18.295354-18.423478s-8.191109-18.423478-18.295354-18.423478-18.295354 8.248472-18.295354 18.423478 8.191109 18.423478 18.295354 18.423478zm144.002139 0c10.104245 0 18.295354-8.248472 18.295354-18.423478s-8.191109-18.423478-18.295354-18.423478-18.295354 8.248472-18.295354 18.423478 8.191109 18.423478 18.295354 18.423478z" fill="#fff" fill-rule="nonzero"/></g></svg>
+      <span class="wm">h402</span>
+    </div>
+    <div class="mid">
+      <h1>에이전트에게 능력을 입히는<span class="em">Agent Capability Market<span class="on">on GIWA</span></span></h1>
+      <div class="badges">
+        <span class="bdg"><b>one</b>&nbsp;mount</span>
+        <span class="bdg"><b>152</b>&nbsp;capabilities</span>
+        <span class="bdg">pay&nbsp;<b>per call</b></span>
+      </div>
+    </div>
+    <div class="bottom">
+      <span class="avs">
+        <img src="assets/avatar-sebastian.jpg" alt="" /><img src="assets/avatar-younghwi.jpg" alt="" /><img src="assets/avatar-woojin.png" alt="" />
+      </span>
+      <span class="who">Team h402 · Hunt Town (est. 2018)</span>
+      <span class="tag">GASOK APPLICATION · 2026</span>
+    </div>
   </div>
-  <div class="meta">
-    <span class="avs">
-      <img src="assets/avatar-sebastian.jpg" alt="" /><img src="assets/avatar-younghwi.jpg" alt="" /><img src="assets/avatar-woojin.png" alt="" />
-    </span>
-    <span>Team h402 · Hunt Town (est. 2018)</span>
-  </div>
-  <div class="tag">GASOK APPLICATION · 2026</div>
 </section>
 
 <!-- ================= S2 · PROBLEM ================= -->
 <section class="slide">
   <div class="eyebrow"><span class="n">01</span>Problem</div>
-  <h2>에이전트는 일할 준비가 됐습니다.<br />결제가 막혀 있을 뿐입니다.</h2>
+  <h2>능력 하나를 붙일 때마다 <span class="em">key와 구독이 하나씩</span> 늘어난다</h2>
   <div class="fill">
     <div class="prob">
-      <div class="pnode">
-        <div class="ic">🤖</div>
-        <div class="t">AI 에이전트</div>
-        <div class="d">능력이 필요한 순간,<br />사람 없이 스스로 결제해야 함</div>
+      <div class="plist">
+        <div class="prow">
+          <span class="cap"><i></i>web/search</span>
+          <span class="needs"><span class="need"><span class="x">+1</span> 가입</span><span class="need"><span class="x">+1</span> API key</span><span class="need"><span class="x">+1</span> 월 구독</span><span class="need"><span class="x">+1</span> 통합</span></span>
+        </div>
+        <div class="prow">
+          <span class="cap"><i></i>ai/image-generate</span>
+          <span class="needs"><span class="need"><span class="x">+1</span> 가입</span><span class="need"><span class="x">+1</span> API key</span><span class="need"><span class="x">+1</span> 월 구독</span><span class="need"><span class="x">+1</span> 통합</span></span>
+        </div>
+        <div class="prow">
+          <span class="cap"><i></i>research/web-task</span>
+          <span class="needs"><span class="need"><span class="x">+1</span> 가입</span><span class="need"><span class="x">+1</span> API key</span><span class="need"><span class="x">+1</span> 월 구독</span><span class="need"><span class="x">+1</span> 통합</span></span>
+        </div>
+        <div class="prow">
+          <span class="cap"><i></i>crypto/token-data</span>
+          <span class="needs"><span class="need"><span class="x">+1</span> 가입</span><span class="need"><span class="x">+1</span> API key</span><span class="need"><span class="x">+1</span> 월 구독</span><span class="need"><span class="x">+1</span> 통합</span></span>
+        </div>
+        <div class="pmore">⋮ &nbsp;능력이 늘수록 같은 비용이 <b>매번 반복</b></div>
       </div>
-      <div class="pwall">
-        <div class="pblock"><span class="x">✕</span><span class="bt">API 키 발급</span><span class="bd2">서비스마다 가입 + 키 관리</span></div>
-        <div class="pblock"><span class="x">✕</span><span class="bt">월 구독 · 최소 과금</span><span class="bd2">한 번 쓰려고 월 $49</span></div>
-        <div class="pblock"><span class="x">✕</span><span class="bt">개별 통합</span><span class="bd2">SDK · 문서 · 인증 제각각</span></div>
-      </div>
-      <div class="apis">
-        <div class="api">web/search</div><div class="api">ai/image</div>
-        <div class="api">crypto/data</div><div class="api">research</div>
-        <div class="api">travel</div><div class="api">…×152</div>
+      <div class="pcost">
+        <div class="eq">
+          <div class="f">능력 <b>N</b>개 =<br />key <b>N</b>개 + 구독 <b>N</b>건 + 통합 <b>N</b>번</div>
+          <div class="s">확장 비용이 능력 수에 정비례. 수백 개 능력을 다루는 에이전트에게는 성립 불가능한 구조.</div>
+        </div>
+        <div class="pfacts">
+          <div class="li">key 발급·결제 수단 등록은 전부 사람 기준 프로세스. 에이전트 단독 수행 불가</div>
+          <div class="li">한 번 쓸 능력에도 월 단위 구독 필요. 사용량 기반 과금 부재</div>
+        </div>
       </div>
     </div>
-    <div class="pmath">능력 1개 = 가입 1회 + 키 1개 + 구독 1건 + 통합 1번 &nbsp;→&nbsp; 능력 N개 = <b>× N의 마찰</b> &nbsp;·&nbsp; 에이전트 경제는 이 구조 위에서 성립하지 않습니다</div>
   </div>
   <div class="foot"><span>h402 · GASOK</span><span class="pg">02 / 11</span></div>
 </section>
@@ -258,34 +319,43 @@ h2{font-size:38px;line-height:1.18;letter-spacing:-.022em;color:#fff;font-weight
 <!-- ================= S3 · SOLUTION ================= -->
 <section class="slide">
   <div class="eyebrow"><span class="n">02</span>Solution</div>
-  <h2>h402를 한 번 장착하면, 모든 능력이 열립니다</h2>
+  <h2>h402 mount 1회. <span class="em">key·구독 없이</span> 전체 능력 즉시 사용</h2>
   <div class="fill">
     <div class="sol">
-      <div class="snode">
+      <div class="node">
         <div class="t">AI 에이전트</div>
-        <div class="d">키 없음 · 구독 없음<br />지갑 하나</div>
+        <div class="d">지갑 하나로 동작<br />key 0개 · 구독 0건</div>
       </div>
-      <div class="sarr"><div class="a">→</div><div class="l">mount once</div></div>
+      <div>
+        <div class="arr"><svg width="40" height="12" viewBox="0 0 40 12"><line x1="0" y1="6" x2="30" y2="6" stroke="#fc6f6f" stroke-width="1.5"/><path d="M30 1.5 38 6 30 10.5z" fill="#fc6f6f"/></svg></div>
+        <div class="arrlab">mount ×1</div>
+      </div>
       <div class="hub">
-        <div class="nm">h402</div>
-        <div class="d">Agent Capability Market<br />최적 provider 자동 라우팅</div>
+        <div class="lg">
+          <svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle cx="240" cy="240" fill="#fc6f6f" r="240"/><path d="m186.536551 330.698949c0 5.10734-1.757821 9.431103-5.273516 12.971419-3.515694 3.540315-7.809388 5.310447-12.88121 5.310447-4.956554 0-9.192614-1.770132-12.708309-5.310447-3.515695-3.540316-5.273516-7.864079-5.273516-12.971419v-242.017083c0-5.1073405 1.757821-9.4311037 5.273516-12.9714192 3.515695-3.5403156 7.751755-5.3104468 12.708309-5.3104468 4.956553 0 9.192613 1.7701312 12.708308 5.3104468 3.515695 3.5403155 5.331149 7.8640787 5.446418 12.9714192v83.574244c15.330735-11.955819 33.370013-17.93364 54.118376-17.93364 12.103211 0 23.60109 2.379521 34.493981 7.138634 10.89289 4.759113 20.488864 11.230248 28.788209 19.4136 8.299345 8.183353 14.869561 17.81751 19.710846 28.90276s7.261891 22.895798 7.261891 35.431997v85.489488c-.115269 5.10734-1.930723 9.431103-5.446418 12.971419-3.515695 3.540315-7.751756 5.310447-12.708309 5.310447s-9.192614-1.770132-12.708309-5.310447c-3.515694-3.540316-5.273515-7.864079-5.273515-12.971419v-85.489488c0-7.428859-1.440837-14.451346-4.322554-21.067674-2.881717-6.616327-6.771977-12.391018-11.670896-17.324244-4.898919-4.933227-10.63345-8.85073-17.203765-11.752628s-13.543965-4.352826-20.921161-4.352826c-7.492464 0-14.494932 1.421909-21.007612 4.265769-6.512681 2.84386-12.247212 6.761364-17.203765 11.752628-4.956554 4.991265-8.846813 10.794974-11.670896 17.411301-2.824083 6.616328-4.236103 13.638815-4.236103 21.067674zm-17.634044 78.901051c10.104245 0 18.295354-8.248472 18.295354-18.423478s-8.191109-18.423478-18.295354-18.423478-18.295354 8.248472-18.295354 18.423478 8.191109 18.423478 18.295354 18.423478zm144.002139 0c10.104245 0 18.295354-8.248472 18.295354-18.423478s-8.191109-18.423478-18.295354-18.423478-18.295354 8.248472-18.295354 18.423478 8.191109 18.423478 18.295354 18.423478z" fill="#fff" fill-rule="nonzero"/></g></svg>
+          <span class="nm">h402</span>
+        </div>
+        <div class="d">Agent Capability Market<br />품질·가격 기준 최적 provider 자동 선택</div>
       </div>
-      <div class="sarr"><div class="a">→</div><div class="l">pay per call</div></div>
-      <div class="caps">
-        <div class="cap"><i></i>web/search</div>
-        <div class="cap"><i></i>ai/image-generate</div>
-        <div class="cap"><i></i>ai/song-generate</div>
-        <div class="cap"><i></i>research/web-task</div>
-        <div class="cap"><i></i>crypto/token-data</div>
-        <div class="cap"><i></i>travel/flight-search</div>
-        <div class="cap"><i></i>data/extract</div>
-        <div class="cap"><i></i>… 152 capabilities</div>
+      <div>
+        <div class="arr"><svg width="40" height="12" viewBox="0 0 40 12"><line x1="0" y1="6" x2="30" y2="6" stroke="#fc6f6f" stroke-width="1.5"/><path d="M30 1.5 38 6 30 10.5z" fill="#fc6f6f"/></svg></div>
+        <div class="arrlab">pay per call</div>
+      </div>
+      <div class="capgrid">
+        <div class="capchip"><i></i>web/search</div>
+        <div class="capchip"><i></i>ai/image-generate</div>
+        <div class="capchip"><i></i>ai/song-generate</div>
+        <div class="capchip"><i></i>research/web-task</div>
+        <div class="capchip"><i></i>crypto/token-data</div>
+        <div class="capchip"><i></i>travel/flight-search</div>
+        <div class="capchip"><i></i>data/extract</div>
+        <div class="capchip more">+ 152 capabilities</div>
       </div>
     </div>
     <div class="solchips">
-      <span class="chip">장착&nbsp;<b>1회</b></span>
-      <span class="chip"><b>152</b>개 능력 즉시 온라인</span>
-      <span class="chip">쓴 만큼만&nbsp;<b>호출당 정산</b></span>
+      <span class="chip">mount&nbsp;<b>1회</b></span>
+      <span class="chip">key&nbsp;<b>0</b>개 · 구독&nbsp;<b>0</b>건</span>
+      <span class="chip">사용한 호출만&nbsp;<b>정산</b></span>
       <span class="chip">전 라우트&nbsp;<b>실결제 검증</b></span>
     </div>
   </div>
@@ -295,42 +365,41 @@ h2{font-size:38px;line-height:1.18;letter-spacing:-.022em;color:#fff;font-weight
 <!-- ================= S4 · HOW IT WORKS ================= -->
 <section class="slide">
   <div class="eyebrow"><span class="n">03</span>How it works</div>
-  <h2>x402: HTTP 402를 에이전트 결제 표준으로</h2>
+  <h2>Call path 하나로 모든 능력 호출. <span class="em">결제는 x402가 아래에서 처리</span></h2>
   <div class="fill">
-    <div class="hand">
-      <div class="step">
-        <div class="no">STEP 1</div>
-        <div class="t">에이전트가 능력 호출</div>
-        <div class="d">평범한 HTTP 요청.<br />키·토큰 없음.</div>
-        <div class="code">POST /routes/web/search</div>
+    <div class="callflow">
+      <div class="node">
+        <div class="t">AI 에이전트</div>
+        <div class="d">필요한 태스크를<br />경로에 담아 호출</div>
       </div>
-      <div class="harr">→</div>
-      <div class="step">
-        <div class="no">STEP 2</div>
-        <div class="t">서버가 서명된 견적 응답</div>
-        <div class="d">금액·수취인·만료가 담긴<br />결제 요구.</div>
-        <div class="code"><span class="a">402</span> Payment Required</div>
+      <div class="arr"><svg width="36" height="12" viewBox="0 0 36 12"><line x1="0" y1="6" x2="26" y2="6" stroke="#8b8b93" stroke-width="1.5"/><path d="M26 1.5 34 6 26 10.5z" fill="#8b8b93"/></svg></div>
+      <div class="callpath">
+        <div class="lb">One call path</div>
+        <div class="p">/routes/auto/<span class="v">{task}</span></div>
+        <div class="d">엔드포인트 하나 = 능력 152개 · task만 바꿔서 전 능력 호출</div>
       </div>
-      <div class="harr">→</div>
-      <div class="step">
-        <div class="no">STEP 3</div>
-        <div class="t">로컬 키로 서명</div>
-        <div class="d">EIP-3009 서명. 키는 기기 밖으로<br />나가지 않음. 논커스터디얼.</div>
-        <div class="code">transferWithAuthorization</div>
-      </div>
-      <div class="harr">→</div>
-      <div class="step last">
-        <div class="no">STEP 4</div>
-        <div class="t">facilitator가 온체인 정산</div>
-        <div class="d">서명 검증 → 체인 정산 → 결과 반환.<br />가스는 facilitator가 대납.</div>
-        <div class="code"><span class="g">✓ 200 OK</span> · settled</div>
+      <div class="arr"><svg width="36" height="12" viewBox="0 0 36 12"><line x1="0" y1="6" x2="26" y2="6" stroke="#8b8b93" stroke-width="1.5"/><path d="M26 1.5 34 6 26 10.5z" fill="#8b8b93"/></svg></div>
+      <div class="node">
+        <div class="t">최적 provider</div>
+        <div class="d">라우트별 후보 경쟁<br />실결제 검증 완료분만</div>
       </div>
     </div>
-    <div class="handnote">
-      <span class="chip">논커스터디얼</span>
-      <span class="chip">API 키 없음</span>
+    <div class="railbar">
+      <div class="rt"><span class="k">x402 rail · 호출마다 자동 수행</span><span class="d">HTTP 402 기반 결제 핸드셰이크. 논커스터디얼, key 불필요</span></div>
+      <div class="railsteps">
+        <div class="rstep"><div class="t"><span class="a">402</span> quote</div><div class="d">금액·수취인·만료 서명 견적</div></div>
+        <div class="arr"><svg width="26" height="10" viewBox="0 0 26 10"><line x1="0" y1="5" x2="17" y2="5" stroke="#6b6b73" stroke-width="1.4"/><path d="M17 1 25 5 17 9z" fill="#6b6b73"/></svg></div>
+        <div class="rstep"><div class="t">wallet sign</div><div class="d">EIP-3009 · key는 기기 밖 미반출</div></div>
+        <div class="arr"><svg width="26" height="10" viewBox="0 0 26 10"><line x1="0" y1="5" x2="17" y2="5" stroke="#6b6b73" stroke-width="1.4"/><path d="M17 1 25 5 17 9z" fill="#6b6b73"/></svg></div>
+        <div class="rstep"><div class="t">facilitator settle</div><div class="d">서명 검증 → 온체인 정산 · 가스 대납</div></div>
+        <div class="arr"><svg width="26" height="10" viewBox="0 0 26 10"><line x1="0" y1="5" x2="17" y2="5" stroke="#6b6b73" stroke-width="1.4"/><path d="M17 1 25 5 17 9z" fill="#6b6b73"/></svg></div>
+        <div class="rstep ok"><div class="t">✓ 200 OK</div><div class="d">결과 반환 · 정산 완료</div></div>
+      </div>
+    </div>
+    <div class="hownote">
       <span class="chip">이중과금 방지 (idempotency)</span>
-      <span class="chip">무료 라우트는 즉시 응답</span>
+      <span class="chip">무료 라우트 즉시 응답</span>
+      <span class="chip">수수료는 견적에 투명 표시</span>
     </div>
   </div>
   <div class="foot"><span>h402 · GASOK</span><span class="pg">04 / 11</span></div>
@@ -339,50 +408,51 @@ h2{font-size:38px;line-height:1.18;letter-spacing:-.022em;color:#fff;font-weight
 <!-- ================= S5 · WHY GIWA ================= -->
 <section class="slide">
   <div class="eyebrow"><span class="n">04</span>Why GIWA</div>
-  <h2>에이전트 마이크로페이먼트에 맞는 체인,<br />아직 비어 있는 레일</h2>
+  <h2>에이전트 결제에 맞는 조건, <span class="em">아직 비어 있는 레일</span></h2>
   <div class="fill">
     <div class="why">
       <div class="fits">
-        <div class="fit"><span class="k">1s 블록</span><div><div class="t">에이전트의 호출 리듬에 맞는 정산 속도</div><div class="d">호출 → 정산 → 결과가 사람의 개입 없이 초 단위로 순환</div></div></div>
-        <div class="fit"><span class="k">낮은 수수료</span><div><div class="t">$0.001 단위 마이크로페이먼트가 성립</div><div class="d">호출당 결제는 가스가 싸야만 경제성이 나옴</div></div></div>
-        <div class="fit"><span class="k">업비트 생태계</span><div><div class="t">한국 최대 온램프와 유저 기반</div><div class="d">GIWA Wallet 멀티체인 · 에이전트 결제 잔고의 자연스러운 홈</div></div></div>
+        <div class="fit"><span class="k">1s 블록</span><div><div class="t">호출 → 정산 → 응답 루프가 초 단위로 완결</div><div class="d">에이전트의 호출 리듬에 맞는 유일한 정산 속도 조건</div></div></div>
+        <div class="fit"><span class="k">낮은 수수료</span><div><div class="t">$0.001 단위 마이크로페이먼트의 경제성 성립</div><div class="d">호출당 결제는 가스가 가격보다 싸야 작동</div></div></div>
+        <div class="fit"><span class="k">업비트 생태계</span><div><div class="t">국내 최대 온램프 + GIWA Wallet 유저 기반</div><div class="d">에이전트 결제 잔고가 자리잡을 자연스러운 진입점</div></div></div>
       </div>
       <div class="rails">
-        <div class="rt">x402 facilitator가 지원하는 체인</div>
-        <div class="rail"><span class="nm2">Base</span><span class="ok">✓ 지원</span></div>
-        <div class="rail"><span class="nm2">Polygon</span><span class="ok">✓ 지원</span></div>
-        <div class="rail"><span class="nm2">Arbitrum</span><span class="ok">✓ 지원</span></div>
-        <div class="rail"><span class="nm2">Solana</span><span class="ok">✓ 지원</span></div>
-        <div class="rail giwa"><span class="nm2">GIWA</span><span class="ok">비어 있음 → 저희가 채웁니다</span></div>
-        <div class="wedge">레일이 없으면 Agentic Commerce도 없습니다. <b>GIWA의 x402 facilitator를 직접 구축·운영하는 것</b>이 저희의 웻지입니다.</div>
+        <div class="rt">x402 facilitator 지원 체인 현황</div>
+        <div class="rs">facilitator = 서명 검증·온체인 정산을 대행하는 x402 핵심 인프라</div>
+        <div class="rail"><span class="nm2">Base</span><span class="ok">지원</span></div>
+        <div class="rail"><span class="nm2">Polygon</span><span class="ok">지원</span></div>
+        <div class="rail"><span class="nm2">Arbitrum</span><span class="ok">지원</span></div>
+        <div class="rail"><span class="nm2">Solana</span><span class="ok">지원</span></div>
+        <div class="rail giwa"><span class="nm2">GIWA</span><span class="ok">부재 → 직접 구축</span></div>
+        <div class="wedge">레일이 없으면 Agentic Commerce도 없다. <b>GIWA x402 facilitator를 직접 구축·운영</b>해 이 빈자리를 선점한다.</div>
       </div>
     </div>
   </div>
   <div class="foot"><span>h402 · GASOK</span><span class="pg">05 / 11</span></div>
 </section>
 
-<!-- ================= S6 · WHAT WE BUILD ================= -->
+<!-- ================= S6 · TWO RAILS ================= -->
 <section class="slide">
   <div class="eyebrow"><span class="n">05</span>What we build with GASOK</div>
-  <h2>딜리버러블 2개: 시장을 올리고, 레일을 놓습니다</h2>
+  <h2>GIWA 체인에 장착할 <span class="em">두 개의 레일</span></h2>
   <div class="fill">
     <div class="dels">
       <div class="del">
-        <div class="no">DELIVERABLE 1</div>
+        <div class="no">Rail 1</div>
         <div class="t">h402 GIWA 정산 지원</div>
-        <div class="d">152개 capability 전부가 GIWA 위 스테이블코인으로 호출당 결제됩니다.
-        완성된 시장이 통째로 올라오므로 <b>메인넷 첫날부터 실사용 트랜잭션</b>이 발생합니다.</div>
+        <div class="d">152개 능력 전체가 GIWA 스테이블코인으로 호출당 결제.
+        완성된 시장이 그대로 올라가므로 <b>메인넷 첫날부터 실사용 트랜잭션 발생</b>.</div>
         <div class="mods">
           <div class="mod"><div class="mt2">quote</div><div class="md">GIWA 견적 발행</div></div>
           <div class="mod"><div class="mt2">route</div><div class="md">최적 provider 선택</div></div>
-          <div class="mod"><div class="mt2">settle</div><div class="md">GIWA 정산 연결</div></div>
+          <div class="mod"><div class="mt2">settle</div><div class="md">GIWA 정산 연동</div></div>
         </div>
       </div>
       <div class="del">
-        <div class="no">DELIVERABLE 2</div>
+        <div class="no">Rail 2</div>
         <div class="t">GIWA x402 facilitator 구축·운영</div>
-        <div class="d">서명 검증부터 온체인 정산, 가스 대납까지. h402 전용이 아니라
-        <b>GIWA 위 모든 판매자가 쓰는 공용 결제 인프라</b>로 개방합니다.</div>
+        <div class="d">서명 검증, 온체인 정산, 가스 대납까지 결제 인프라 전층.
+        h402 전용이 아닌 <b>GIWA 전체 판매자 대상 공용 인프라</b>로 개방 운영.</div>
         <div class="mods">
           <div class="mod"><div class="mt2">verify</div><div class="md">EIP-3009 서명 검증</div></div>
           <div class="mod"><div class="mt2">settle</div><div class="md">온체인 정산 실행</div></div>
@@ -392,7 +462,7 @@ h2{font-size:38px;line-height:1.18;letter-spacing:-.022em;color:#fff;font-weight
     </div>
     <div class="wallet">
       <span class="wk">+ GIWA Wallet</span>
-      <span class="wd">에이전트 결제 잔고·사용 내역을 GIWA Wallet에서 관리하는 인앱 통합 시나리오까지 설계에 포함합니다</span>
+      <span class="wd">에이전트 결제 잔고·사용 내역의 GIWA Wallet 인앱 관리 시나리오까지 설계 범위에 포함</span>
     </div>
   </div>
   <div class="foot"><span>h402 · GASOK</span><span class="pg">06 / 11</span></div>
@@ -401,14 +471,14 @@ h2{font-size:38px;line-height:1.18;letter-spacing:-.022em;color:#fff;font-weight
 <!-- ================= S7 · TRACTION ================= -->
 <section class="slide">
   <div class="eyebrow"><span class="n">06</span>Where we are</div>
-  <h2>아이디어가 아니라, 런칭 직전의 제품입니다</h2>
+  <h2>최종 테스트 단계, <span class="em">정식 런칭 D-3주</span></h2>
   <div class="fill">
     <div class="trac">
       <div class="stats">
-        <div class="stat"><div class="v">152</div><div class="l">capabilities · 장착 한 번에 전부</div></div>
+        <div class="stat"><div class="v">152</div><div class="l">capabilities · mount 1회에 전부 사용 가능</div></div>
         <div class="stat"><div class="v">74</div><div class="l">providers · 품질·가격 실시간 경쟁</div></div>
-        <div class="stat"><div class="v">100<span class="u">%</span></div><div class="l">전 라우트 실결제 검증</div></div>
-        <div class="stat"><div class="v">D-3<span class="u">주</span></div><div class="l">정식 런칭 · 현재 최종 테스트</div></div>
+        <div class="stat"><div class="v">100<span class="u">%</span></div><div class="l">전 라우트 실결제 검증 완료</div></div>
+        <div class="stat"><div class="v">D-3<span class="u">주</span></div><div class="l">정식 런칭 · Base 정산 가동 중</div></div>
       </div>
       <div class="shotwrap">
         <img src="assets/timeline/h402.png" alt="h402 라이브 카탈로그" />
@@ -423,24 +493,22 @@ h2{font-size:38px;line-height:1.18;letter-spacing:-.022em;color:#fff;font-weight
 <!-- ================= S8 · REVENUE ================= -->
 <section class="slide">
   <div class="eyebrow"><span class="n">07</span>Revenue model</div>
-  <h2>호출마다 수익이 쌓이는 볼륨 비즈니스</h2>
+  <h2>수익 = <span class="em">호출 수 × 마진</span></h2>
   <div class="fill">
-    <div class="rev">
-      <div class="revflow">
-        <div class="rnode"><div class="t">에이전트</div><div class="d">호출당 지불<br />$0.0042</div></div>
-        <div class="rarr">→</div>
-        <div class="rmid">
-          <div class="f">호출 가격 = provider 가격 + <span class="g">h402 수수료 (bps 마크업)</span></div>
-          <div class="d">견적에 투명하게 표시 · 구독/최소 과금 없음 · 쓴 만큼만</div>
-        </div>
-        <div class="rarr">→</div>
-        <div class="rnode"><div class="t">Provider</div><div class="d">provider 몫 정산<br />$0.0040</div></div>
+    <div class="revflow">
+      <div class="rnode"><div class="t">에이전트</div><div class="d">호출당 지불<br /><b>$0.0042</b></div></div>
+      <div class="arr"><svg width="40" height="12" viewBox="0 0 40 12"><line x1="0" y1="6" x2="30" y2="6" stroke="#8b8b93" stroke-width="1.5"/><path d="M30 1.5 38 6 30 10.5z" fill="#8b8b93"/></svg></div>
+      <div class="rmid">
+        <div class="f">호출 가격 = provider 가격 + <span class="g">h402 수수료 (bps)</span></div>
+        <div class="d">견적에 투명 표시 · 구독·최소 과금 없음 · 사용량 기반</div>
       </div>
-      <div class="revpts">
-        <div class="rpt"><div class="t">수익 = 호출 수 × 마진</div><div class="d">고정비 없는 순수 트랜잭션 비즈니스. 능력·provider가 늘수록 호출이 늘어납니다.</div></div>
-        <div class="rpt"><div class="t">공급이 스스로 늘어나는 구조</div><div class="d">provider는 리스팅만 하면 새 판매 채널 확보. 더 나은 provider가 트래픽을 가져가는 경쟁 구조.</div></div>
-        <div class="rpt hl"><div class="t">GIWA KPI와 인센티브 정렬</div><div class="d">저희 수익이 곧 GIWA 트랜잭션 볼륨입니다. GASOK 그로스 단계의 KPI와 같은 방향을 봅니다.</div></div>
-      </div>
+      <div class="arr"><svg width="40" height="12" viewBox="0 0 40 12"><line x1="0" y1="6" x2="30" y2="6" stroke="#8b8b93" stroke-width="1.5"/><path d="M30 1.5 38 6 30 10.5z" fill="#8b8b93"/></svg></div>
+      <div class="rnode"><div class="t">Provider</div><div class="d">provider 몫 정산<br /><b>$0.0040</b></div></div>
+    </div>
+    <div class="revpts">
+      <div class="rpt"><div class="t">고정비 없는 트랜잭션 비즈니스</div><div class="d">능력·provider 증가 → 호출 증가 → 수익 증가의 단일 구조.</div></div>
+      <div class="rpt"><div class="t">공급이 스스로 늘어나는 시장</div><div class="d">provider는 리스팅만으로 판매 채널 확보. 품질 우위가 트래픽을 가져가는 경쟁 구조.</div></div>
+      <div class="rpt hl"><div class="t">GIWA KPI와 인센티브 정렬</div><div class="d">h402의 수익 = GIWA 트랜잭션 볼륨. GASOK 그로스 단계 KPI와 같은 방향.</div></div>
     </div>
   </div>
   <div class="foot"><span>h402 · GASOK</span><span class="pg">08 / 11</span></div>
@@ -449,13 +517,13 @@ h2{font-size:38px;line-height:1.18;letter-spacing:-.022em;color:#fff;font-weight
 <!-- ================= S9 · TRACK RECORD ================= -->
 <section class="slide">
   <div class="eyebrow"><span class="n">08</span>Track record</div>
-  <h2>2018년부터 15개 이상의 제품, 성과로 증명한 팀</h2>
+  <h2>2018년부터 15개 제품, <span class="em">결과로 검증된 팀</span></h2>
   <div class="fill">
     <div class="proofs">
-      <div class="proof"><span class="ic">🏆</span><div><div class="t">업비트 해커톤 1위 (2019)</div><div class="d">시간 토큰화 컨셉 <b>InTime</b>으로 수상. 업비트 생태계에서 이미 검증된 팀입니다.</div></div></div>
-      <div class="proof"><span class="ic">🌍</span><div><div class="t">Steemhunt · 세계 7위 DApp</div><div class="d">최고 <b>월 41만 사용자</b>. 글로벌 스케일 운영을 2018년부터 경험했습니다.</div></div></div>
-      <div class="proof"><span class="ic">📈</span><div><div class="t">Mint Club · 글로벌 인지도의 라이브 프로토콜</div><div class="d"><b>Base 앱·Farcaster 앱 전체 주간 1위를 다수 차지</b>. Base 공동창업자 <b>Jesse Pollak</b>도 여러 차례 Mint Club에서 NFT 등 자산을 발행했습니다.</div></div></div>
-      <div class="proof"><span class="ic">🧱</span><div><div class="t">생태계를 길러본 경험</div><div class="d">Hunt Tip으로 <b>306M+ 팁 · 빌더 921명</b> 지원. 아카이브 15개 중 8개와 다수 파트너 제품이 저희 프로토콜 위에서 탄생.</div></div></div>
+      <div class="proof"><div class="k">Upbit</div><div class="t">업비트 해커톤 1위 (2019)</div><div class="d">시간 토큰화 컨셉 <b>InTime</b>으로 수상. 업비트 생태계에서 이미 검증된 이력.</div></div>
+      <div class="proof"><div class="k">Global scale</div><div class="t">Steemhunt · 세계 7위 DApp</div><div class="d">최고 <b>월 41만 사용자</b>. 2018년부터 글로벌 스케일 서비스 운영.</div></div>
+      <div class="proof"><div class="k">Live protocol</div><div class="t">Mint Club · Base 앱·Farcaster 앱 주간 1위 다수</div><div class="d">글로벌 인지도의 라이브 프로토콜. Base 공동창업자 <b>Jesse Pollak</b>도 여러 차례 Mint Club에서 NFT 등 자산 발행.</div></div>
+      <div class="proof"><div class="k">Ecosystem</div><div class="t">생태계 운영 경험</div><div class="d">Hunt Tip <b>306M+ 팁 · 빌더 921명</b> 지원. 아카이브 15개 중 8개 + 다수 파트너 제품이 자체 프로토콜 위에서 출시.</div></div>
     </div>
     <div class="strip">
       <img src="assets/timeline/steemhunt.png" alt="" /><img src="assets/timeline/nomadtask.png" alt="" />
@@ -471,31 +539,31 @@ h2{font-size:38px;line-height:1.18;letter-spacing:-.022em;color:#fff;font-weight
 <!-- ================= S10 · TEAM ================= -->
 <section class="slide">
   <div class="eyebrow"><span class="n">09</span>Team</div>
-  <h2>빌드 · 디자인 · 그로스, 3인 완결형 팀</h2>
+  <h2>빌드 · 디자인 · 그로스, <span class="em">3인 완결형 팀</span></h2>
   <div class="fill">
     <div class="team">
       <div class="tm">
         <img src="assets/avatar-sebastian.jpg" alt="Sebastian Kim" />
         <div class="nm">Sebastian Kim</div>
         <div class="rl">Full-Stack Engineer</div>
-        <div class="cr">Hunt Town·Mint Club 엔지니어링 9년 리드. 멀티체인 프로토콜 저자.
-        h402의 x402/EIP-3009 결제 플로우 전체 구현. <b>GIWA facilitator를 단독 구축 가능.</b></div>
+        <div class="cr">Hunt Town·Mint Club 엔지니어링 9년 리드. 멀티체인 프로토콜 설계·구현.
+        h402의 x402/EIP-3009 결제 플로우 전체 개발. <b>GIWA facilitator 단독 구축 가능.</b></div>
         <div class="ln">github/sebayaki · sebayaki.com</div>
       </div>
       <div class="tm">
         <img src="assets/avatar-younghwi.jpg" alt="YoungHwi Cho" />
         <div class="nm">YoungHwi Cho</div>
         <div class="rl">Designer</div>
-        <div class="cr">디자이너 출신 AI 빌더. QuadWork·Agent Gather·Session Glue 등 에이전트 협업 툴 파운더.
-        <b>h402의 핵심 고객인 에이전트를 위해 매일 만드는 사람.</b></div>
+        <div class="cr">디자이너 출신 AI 빌더. QuadWork·Agent Gather·Session Glue 등 에이전트 협업
+        오픈소스 툴 파운더. <b>h402의 고객인 에이전트를 위한 도구를 매일 제작.</b></div>
         <div class="ln">github/realproject7</div>
       </div>
       <div class="tm">
-        <img src="assets/avatar-woojin.png" alt="Woojin Chang" />
-        <div class="nm">Woojin Chang</div>
+        <img src="assets/avatar-woojin.png" alt="Woojin Jang" />
+        <div class="nm">Woojin Jang</div>
         <div class="rl">Marketer</div>
         <div class="cr">前 Binance 마케팅 매니저. OpenAds·Breaking News 파운더.
-        <b>거래소급 그로스로 KPI 단계(트랜잭션·유저·생태계)를 견인.</b></div>
+        <b>거래소급 그로스 운영으로 KPI 단계(트랜잭션·유저·생태계) 견인.</b></div>
         <div class="ln">github/openadsseries</div>
       </div>
     </div>
@@ -506,14 +574,14 @@ h2{font-size:38px;line-height:1.18;letter-spacing:-.022em;color:#fff;font-weight
 <!-- ================= S11 · ROADMAP ================= -->
 <section class="slide">
   <div class="eyebrow"><span class="n">10</span>Roadmap · GASOK 페이즈 정렬</div>
-  <h2>데모데이에는 GIWA 위에서 실제로 돌아갑니다</h2>
+  <h2>KBW 데모데이: <span class="em">GIWA 정산 라이브 시연</span></h2>
   <div class="fill">
     <div class="road">
       <div class="ph">
-        <div class="pk">지금</div>
+        <div class="pk">현재</div>
         <div class="pt2">제품 완성 단계</div>
         <ul>
-          <li>152 capabilities 라이브</li>
+          <li><b>152 capabilities</b> 라이브</li>
           <li>정식 런칭 2~3주 내</li>
           <li>Base 정산 가동 중</li>
         </ul>
@@ -522,7 +590,7 @@ h2{font-size:38px;line-height:1.18;letter-spacing:-.022em;color:#fff;font-weight
         <div class="pk">Phase 2 · MVP</div>
         <div class="pt2">GIWA 테스트넷</div>
         <ul>
-          <li>facilitator 알파 (verify/settle/sponsor)</li>
+          <li>facilitator 알파 (verify·settle·sponsor)</li>
           <li>GIWA 테스트넷 정산 연동</li>
           <li>실호출 e2e 데모</li>
         </ul>
@@ -537,17 +605,17 @@ h2{font-size:38px;line-height:1.18;letter-spacing:-.022em;color:#fff;font-weight
         </ul>
       </div>
       <div class="ph hl">
-        <div class="pk">데모데이 · KBW 10월</div>
+        <div class="pk">데모데이 · 10월 KBW</div>
         <div class="pt2">라이브 Agentic Commerce</div>
         <ul>
-          <li>에이전트가 무대에서 실제 결제</li>
+          <li>무대에서 에이전트가 실제 결제</li>
           <li>GIWA 정산 트랜잭션 라이브</li>
-          <li>이후: 볼륨 KPI 그로스</li>
+          <li>이후 볼륨 KPI 그로스</li>
         </ul>
       </div>
     </div>
     <div class="closing">
-      <span class="big">GIWA에 레일을 놓고, 완성된 능력 시장을 통째로 올립니다.</span>
+      <span class="big">GIWA에 레일을 놓고, 완성된 능력 시장을 통째로 올린다.</span>
       <span class="links">h402-giwa.vercel.app · h402-test.hunt.town</span>
     </div>
   </div>
