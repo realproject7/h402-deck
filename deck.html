@@ -48,13 +48,22 @@
 /* 12 team */
 .team-layout{display:grid;grid-template-columns:1.04fr .96fr;gap:30px;align-items:center}.team-copy h3{font-size:30px;line-height:1.1;letter-spacing:-.045em}.team-copy h3 em{font:italic 31px var(--serif);color:var(--arc);letter-spacing:0}.team-copy p{margin-top:16px;color:var(--soft);font-size:15px;line-height:1.55;max-width:550px}.people{display:flex;gap:10px;margin-top:24px}.person{flex:1;padding:14px}.person img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:1px solid #3b4658;float:left;margin-right:10px}.person b{font-size:13px;display:block;padding-top:3px}.person span{display:block;color:var(--muted);font-size:11px;line-height:1.35;margin-top:3px}.ask{padding:24px}.ask .label{font:11px var(--mono);color:var(--arc);letter-spacing:.14em;text-transform:uppercase}.ask h4{font-size:23px;line-height:1.15;letter-spacing:-.035em;margin-top:10px}.ask ul{list-style:none;display:flex;flex-direction:column;gap:11px;margin-top:18px}.ask li{font-size:13px;color:var(--soft);line-height:1.4;padding-left:17px;position:relative}.ask li::before{content:'→';position:absolute;left:0;color:var(--arc)}.links{margin-top:21px;border-top:1px solid var(--line);padding-top:13px;font:11px/1.65 var(--mono);color:var(--muted)}.links a{color:#a9c5ff;text-decoration:none}
 </style>
+<style>
+  /* Keep product evidence crisp and clickable in both HTML and PDF. */
+  .cover .live-bg{background:linear-gradient(90deg,#07080b 0%,rgba(7,8,11,.94) 39%,rgba(7,8,11,.10) 76%,rgba(7,8,11,.04) 100%),url('assets/deck/live-20260729/h402-home.png') 83% 47%/auto 100% no-repeat}
+  .cover-live-link{position:absolute;z-index:1;right:0;top:0;width:45%;height:100%}
+  .cover-inner{z-index:2}
+  .brand .hunt-logo{width:28px;height:28px;display:block;flex:none}
+  .shot{display:block}
+  .shot img{filter:brightness(1.48) contrast(1.10) saturate(1.06)}
+</style>
 </head>
 <body>
 
 <section class="slide cover">
-  <div class="live-bg"></div><div class="wash"></div>
+  <div class="live-bg"></div><a class="cover-live-link" href="https://h402-test.hunt.town/" aria-label="Visit live h402"></a><div class="wash"></div>
   <div class="cover-inner">
-    <div class="brand"><span class="orb">h</span>h402 <small>VERIFIED AGENT COMMERCE</small></div>
+    <div class="brand"><svg class="hunt-logo" viewBox="0 0 34 34" role="img" aria-label="Hunt Town" xmlns="http://www.w3.org/2000/svg"><circle cx="17" cy="17" r="17" fill="#fc6f6f"/><path fill="#fff" fill-rule="evenodd" d="M13.766 6.529v5.188A6.37 6.37 0 0 1 17 10.84c3.428 0 6.224 2.692 6.37 6.067.002 0 .005.003.005.006v6.145a1.57 1.57 0 0 1-3.141 0v-6.14a.012.012 0 0 0-.012-.01A3.228 3.228 0 0 0 17 13.966a3.228 3.228 0 0 0-3.216 2.881l-.005.054a.006.006 0 0 1-.007.006.006.006 0 0 0-.006.006v6.145a1.57 1.57 0 0 1-3.141 0V6.529a1.57 1.57 0 0 1 3.141 0Zm-1.57 22.513c.867 0 1.57-.7 1.57-1.563s-.703-1.563-1.57-1.563c-.868 0-1.571.7-1.571 1.563s.703 1.563 1.57 1.563Zm9.608 0c.868 0 1.571-.7 1.571-1.563s-.703-1.563-1.57-1.563c-.868 0-1.571.7-1.571 1.563s.703 1.563 1.57 1.563Z" clip-rule="evenodd"/></svg>h402 <small>VERIFIED AGENT COMMERCE</small></div>
     <div class="cover-main">
       <div class="chip"><i></i>BUILD ON ARC · AGENTIC ECONOMY</div>
       <h1>Make every agent choice<br />settle with <em>proof.</em></h1>
@@ -78,7 +87,7 @@
       </div>
       <p class="proof-note">The current product discovers paid APIs, exposes native provider contracts, and keeps a recommended default visible to the agent.</p>
     </div>
-    <div><div class="shot proof-shot"><img src="assets/deck/live-20260729/h402-home.png" alt="Live h402 homepage" /><span class="label">Current h402 homepage</span></div><div class="source">Source: h402-test.hunt.town · captured 29 Jul 2026</div></div>
+    <div><a class="shot proof-shot" href="https://h402-test.hunt.town/"><img src="assets/deck/live-20260729/h402-home.png" alt="Live h402 homepage" /><span class="label">Current h402 homepage</span></a><div class="source">Source: h402-test.hunt.town · captured 29 Jul 2026</div></div>
   </div>
   <div class="foot"><span class="mark">◈</span> h402 · Verified Agent Commerce <span class="pg">02 / 12</span></div>
 </section>
@@ -184,7 +193,7 @@
   <div class="eyebrow"><span>08</span>Live product evidence</div>
   <h2 class="title">The marketplace already exposes <em>comparable provider choices.</em></h2>
   <div class="content">
-    <div class="dual-shots"><div class="shot"><img src="assets/deck/live-20260729/h402-catalog.png" alt="h402 capability catalog" /><span class="label">Live catalog</span></div><div class="shot"><img src="assets/deck/live-20260729/h402-web-search.png" alt="h402 web search provider contract" /><span class="label">Provider contract</span></div></div>
+    <div class="dual-shots"><a class="shot" href="https://h402-test.hunt.town/catalog"><img src="assets/deck/live-20260729/h402-catalog.png" alt="h402 capability catalog" /><span class="label">Live catalog</span></a><a class="shot" href="https://h402-test.hunt.town/catalog/web/search"><img src="assets/deck/live-20260729/h402-web-search.png" alt="h402 web search provider contract" /><span class="label">Provider contract</span></a></div>
     <div class="product-caption"><div><b>Catalog surface</b><br />Capabilities, provider choices, recommendation signals, and paid-test status are already visible in the current product.</div><div><b>Contract surface</b><br />A selected provider exposes a quote, performance signals, payment context, and a native request contract.</div></div>
   </div>
   <div class="foot"><span class="mark">◈</span> h402 · Verified Agent Commerce <span class="pg">09 / 12</span></div>
@@ -194,7 +203,7 @@
   <div class="eyebrow"><span>09</span>Live agent entry points</div>
   <h2 class="title">One mount today. <em>Verifiable autonomous spend</em> on Arc next.</h2>
   <div class="content">
-    <div class="wide-shot shot"><img src="assets/deck/live-20260729/h402-docs.png" alt="h402 agent docs" /><span class="label">Current h402 docs</span></div>
+    <a class="wide-shot shot" href="https://h402-test.hunt.town/docs"><img src="assets/deck/live-20260729/h402-docs.png" alt="h402 agent docs" /><span class="label">Current h402 docs</span></a>
     <div class="split-bottom"><div class="panel"><b>Current workflow</b><br />An agent reads h402's hosted skill, creates a wallet, discovers a capability, and pays per call without per-provider keys or plans.</div><div class="panel"><b>Arc MVP extension</b><br />Before execution, h402 produces a policy-bound selection receipt; after execution, it anchors the outcome reference and exposes feedback.</div></div>
   </div>
   <div class="foot"><span class="mark">◈</span> h402 · Verified Agent Commerce <span class="pg">10 / 12</span></div>
