@@ -1,628 +1,228 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>h402 · Build on Arc</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>h402 · Verified Agent Commerce on Arc</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
 <style>
 @page{size:1280px 720px;margin:0}
-:root{
-  /* h402 terminal-luxe tokens */
-  --bg:#0a0a0b; --surface:#0e0e10; --panel:#131316; --panel2:#17171a;
-  --line:#232327; --line-2:#2e2e33;
-  --fg:#f7f7f8; --soft:#d7d7db; --muted:#8b8b93; --muted2:#6b6b73; --faint:#4e4e56;
-  --accent:#fc6f6f; --accent-soft:rgba(252,111,111,.09); --accent-line:rgba(252,111,111,.32);
-  --ember:#ffa26b; --success:#33d17a; --success-soft:rgba(51,209,122,.1);
-  --sans:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
-  --mono:'JetBrains Mono',ui-monospace,'SF Mono',monospace;
-  --serif:'Instrument Serif',Georgia,serif;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{background:#060607}
-body{font-family:var(--sans);color:var(--fg);-webkit-font-smoothing:antialiased;letter-spacing:-.011em}
-.slide{position:relative;width:1280px;height:720px;background:var(--bg);overflow:hidden;
-  page-break-after:always;break-after:page;margin:0 auto;padding:58px 80px 72px;display:flex;flex-direction:column}
-@media screen{.slide{margin:24px auto;border:1px solid var(--line);border-radius:10px}}
-b{color:#fff;font-weight:600}
-.mono{font-family:var(--mono);letter-spacing:0}
-.acc{color:var(--accent)}
+:root{--bg:#08090c;--panel:#101217;--panel-2:#151820;--line:#282d36;--ink:#f4f7fb;--soft:#c9d0da;--muted:#8993a2;--arc:#77a6ff;--arc-soft:rgba(119,166,255,.13);--mint:#6ee7b7;--coral:#fb8b7a;--sans:'DM Sans',Arial,sans-serif;--mono:'DM Mono',monospace;--serif:'Instrument Serif',Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0} html,body{background:#050609;color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}.slide{width:1280px;height:720px;position:relative;overflow:hidden;background:var(--bg);padding:54px 76px 64px;display:flex;flex-direction:column;page-break-after:always;break-after:page}.slide::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 88% 5%,rgba(119,166,255,.12),transparent 28%),linear-gradient(125deg,transparent 45%,rgba(255,255,255,.018));pointer-events:none}@media screen{.slide{margin:24px auto;border:1px solid var(--line);border-radius:12px}}b{font-weight:600;color:var(--ink)}.eyebrow{font:500 12px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;position:relative}.eyebrow span{color:var(--arc);margin-right:11px}.title{font-size:43px;line-height:1.08;letter-spacing:-.045em;max-width:940px;position:relative}.title em{font-family:var(--serif);font-weight:400;color:var(--arc);letter-spacing:0}.sub{font-size:16px;line-height:1.55;color:var(--soft);max-width:650px;margin-top:14px;position:relative}.foot{position:absolute;bottom:26px;left:76px;right:76px;display:flex;align-items:center;font:11px var(--mono);letter-spacing:.08em;color:#596373;text-transform:uppercase}.foot .mark{color:var(--arc);font-size:14px;margin-right:8px}.foot .pg{margin-left:auto}.content{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;position:relative}.chip{display:inline-flex;align-items:center;width:max-content;border:1px solid var(--line);border-radius:999px;padding:7px 12px;font:11px var(--mono);letter-spacing:.04em;color:var(--soft);background:#11141a}.chip i{width:6px;height:6px;border-radius:50%;background:var(--mint);margin-right:7px}.panel{border:1px solid var(--line);background:linear-gradient(145deg,rgba(20,23,30,.96),rgba(13,15,20,.98));border-radius:14px}.accent-panel{border:1px solid rgba(119,166,255,.52);background:linear-gradient(135deg,rgba(119,166,255,.16),rgba(119,166,255,.045));border-radius:14px}.grid-dot{background-image:linear-gradient(rgba(119,166,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(119,166,255,.07) 1px,transparent 1px);background-size:38px 38px}
 
-/* per-slide chrome */
-.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--muted2);text-transform:uppercase;margin-bottom:16px}
-.eyebrow .n{color:var(--accent);margin-right:12px;font-weight:600}
-h2{font-size:38px;line-height:1.2;letter-spacing:-.024em;font-weight:700}
-h2 .em{color:var(--accent)}
-.foot{position:absolute;left:80px;right:80px;bottom:28px;display:flex;align-items:center;gap:10px;
-  font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--faint)}
-.foot .fdot{width:14px;height:14px;border-radius:50%;background:var(--accent);display:grid;place-items:center}
-.foot .fdot svg{width:9px;height:9px}
-.foot .pg{margin-left:auto}
-.fill{flex:1;display:flex;flex-direction:column;justify-content:center}
+/* 01 cover */
+.cover{padding:0}.cover .live-bg{position:absolute;inset:0;background:linear-gradient(90deg,#07080b 0%,rgba(7,8,11,.94) 39%,rgba(7,8,11,.26) 76%,#07080b 100%),url('assets/deck/live-20260729/h402-home.png') 83% 47%/auto 100% no-repeat}.cover .wash{position:absolute;inset:0;background:radial-gradient(circle at 50% 31%,rgba(119,166,255,.16),transparent 35%)}.cover-inner{position:relative;height:100%;padding:52px 76px;display:flex;flex-direction:column}.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:22px;letter-spacing:-.04em}.brand .orb{width:27px;height:27px;border-radius:9px;background:linear-gradient(135deg,#77a6ff,#b4ccff);color:#07101d;display:grid;place-items:center;font:700 14px var(--mono)}.brand small{font:11px var(--mono);letter-spacing:.08em;color:var(--muted);font-weight:400}.cover-main{margin:auto 0;max-width:735px}.cover h1{font-size:69px;line-height:.98;letter-spacing:-.065em}.cover h1 em{display:block;margin-top:10px;font:italic 58px var(--serif);letter-spacing:0;color:#9fc0ff}.cover p{margin-top:22px;max-width:595px;color:var(--soft);font-size:19px;line-height:1.45}.cover-tags{display:flex;gap:9px;margin-top:28px}.cover-tags span{border:1px solid rgba(119,166,255,.5);background:rgba(119,166,255,.1);border-radius:999px;padding:8px 13px;color:#dce8ff;font:11px var(--mono)}.cover-bottom{display:flex;align-items:center;font:12px var(--mono);color:var(--muted)}.cover-bottom b{color:#dce8ff}.cover-bottom .right{margin-left:auto;color:var(--arc);letter-spacing:.12em;text-transform:uppercase}
 
-/* primitives */
-.panel{border:1px solid var(--line);background:var(--panel);border-radius:14px}
-.apanel{border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:14px}
-.chip{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line-2);background:var(--panel);
-  border-radius:999px;padding:7px 16px;font-family:var(--mono);font-size:13px;color:var(--soft)}
-.chip b{color:var(--accent);font-weight:600}
-.klabel{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
-/* crisp svg arrow */
-.arr{display:grid;place-items:center}
-.arr svg{display:block}
+/* shared screenshots */
+.shot{position:relative;overflow:hidden;border:1px solid #303747;border-radius:13px;background:#050607}.shot img{width:100%;height:100%;display:block;object-fit:cover;object-position:top}.shot .label{position:absolute;top:13px;left:13px;padding:6px 9px;border:1px solid rgba(255,255,255,.14);border-radius:7px;background:rgba(5,7,10,.82);font:10px var(--mono);letter-spacing:.07em;color:#dce8ff;text-transform:uppercase}.source{font:10px var(--mono);color:#5c687a;letter-spacing:.03em}.source a{color:#779fef;text-decoration:none}
 
-/* ================= S1 cover ================= */
-.cover{padding:0}
-.cover .art{position:absolute;inset:0;background:url('assets/deck/cover-bg.jpg') center / cover no-repeat}
-.cover .in{position:relative;height:100%;padding:56px 80px;display:flex;flex-direction:column}
-.brand{display:flex;align-items:center;gap:12px}
-.brand svg{width:40px;height:40px}
-.brand .wm{font-size:24px;font-weight:800;letter-spacing:-.04em}
-.cover .mid{flex:1;display:flex;flex-direction:column;justify-content:center;max-width:640px}
-.cover h1{font-size:56px;font-weight:800;letter-spacing:-.035em;line-height:1.08}
-.cover h1 .em{display:block;margin-top:8px;font-family:var(--serif);font-weight:400;font-style:italic;letter-spacing:0;font-size:1.04em;color:var(--accent)}
-.cover h1 .on{display:block;margin-top:4px;color:var(--fg);font-family:var(--sans);font-style:normal;font-weight:800;
-  font-size:.86em}
-.cover .badges{margin-top:36px;display:flex;gap:10px}
-.bdg{display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border:1px solid var(--accent-line);
-  background:rgba(252,111,111,.08);border-radius:999px;font-size:14.5px;font-weight:600;color:var(--soft);letter-spacing:-.01em}
-.bdg b{color:var(--accent);font-weight:700}
-.cover .bottom{display:flex;align-items:center}
-.cover .avs{display:flex;margin-right:12px}
-.cover .avs img{width:32px;height:32px;border-radius:50%;border:2px solid #17171a;object-fit:cover}
-.cover .avs img+img{margin-left:-9px}
-.cover .who{font-size:13.5px;color:var(--muted)}
-.cover .tag{margin-left:auto;font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;color:var(--accent);
-  border:1px solid var(--accent-line);border-radius:999px;padding:9px 18px}
+/* 02 evidence */
+.proof-layout{display:grid;grid-template-columns:1fr 500px;gap:34px;align-items:center}.proof-copy .big{font-size:29px;line-height:1.18;letter-spacing:-.035em;margin:20px 0 22px;max-width:520px}.proof-copy .big em{font-family:var(--serif);font-weight:400;color:var(--arc)}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.metric{padding:17px 15px}.metric .num{font-size:32px;font-weight:700;letter-spacing:-.05em}.metric .num.mint{color:var(--mint)}.metric .lab{font:10px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:5px;line-height:1.4}.proof-shot{height:382px}.proof-note{margin-top:14px;font-size:12px;color:var(--muted);line-height:1.5}
 
-/* ================= S2 problem ================= */
-.prob{display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:stretch}
-.plist{display:flex;flex-direction:column;gap:10px}
-.prow{display:grid;grid-template-columns:200px 1fr;align-items:center;gap:16px;
-  border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:14px 20px}
-.prow .cap{font-family:var(--mono);font-size:13.5px;color:var(--fg)}
-.prow .cap i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:9px;vertical-align:2px}
-.prow .needs{display:flex;gap:8px;justify-content:flex-end}
-.need{font-family:var(--mono);font-size:11.5px;color:var(--muted);border:1px solid var(--line-2);
-  border-radius:7px;padding:5px 11px;display:inline-flex;align-items:center;gap:6px}
-.need .x{color:var(--accent);font-weight:600}
-.pmore{text-align:center;font-family:var(--mono);font-size:13px;color:var(--muted2);padding:8px 0 0}
-.pmore b{color:var(--accent)}
-.pcost{display:flex;flex-direction:column;gap:14px}
-.pcost .eq{flex:1;border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:14px;
-  padding:26px 26px;display:flex;flex-direction:column;justify-content:center}
-.pcost .eq .f{font-family:var(--mono);font-size:19px;line-height:1.75;color:var(--fg)}
-.pcost .eq .f b{color:var(--accent)}
-.pcost .eq .s{margin-top:14px;font-size:13px;color:var(--muted);line-height:1.6}
-.pfacts{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:18px 22px}
-.pfacts .li{font-size:13px;color:var(--soft);line-height:1.65;padding-left:16px;position:relative}
-.pfacts .li+.li{margin-top:8px}
-.pfacts .li::before{content:"·";position:absolute;left:2px;color:var(--accent);font-weight:700}
+/* 03 gap */
+.gap-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:stretch}.gap-left{padding:24px}.gap-left h3{font-size:23px;letter-spacing:-.035em;margin-bottom:18px}.fact-row{display:grid;grid-template-columns:34px 1fr;gap:12px;padding:13px 0;border-top:1px solid var(--line)}.fact-row:first-of-type{border-top:0}.fact-row .n{font:12px var(--mono);color:var(--arc);padding-top:2px}.fact-row .t{font-size:14px;color:var(--soft);line-height:1.45}.fact-row .t b{display:block;font-size:15px;margin-bottom:2px}.gap-right{display:flex;flex-direction:column;gap:12px}.quote{padding:20px 22px;flex:1}.quote .q{font:italic 29px/1.08 var(--serif);color:#e2ebfb}.quote .q em{color:var(--arc)}.quote p{margin-top:14px;color:var(--muted);font-size:13px;line-height:1.5}.question{padding:18px 22px;border-color:rgba(251,139,122,.38);background:rgba(251,139,122,.07)}.question .small{font:10px var(--mono);letter-spacing:.13em;color:var(--coral);text-transform:uppercase}.question .q2{font-size:18px;line-height:1.25;margin-top:7px;letter-spacing:-.025em}
 
-/* ================= S3 solution ================= */
-.sol{display:grid;grid-template-columns:236px 64px 300px 64px 1fr;align-items:center}
-.node{border:1px solid var(--line-2);background:var(--panel);border-radius:14px;padding:26px 22px;text-align:center;min-height:150px;
-  display:flex;flex-direction:column;justify-content:center}
-.node .t{font-size:17px;font-weight:700;color:#fff;letter-spacing:-.015em}
-.node .d{font-size:12.5px;color:var(--muted);margin-top:7px;line-height:1.55}
-.hub{border:1px solid var(--accent-line);background:rgba(252,111,111,.08);
-  border-radius:16px;padding:28px 22px;text-align:center;min-height:170px;display:flex;flex-direction:column;justify-content:center}
-.hub .lg{display:flex;align-items:center;gap:9px;justify-content:center}
-.hub .lg svg{width:30px;height:30px}
-.hub .lg .nm{font-size:23px;font-weight:800;letter-spacing:-.03em}
-.hub .d{font-size:12.5px;color:var(--soft);margin-top:9px;line-height:1.55}
-.arrlab{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--muted2);text-transform:uppercase;margin-top:8px;text-align:center}
-.capgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.capchip{border:1px solid var(--line);background:var(--panel);border-radius:9px;padding:10px 12px;
-  font-family:var(--mono);font-size:12px;color:var(--soft);display:flex;gap:8px;align-items:center}
-.capchip i{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none}
-.capchip.more{color:var(--accent);border-color:var(--accent-line);background:var(--accent-soft)}
-.solchips{margin-top:38px;display:flex;gap:12px;justify-content:center}
+/* 04 architecture */
+.arch{display:grid;grid-template-columns:185px 42px 270px 42px 1fr;align-items:center;margin-top:23px}.arch-node{min-height:178px;padding:20px 17px;text-align:center;display:flex;flex-direction:column;justify-content:center}.arch-node .icon{width:32px;height:32px;margin:0 auto 11px;border:1px solid var(--arc);border-radius:9px;display:grid;place-items:center;color:var(--arc);font:14px var(--mono)}.arch-node h3{font-size:17px;letter-spacing:-.03em}.arch-node p{font-size:12px;line-height:1.45;color:var(--muted);margin-top:7px}.arch-hub{min-height:206px;padding:24px 22px;text-align:center}.arch-hub .tag{font:10px var(--mono);color:var(--arc);letter-spacing:.15em;text-transform:uppercase}.arch-hub h3{font-size:24px;letter-spacing:-.04em;margin-top:8px}.arch-hub p{font-size:13px;line-height:1.5;color:var(--soft);margin-top:9px}.arrow{height:1px;background:var(--line);position:relative}.arrow::after{content:'';position:absolute;right:-1px;top:-4px;border-left:7px solid #647084;border-top:4px solid transparent;border-bottom:4px solid transparent}.arrow span{position:absolute;top:-25px;left:50%;transform:translateX(-50%);white-space:nowrap;font:9px var(--mono);letter-spacing:.05em;color:var(--muted)}.receipt-list{display:grid;grid-template-columns:1fr 1fr;gap:9px}.receipt{padding:12px;border:1px solid var(--line);border-radius:10px;background:rgba(9,11,15,.52)}.receipt b{display:block;font:11px var(--mono);color:#dbe7ff}.receipt span{display:block;font-size:11px;color:var(--muted);margin-top:4px}.arch-note{margin-top:20px;display:flex;gap:10px;justify-content:center}.arch-note .chip{font-size:10px}
 
-/* ================= S4 how it works ================= */
-.callflow{display:grid;grid-template-columns:210px 56px 1fr 56px 210px;align-items:center}
-.callpath{border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:14px;padding:22px;text-align:center}
-.callpath .lb{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase}
-.callpath .p{font-family:var(--mono);font-size:21px;color:#fff;margin-top:10px;font-weight:600}
-.callpath .p .v{color:var(--ember)}
-.callpath .d{font-size:12.5px;color:var(--muted);margin-top:8px}
-.railbar{margin-top:30px;border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:20px 26px}
-.railbar .rt{display:flex;align-items:baseline;gap:12px;margin-bottom:16px}
-.railbar .rt .k{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--accent);text-transform:uppercase}
-.railbar .rt .d{font-size:12.5px;color:var(--muted)}
-.railsteps{display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr 40px 1fr;align-items:center}
-.rstep{border:1px solid var(--line-2);background:var(--panel2);border-radius:10px;padding:13px 14px;text-align:center}
-.rstep .t{font-family:var(--mono);font-size:13px;color:#fff}
-.rstep .t .a{color:var(--ember)}
-.rstep .d{font-size:11px;color:var(--muted2);margin-top:4px}
-.rstep.ok{border-color:rgba(51,209,122,.4);background:var(--success-soft)}
-.rstep.ok .t{color:var(--success)}
-.hownote{margin-top:26px;display:flex;gap:12px;justify-content:center}
+/* 05 why arc */
+.why-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:28px;align-items:center}.arc-reasons{display:flex;flex-direction:column;gap:11px}.reason{display:grid;grid-template-columns:144px 1fr;gap:17px;padding:16px 18px;align-items:center}.reason .k{font:11px var(--mono);color:var(--arc);letter-spacing:.08em;text-transform:uppercase}.reason .v{font-size:14px;color:var(--soft);line-height:1.42}.reason .v b{display:block;font-size:16px;margin-bottom:2px}.settlement{padding:25px}.settlement h3{font-size:20px;letter-spacing:-.035em}.settlement .chain{display:grid;grid-template-columns:1fr 36px 1fr 36px 1fr;align-items:center;margin-top:22px}.chain-box{min-height:105px;border:1px solid var(--line);border-radius:11px;padding:14px 10px;text-align:center;background:rgba(6,8,12,.55);font-size:12px;color:var(--muted);line-height:1.35}.chain-box strong{display:block;color:var(--ink);font-size:14px;margin-bottom:5px}.chain-box.blue{border-color:rgba(119,166,255,.58);background:var(--arc-soft)}.chain-box.blue strong{color:#d9e7ff}.chain-line{height:1px;background:#506079;position:relative}.chain-line::after{content:'›';position:absolute;right:-2px;top:-14px;color:#9ebaff;font-size:24px}.settlement p{font-size:12px;line-height:1.5;color:var(--muted);margin-top:20px}
 
-/* ================= S5 why Arc ================= */
-.why{display:grid;grid-template-columns:1.02fr .98fr;gap:22px;align-items:stretch}
-.fits{display:flex;flex-direction:column;gap:12px}
-.fit{flex:1;border:1px solid var(--line);background:var(--panel);border-radius:13px;padding:18px 24px;display:flex;gap:20px;align-items:center}
-.fit .k{font-family:var(--mono);font-size:14px;color:var(--accent);font-weight:600;flex:none;width:118px}
-.fit .t{font-size:15.5px;color:#fff;font-weight:600;letter-spacing:-.015em}
-.fit .d{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.55}
-.rails{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:22px 26px;display:flex;flex-direction:column}
-.rails .rt{font-size:14.5px;font-weight:600;color:#fff;margin-bottom:6px}
-.rails .rs{font-size:12px;color:var(--muted2);margin-bottom:14px}
-.rail{display:flex;align-items:center;padding:10px 2px;border-top:1px solid var(--line);font-size:14px}
-.rail:first-of-type{border-top:none}
-.rail .nm2{width:120px;color:var(--soft)}
-.rail .ok{font-family:var(--mono);font-size:12px;color:var(--muted2);margin-left:auto}
-.rail.arc{border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:10px;padding:13px 16px;margin-top:12px}
-.rail.arc .nm2{color:#fff;font-weight:700}
-.rail.arc .ok{color:var(--accent);font-weight:600}
-.wedge{margin-top:auto;padding-top:18px;font-size:13.5px;color:var(--soft);line-height:1.6}
-.wedge b{color:var(--accent)}
+/* 06 receipt */
+.receipt-layout{display:grid;grid-template-columns:1fr 398px;gap:30px;align-items:center}.code-card{padding:22px 25px;font:13px/1.8 var(--mono);color:#acb7c8;white-space:pre-wrap}.code-card .blue{color:#9fc0ff}.code-card .mint{color:var(--mint)}.code-card .coral{color:var(--coral)}.code-card .dim{color:#5d6879}.receipt-copy h3{font-size:28px;line-height:1.12;letter-spacing:-.04em}.receipt-copy p{font-size:15px;line-height:1.55;color:var(--soft);margin-top:15px}.receipt-copy ul{list-style:none;margin-top:18px;display:flex;flex-direction:column;gap:10px}.receipt-copy li{font-size:13px;color:var(--muted);padding-left:18px;position:relative}.receipt-copy li::before{content:'+';position:absolute;left:0;color:var(--arc);font:14px var(--mono)}
 
-/* ================= S6 rails ================= */
-.dels{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.del{border:1px solid var(--line-2);background:var(--panel);border-radius:16px;padding:28px 30px}
-.del .no{font-family:var(--mono);font-size:12px;letter-spacing:.16em;color:var(--accent);font-weight:600;text-transform:uppercase}
-.del .t{font-size:21px;font-weight:700;color:#fff;margin-top:10px;letter-spacing:-.02em;line-height:1.3}
-.del .d{font-size:13.5px;color:var(--muted);margin-top:12px;line-height:1.7}
-.del .d b{color:var(--soft)}
-.mods{display:flex;gap:9px;margin-top:20px}
-.mod{flex:1;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:13px 10px;text-align:center}
-.mod .mt2{font-family:var(--mono);font-size:12.5px;color:var(--ember);font-weight:600}
-.mod .md{font-size:11px;color:var(--muted2);margin-top:4px}
-.wallet{margin-top:18px;border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:13px;
-  padding:16px 26px;display:flex;align-items:center;gap:16px}
-.wallet .wk{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase;flex:none;font-weight:600}
-.wallet .wd{font-size:13.5px;color:var(--soft)}
+/* 07 standards */
+.standards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:23px}.standard{min-height:245px;padding:20px 18px;position:relative}.standard .no{font:11px var(--mono);color:var(--arc);letter-spacing:.12em}.standard h3{font-size:18px;letter-spacing:-.035em;margin-top:18px}.standard p{font-size:12.5px;line-height:1.5;color:var(--muted);margin-top:9px}.standard .use{position:absolute;bottom:18px;left:18px;right:18px;border-top:1px solid var(--line);padding-top:12px;color:#cbd9ee;font-size:12px;line-height:1.4}.standard .use b{display:block;color:var(--arc);font:10px var(--mono);letter-spacing:.08em;margin-bottom:4px}.std-note{font-size:13px;color:var(--soft);line-height:1.5;margin-top:18px;text-align:center}.std-note b{color:var(--arc)}
 
-/* ================= S7 traction ================= */
-.trac{display:grid;grid-template-columns:1fr 470px;gap:36px;align-items:center}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.stat{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:24px 24px}
-.stat .v{font-size:46px;font-weight:800;letter-spacing:-.04em;color:#fff}
-.stat .v .u{font-size:20px;color:var(--accent)}
-.stat .l{font-size:13px;color:var(--muted);margin-top:5px}
-.shotwrap{position:relative}
-.shotwrap img{width:100%;border-radius:12px;border:1px solid var(--line-2);display:block}
-.dbadge{position:absolute;top:-13px;right:-10px;background:var(--accent);color:#160707;font-family:var(--mono);
-  font-size:12px;font-weight:700;border-radius:999px;padding:8px 16px;letter-spacing:.08em}
-.shotcap{margin-top:12px;font-family:var(--mono);font-size:11px;color:var(--faint);text-align:center;letter-spacing:.04em}
+/* 08 loop */
+.loop-wrap{display:grid;grid-template-columns:290px 1fr;gap:34px;align-items:center}.loop-copy h3{font-size:27px;line-height:1.13;letter-spacing:-.04em}.loop-copy p{font-size:14px;line-height:1.55;color:var(--soft);margin-top:14px}.loop-copy .mini{font:11px var(--mono);color:var(--muted);line-height:1.55;margin-top:22px}.loop{height:332px;position:relative}.loop svg{position:absolute;inset:0;width:100%;height:100%}.loop-card{position:absolute;width:178px;min-height:96px;padding:14px;border:1px solid var(--line);border-radius:11px;background:#11141a}.loop-card .n{font:10px var(--mono);color:var(--arc);letter-spacing:.1em}.loop-card b{display:block;font-size:15px;margin-top:5px}.loop-card p{font-size:11px;line-height:1.35;color:var(--muted);margin-top:4px}.loop-card.c1{left:31%;top:0}.loop-card.c2{right:0;top:35%}.loop-card.c3{left:31%;bottom:0}.loop-card.c4{left:0;top:35%}.loop-card.hl{border-color:rgba(119,166,255,.55);background:var(--arc-soft)}
 
-/* ================= S8 revenue ================= */
-.revflow{display:grid;grid-template-columns:224px 56px 1fr 56px 224px;align-items:center}
-.rnode{border:1px solid var(--line-2);background:var(--panel);border-radius:14px;padding:22px;text-align:center;min-height:128px;
-  display:flex;flex-direction:column;justify-content:center}
-.rnode .t{font-size:16px;font-weight:700;color:#fff}
-.rnode .d{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.6}
-.rnode .d b{color:var(--ember)}
-.rmid{border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:14px;padding:22px;text-align:center;min-height:128px;
-  display:flex;flex-direction:column;justify-content:center}
-.rmid .f{font-family:var(--mono);font-size:16.5px;color:#fff}
-.rmid .f .g{color:var(--accent);font-weight:600}
-.rmid .d{font-size:12px;color:var(--muted);margin-top:9px}
-.revpts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:26px}
-.rpt{border:1px solid var(--line);background:var(--panel);border-radius:13px;padding:20px 22px}
-.rpt .t{font-size:15px;font-weight:600;color:#fff;letter-spacing:-.015em}
-.rpt .d{font-size:12.5px;color:var(--muted);margin-top:7px;line-height:1.65}
-.rpt.hl{border-color:var(--accent-line);background:var(--accent-soft)}
+/* 09-10 product images */
+.dual-shots{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}.dual-shots .shot{height:351px}.product-caption{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:11px}.product-caption div{font-size:12px;line-height:1.45;color:var(--muted)}.product-caption b{color:var(--soft)}.wide-shot{height:355px;margin-top:22px}.wide-shot img{object-position:top}.split-bottom{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.split-bottom .panel{padding:13px 16px;font-size:12px;line-height:1.45;color:var(--muted)}.split-bottom b{color:var(--arc)}
 
-/* ================= S9 track record ================= */
-.proofs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.proof{border:1px solid var(--line);background:var(--panel);border-radius:13px;padding:20px 24px}
-.proof .k{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase;font-weight:600}
-.proof .t{font-size:16.5px;font-weight:700;color:#fff;margin-top:7px;letter-spacing:-.015em;line-height:1.35}
-.proof .d{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.6}
-.proof .d b{color:var(--soft)}
-.strip{margin-top:18px;display:grid;grid-template-columns:repeat(8,1fr);gap:8px}
-.strip img{width:100%;height:60px;object-fit:cover;object-position:top;border-radius:7px;border:1px solid var(--line-2);opacity:.92;display:block}
-.stripcap{margin-top:9px;font-family:var(--mono);font-size:10.5px;color:var(--faint);text-align:center;letter-spacing:.04em}
+/* 11 roadmap */
+.roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px}.week{min-height:253px;padding:20px 18px;position:relative}.week .wk{font:11px var(--mono);letter-spacing:.13em;color:var(--arc)}.week h3{font-size:18px;line-height:1.15;letter-spacing:-.03em;margin-top:14px}.week ul{list-style:none;margin-top:15px;display:flex;flex-direction:column;gap:8px}.week li{font-size:12px;line-height:1.35;color:var(--muted);padding-left:12px;position:relative}.week li::before{content:'·';color:var(--arc);position:absolute;left:0}.week .out{position:absolute;left:18px;right:18px;bottom:17px;border-top:1px solid var(--line);padding-top:10px;font:10px/1.4 var(--mono);color:#cad9f2}.roadmap-note{text-align:center;margin-top:16px;color:var(--soft);font-size:13px}.roadmap-note b{color:var(--arc)}
 
-/* ================= S10 team ================= */
-.team{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
-.tm{border:1px solid var(--line);background:var(--panel);border-radius:16px;padding:28px 26px;text-align:center;display:flex;flex-direction:column}
-.tm img{width:80px;height:80px;border-radius:50%;object-fit:cover;border:2px solid var(--line-2);margin:0 auto}
-.tm .nm{font-size:18.5px;font-weight:700;color:#fff;margin-top:14px;letter-spacing:-.015em}
-.tm .rl{font-family:var(--mono);font-size:11px;color:var(--accent);margin-top:4px;letter-spacing:.12em;text-transform:uppercase}
-.tm .cr{font-size:12.5px;color:var(--muted);margin-top:14px;line-height:1.7;text-align:left}
-.tm .cr b{color:var(--soft)}
-.tm .ln{font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:auto;padding-top:14px}
-
-/* ================= S11 roadmap ================= */
-.road{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px}
-.ph{border:1px solid var(--line);background:var(--panel);border-radius:13px;padding:22px;display:flex;flex-direction:column}
-.ph .pk{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--muted2);text-transform:uppercase}
-.ph .pt2{font-size:16.5px;font-weight:700;color:#fff;margin-top:9px;letter-spacing:-.015em;line-height:1.3}
-.ph ul{margin:14px 0 0;padding-left:15px}
-.ph li{font-size:12px;color:var(--muted);line-height:1.65;margin:5px 0}
-.ph li b{color:var(--soft)}
-.ph.hl{border-color:var(--accent-line);background:var(--accent-soft)}
-.ph.hl .pk{color:var(--accent)}
-.closing{margin-top:22px;border:1px solid var(--line);background:var(--panel);border-radius:13px;
-  padding:20px 30px;display:flex;align-items:center;gap:18px}
-.closing .big{font-size:17.5px;color:#fff;font-weight:600;letter-spacing:-.015em}
-.closing .links{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--accent)}
+/* 12 team */
+.team-layout{display:grid;grid-template-columns:1.04fr .96fr;gap:30px;align-items:center}.team-copy h3{font-size:30px;line-height:1.1;letter-spacing:-.045em}.team-copy h3 em{font:italic 31px var(--serif);color:var(--arc);letter-spacing:0}.team-copy p{margin-top:16px;color:var(--soft);font-size:15px;line-height:1.55;max-width:550px}.people{display:flex;gap:10px;margin-top:24px}.person{flex:1;padding:14px}.person img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:1px solid #3b4658;float:left;margin-right:10px}.person b{font-size:13px;display:block;padding-top:3px}.person span{display:block;color:var(--muted);font-size:11px;line-height:1.35;margin-top:3px}.ask{padding:24px}.ask .label{font:11px var(--mono);color:var(--arc);letter-spacing:.14em;text-transform:uppercase}.ask h4{font-size:23px;line-height:1.15;letter-spacing:-.035em;margin-top:10px}.ask ul{list-style:none;display:flex;flex-direction:column;gap:11px;margin-top:18px}.ask li{font-size:13px;color:var(--soft);line-height:1.4;padding-left:17px;position:relative}.ask li::before{content:'→';position:absolute;left:0;color:var(--arc)}.links{margin-top:21px;border-top:1px solid var(--line);padding-top:13px;font:11px/1.65 var(--mono);color:var(--muted)}.links a{color:#a9c5ff;text-decoration:none}
 </style>
 </head>
 <body>
 
-<!-- shared logo svg (inlined per use) -->
-
-<!-- ================= S1 · COVER ================= -->
 <section class="slide cover">
-  <div class="art"></div>
-  <div class="in">
-    <div class="brand">
-      <svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle cx="240" cy="240" fill="#fc6f6f" r="240"/><path d="m186.536551 330.698949c0 5.10734-1.757821 9.431103-5.273516 12.971419-3.515694 3.540315-7.809388 5.310447-12.88121 5.310447-4.956554 0-9.192614-1.770132-12.708309-5.310447-3.515695-3.540316-5.273516-7.864079-5.273516-12.971419v-242.017083c0-5.1073405 1.757821-9.4311037 5.273516-12.9714192 3.515695-3.5403156 7.751755-5.3104468 12.708309-5.3104468 4.956553 0 9.192613 1.7701312 12.708308 5.3104468 3.515695 3.5403155 5.331149 7.8640787 5.446418 12.9714192v83.574244c15.330735-11.955819 33.370013-17.93364 54.118376-17.93364 12.103211 0 23.60109 2.379521 34.493981 7.138634 10.89289 4.759113 20.488864 11.230248 28.788209 19.4136 8.299345 8.183353 14.869561 17.81751 19.710846 28.90276s7.261891 22.895798 7.261891 35.431997v85.489488c-.115269 5.10734-1.930723 9.431103-5.446418 12.971419-3.515695 3.540315-7.751756 5.310447-12.708309 5.310447s-9.192614-1.770132-12.708309-5.310447c-3.515694-3.540316-5.273515-7.864079-5.273515-12.971419v-85.489488c0-7.428859-1.440837-14.451346-4.322554-21.067674-2.881717-6.616327-6.771977-12.391018-11.670896-17.324244-4.898919-4.933227-10.63345-8.85073-17.203765-11.752628s-13.543965-4.352826-20.921161-4.352826c-7.492464 0-14.494932 1.421909-21.007612 4.265769-6.512681 2.84386-12.247212 6.761364-17.203765 11.752628-4.956554 4.991265-8.846813 10.794974-11.670896 17.411301-2.824083 6.616328-4.236103 13.638815-4.236103 21.067674zm-17.634044 78.901051c10.104245 0 18.295354-8.248472 18.295354-18.423478s-8.191109-18.423478-18.295354-18.423478-18.295354 8.248472-18.295354 18.423478 8.191109 18.423478 18.295354 18.423478zm144.002139 0c10.104245 0 18.295354-8.248472 18.295354-18.423478s-8.191109-18.423478-18.295354-18.423478-18.295354 8.248472-18.295354 18.423478 8.191109 18.423478 18.295354 18.423478z" fill="#fff" fill-rule="nonzero"/></g></svg>
-      <span class="wm">h402</span>
+  <div class="live-bg"></div><div class="wash"></div>
+  <div class="cover-inner">
+    <div class="brand"><span class="orb">h</span>h402 <small>VERIFIED AGENT COMMERCE</small></div>
+    <div class="cover-main">
+      <div class="chip"><i></i>BUILD ON ARC · AGENTIC ECONOMY</div>
+      <h1>Make every agent choice<br />settle with <em>proof.</em></h1>
+      <p>h402 brings provider selection, USDC payment, and outcome evidence into one verifiable commerce loop on Arc.</p>
+      <div class="cover-tags"><span>USDC-native settlement</span><span>Agent reputation</span><span>Outcome receipts</span></div>
     </div>
-    <div class="mid">
-      <h1>에이전트의 선택을 증명하는<span class="em">Verified Agent Commerce<span class="on">on Arc</span></span></h1>
-      <div class="badges">
-        <span class="bdg"><b>one</b>&nbsp;mount</span>
-        <span class="bdg"><b>152</b>&nbsp;capabilities</span>
-        <span class="bdg">pay&nbsp;<b>per call</b></span>
-      </div>
-    </div>
-    <div class="bottom">
-      <span class="avs">
-        <img src="assets/deck/av-sebastian.jpg" alt="" /><img src="assets/deck/av-younghwi.jpg" alt="" /><img src="assets/deck/av-woojin.jpg" alt="" />
-      </span>
-      <span class="who">Team h402 · Hunt Town (est. 2018)</span>
-      <span class="tag">BUILD ON ARC · 2026</span>
-    </div>
+    <div class="cover-bottom"><b>h402 × Arc</b><span>&nbsp; · &nbsp;Hackathon proposal</span><span class="right">Arc Testnet MVP · 2026</span></div>
   </div>
 </section>
 
-<!-- ================= S2 · PROBLEM ================= -->
 <section class="slide">
-  <div class="eyebrow"><span class="n">01</span>Problem</div>
-  <h2>결제는 가능해졌다. 하지만 <span class="em">어떤 API를 믿고 선택할지는 아직 알 수 없다</span></h2>
-  <div class="fill">
-    <div class="prob">
-      <div class="plist">
-        <div class="prow">
-          <span class="cap"><i></i>web/search</span>
-          <span class="needs"><span class="need"><span class="x">?</span> 품질</span><span class="need"><span class="x">?</span> 지연시간</span><span class="need"><span class="x">?</span> 실제 가격</span><span class="need"><span class="x">?</span> 가용성</span></span>
-        </div>
-        <div class="prow">
-          <span class="cap"><i></i>ai/image-generate</span>
-          <span class="needs"><span class="need"><span class="x">?</span> 품질</span><span class="need"><span class="x">?</span> 지연시간</span><span class="need"><span class="x">?</span> 실제 가격</span><span class="need"><span class="x">?</span> 가용성</span></span>
-        </div>
-        <div class="prow">
-          <span class="cap"><i></i>research/web-task</span>
-          <span class="needs"><span class="need"><span class="x">?</span> 품질</span><span class="need"><span class="x">?</span> 지연시간</span><span class="need"><span class="x">?</span> 실제 가격</span><span class="need"><span class="x">?</span> 가용성</span></span>
-        </div>
-        <div class="prow">
-          <span class="cap"><i></i>crypto/token-data</span>
-          <span class="needs"><span class="need"><span class="x">?</span> 품질</span><span class="need"><span class="x">?</span> 지연시간</span><span class="need"><span class="x">?</span> 실제 가격</span><span class="need"><span class="x">?</span> 가용성</span></span>
-        </div>
-        <div class="pmore">⋮ &nbsp;공급자가 늘수록 선택 근거는 <b>더 불투명</b></div>
+  <div class="eyebrow"><span>01</span>Live product proof</div>
+  <div class="content proof-layout">
+    <div class="proof-copy">
+      <div class="chip"><i></i>LIVE AT h402-test.hunt.town</div>
+      <div class="big">h402 already gives agents a <em>real marketplace</em> for paid, provider-native capabilities.</div>
+      <div class="metrics">
+        <div class="metric panel"><div class="num mint">100%</div><div class="lab">Enabled candidates<br />paid-tested</div></div>
+        <div class="metric panel"><div class="num">142</div><div class="lab">Capabilities live<br />in the catalog</div></div>
+        <div class="metric panel"><div class="num">70</div><div class="lab">Provider contracts<br />available now</div></div>
       </div>
-      <div class="pcost">
-        <div class="eq">
-          <div class="f">공급자 <b>N</b>개 =<br />비교 불가한 품질 <b>N</b>개</div>
-          <div class="s">결제 수단이 생겨도 에이전트는 누가 가장 잘 수행할지 알 수 없습니다.</div>
-        </div>
-        <div class="pfacts">
-          <div class="li">카탈로그의 목록은 대체로 결과 품질과 실결제 성공률을 알려주지 않습니다</div>
-          <div class="li">자율 지출에는 예산 한도와 선택 이유, 사후 검증이 함께 필요합니다</div>
-        </div>
-      </div>
+      <p class="proof-note">The current product discovers paid APIs, exposes native provider contracts, and keeps a recommended default visible to the agent.</p>
     </div>
+    <div><div class="shot proof-shot"><img src="assets/deck/live-20260729/h402-home.png" alt="Live h402 homepage" /><span class="label">Current h402 homepage</span></div><div class="source">Source: h402-test.hunt.town · captured 29 Jul 2026</div></div>
   </div>
-  <div class="foot"><span>h402 · Build on Arc</span><span class="pg">02 / 11</span></div>
+  <div class="foot"><span class="mark">◈</span> h402 · Verified Agent Commerce <span class="pg">02 / 12</span></div>
 </section>
 
-<!-- ================= S3 · SOLUTION ================= -->
 <section class="slide">
-  <div class="eyebrow"><span class="n">02</span>Solution</div>
-  <h2>h402는 지불 가능한 API 시장을 <span class="em">검증 가능한 선택</span>으로 바꿉니다</h2>
-  <div class="fill">
-    <div class="sol">
-      <div class="node">
-        <div class="t">AI 에이전트</div>
-        <div class="d">Arc Agent Wallet<br />USDC 지출 한도</div>
-      </div>
-      <div>
-        <div class="arr"><svg width="40" height="12" viewBox="0 0 40 12"><line x1="0" y1="6" x2="30" y2="6" stroke="#fc6f6f" stroke-width="1.5"/><path d="M30 1.5 38 6 30 10.5z" fill="#fc6f6f"/></svg></div>
-        <div class="arrlab">task + budget</div>
-      </div>
-      <div class="hub">
-        <div class="lg">
-          <svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle cx="240" cy="240" fill="#fc6f6f" r="240"/><path d="m186.536551 330.698949c0 5.10734-1.757821 9.431103-5.273516 12.971419-3.515694 3.540315-7.809388 5.310447-12.88121 5.310447-4.956554 0-9.192614-1.770132-12.708309-5.310447-3.515695-3.540316-5.273516-7.864079-5.273516-12.971419v-242.017083c0-5.1073405 1.757821-9.4311037 5.273516-12.9714192 3.515695-3.5403156 7.751755-5.3104468 12.708309-5.3104468 4.956553 0 9.192613 1.7701312 12.708308 5.3104468 3.515695 3.5403155 5.331149 7.8640787 5.446418 12.9714192v83.574244c15.330735-11.955819 33.370013-17.93364 54.118376-17.93364 12.103211 0 23.60109 2.379521 34.493981 7.138634 10.89289 4.759113 20.488864 11.230248 28.788209 19.4136 8.299345 8.183353 14.869561 17.81751 19.710846 28.90276s7.261891 22.895798 7.261891 35.431997v85.489488c-.115269 5.10734-1.930723 9.431103-5.446418 12.971419-3.515695 3.540315-7.751756 5.310447-12.708309 5.310447s-9.192614-1.770132-12.708309-5.310447c-3.515694-3.540316-5.273515-7.864079-5.273515-12.971419v-85.489488c0-7.428859-1.440837-14.451346-4.322554-21.067674-2.881717-6.616327-6.771977-12.391018-11.670896-17.324244-4.898919-4.933227-10.63345-8.85073-17.203765-11.752628s-13.543965-4.352826-20.921161-4.352826c-7.492464 0-14.494932 1.421909-21.007612 4.265769-6.512681 2.84386-12.247212 6.761364-17.203765 11.752628-4.956554 4.991265-8.846813 10.794974-11.670896 17.411301-2.824083 6.616328-4.236103 13.638815-4.236103 21.067674zm-17.634044 78.901051c10.104245 0 18.295354-8.248472 18.295354-18.423478s-8.191109-18.423478-18.295354-18.423478-18.295354 8.248472-18.295354 18.423478 8.191109 18.423478 18.295354 18.423478zm144.002139 0c10.104245 0 18.295354-8.248472 18.295354-18.423478s-8.191109-18.423478-18.295354-18.423478-18.295354 8.248472-18.295354 18.423478 8.191109 18.423478 18.295354 18.423478z" fill="#fff" fill-rule="nonzero"/></g></svg>
-          <span class="nm">h402</span>
-        </div>
-        <div class="d">Decision engine<br />품질·가격·지연시간·가용성 비교</div>
-      </div>
-      <div>
-        <div class="arr"><svg width="40" height="12" viewBox="0 0 40 12"><line x1="0" y1="6" x2="30" y2="6" stroke="#fc6f6f" stroke-width="1.5"/><path d="M30 1.5 38 6 30 10.5z" fill="#fc6f6f"/></svg></div>
-        <div class="arrlab">pay + prove</div>
-      </div>
-      <div class="capgrid">
-        <div class="capchip"><i></i>web/search</div>
-        <div class="capchip"><i></i>ai/image-generate</div>
-        <div class="capchip"><i></i>ai/song-generate</div>
-        <div class="capchip"><i></i>research/web-task</div>
-        <div class="capchip"><i></i>crypto/token-data</div>
-        <div class="capchip"><i></i>travel/flight-search</div>
-        <div class="capchip"><i></i>data/extract</div>
-        <div class="capchip more">+ 152 capabilities</div>
-      </div>
+  <div class="eyebrow"><span>02</span>The missing primitive</div>
+  <h2 class="title">An agent can pay for an API. But can it <em>prove it made the right choice?</em></h2>
+  <div class="content gap-grid">
+    <div class="gap-left panel">
+      <h3>What h402 has already solved</h3>
+      <div class="fact-row"><div class="n">01</div><div class="t"><b>Discovery</b>One mount exposes a growing set of provider-native API contracts.</div></div>
+      <div class="fact-row"><div class="n">02</div><div class="t"><b>Execution</b>Agents choose a provider and pay per call through the existing x402 flow.</div></div>
+      <div class="fact-row"><div class="n">03</div><div class="t"><b>Live evidence</b>Catalog quality signals and paid-test evidence inform a recommended default.</div></div>
     </div>
-    <div class="solchips">
-      <span class="chip">USDC&nbsp;<b>예산 한도</b></span>
-      <span class="chip">공급자&nbsp;<b>실측 비교</b></span>
-      <span class="chip">x402&nbsp;<b>건별 결제</b></span>
-      <span class="chip">Arc&nbsp;<b>서명 영수증</b></span>
+    <div class="gap-right">
+      <div class="quote accent-panel"><div class="q">“Why this provider, <em>for this task, under this budget?</em>”</div><p>For autonomous commerce, the answer must survive beyond a UI recommendation. It needs a durable receipt, an attributable outcome, and a feedback loop.</p></div>
+      <div class="question accent-panel"><div class="small">The Arc opportunity</div><div class="q2">Turn provider selection from a transient marketplace event into an auditable, reusable trust signal.</div></div>
     </div>
   </div>
-  <div class="foot"><span>h402 · Build on Arc</span><span class="pg">03 / 11</span></div>
+  <div class="foot"><span class="mark">◈</span> h402 · Verified Agent Commerce <span class="pg">03 / 12</span></div>
 </section>
 
-<!-- ================= S4 · HOW IT WORKS ================= -->
+<section class="slide grid-dot">
+  <div class="eyebrow"><span>03</span>What we build on Arc</div>
+  <h2 class="title">A verification layer between <em>agent intent</em> and provider settlement.</h2>
+  <div class="content">
+    <div class="arch">
+      <div class="arch-node panel"><div class="icon">A</div><h3>Agent Wallet</h3><p>Sets task scope, USDC ceiling, and selection policy.</p></div>
+      <div class="arrow"><span>policy</span></div>
+      <div class="arch-hub accent-panel"><div class="tag">h402 decision engine</div><h3>Select · Pay · Prove</h3><p>Scores eligible providers by price, quality, latency, and availability. Produces a signed decision receipt.</p></div>
+      <div class="arrow"><span>x402 payment</span></div>
+      <div class="arch-node panel"><div class="icon">P</div><h3>Provider Contract</h3><p>Executes the chosen task and returns an outcome that can be hashed and evaluated.</p></div>
+    </div>
+    <div class="arch-note"><span class="chip"><i></i>Circle Nanopayments / x402 executes the short payment</span><span class="chip"><i></i>Arc stores the final receipt and outcome link</span></div>
+  </div>
+  <div class="foot"><span class="mark">◈</span> h402 · Verified Agent Commerce <span class="pg">04 / 12</span></div>
+</section>
+
 <section class="slide">
-  <div class="eyebrow"><span class="n">03</span>How it works</div>
-  <h2>한 번의 호출이 <span class="em">선택 → USDC 결제 → 결과 증명</span>으로 이어집니다</h2>
-  <div class="fill">
-    <div class="callflow">
-      <div class="node">
-        <div class="t">AI 에이전트</div>
-        <div class="d">작업과 최대 USDC 예산을<br />함께 제출</div>
-      </div>
-      <div class="arr"><svg width="36" height="12" viewBox="0 0 36 12"><line x1="0" y1="6" x2="26" y2="6" stroke="#8b8b93" stroke-width="1.5"/><path d="M26 1.5 34 6 26 10.5z" fill="#8b8b93"/></svg></div>
-      <div class="callpath">
-        <div class="lb">Policy-bound routing</div>
-        <div class="p">/routes/auto/<span class="v">{task}</span></div>
-        <div class="d">실제 유료 호출 데이터로 선택 이유와 견적을 함께 반환</div>
-      </div>
-      <div class="arr"><svg width="36" height="12" viewBox="0 0 36 12"><line x1="0" y1="6" x2="26" y2="6" stroke="#8b8b93" stroke-width="1.5"/><path d="M26 1.5 34 6 26 10.5z" fill="#8b8b93"/></svg></div>
-      <div class="node">
-        <div class="t">최적 provider</div>
-        <div class="d">최적 공급자 실행<br />결과 해시와 성능 기록</div>
-      </div>
+  <div class="eyebrow"><span>04</span>Why Arc</div>
+  <h2 class="title">Arc makes the receipt as usable as the payment.</h2>
+  <div class="content why-grid">
+    <div class="arc-reasons">
+      <div class="reason panel"><div class="k">USDC as gas</div><div class="v"><b>One asset for spend and settlement.</b>The agent policy can reason in the same unit that pays the provider and covers the transaction fee.</div></div>
+      <div class="reason panel"><div class="k">&lt;1 sec finality</div><div class="v"><b>One confirmation becomes final evidence.</b>Receipts can safely trigger the next step in an agent workflow without a reorg or waiting window.</div></div>
+      <div class="reason panel"><div class="k">EVM compatible</div><div class="v"><b>Build a compact verification contract fast.</b>h402 can use familiar Solidity tooling while remaining compatible with the wider Ethereum developer stack.</div></div>
     </div>
-    <div class="railbar">
-      <div class="rt"><span class="k">Circle + Arc stack · 호출마다 자동 수행</span><span class="d">Circle Nanopayments / x402 결제와 Arc의 검증 가능한 상태를 직접 활용</span></div>
-      <div class="railsteps">
-        <div class="rstep"><div class="t"><span class="a">policy</span> quote</div><div class="d">예산·선택 근거·공급자 견적</div></div>
-        <div class="arr"><svg width="26" height="10" viewBox="0 0 26 10"><line x1="0" y1="5" x2="17" y2="5" stroke="#6b6b73" stroke-width="1.4"/><path d="M17 1 25 5 17 9z" fill="#6b6b73"/></svg></div>
-        <div class="rstep"><div class="t">nanopayment</div><div class="d">Circle Agent Wallet의 USDC 결제</div></div>
-        <div class="arr"><svg width="26" height="10" viewBox="0 0 26 10"><line x1="0" y1="5" x2="17" y2="5" stroke="#6b6b73" stroke-width="1.4"/><path d="M17 1 25 5 17 9z" fill="#6b6b73"/></svg></div>
-        <div class="rstep"><div class="t">Arc receipt</div><div class="d">선택·결과 해시·성능 데이터를 서명</div></div>
-        <div class="arr"><svg width="26" height="10" viewBox="0 0 26 10"><line x1="0" y1="5" x2="17" y2="5" stroke="#6b6b73" stroke-width="1.4"/><path d="M17 1 25 5 17 9z" fill="#6b6b73"/></svg></div>
-        <div class="rstep ok"><div class="t">✓ verified</div><div class="d">ERC-8004 평판에 결과 피드백</div></div>
-      </div>
-    </div>
-    <div class="hownote">
-      <span class="chip">개인 입력값은 오프체인 보관</span>
-      <span class="chip">온체인에는 결과 해시만 기록</span>
-      <span class="chip">지출·선택 근거는 투명 공개</span>
-    </div>
+    <div class="settlement accent-panel"><h3>From decision to finality</h3><div class="chain"><div class="chain-box"><strong>Policy</strong>USDC cap<br />task constraints</div><div class="chain-line"></div><div class="chain-box blue"><strong>Arc receipt</strong>choice + quote<br />outcome hash</div><div class="chain-line"></div><div class="chain-box"><strong>Feedback</strong>reputation<br />or job release</div></div><p>Arc Testnet gives the MVP a USDC-native settlement surface and deterministic finality for verifiable post-payment actions.</p></div>
   </div>
-  <div class="foot"><span>h402 · Build on Arc</span><span class="pg">04 / 11</span></div>
+  <div class="foot"><span class="mark">◈</span> h402 · Verified Agent Commerce <span class="pg">05 / 12</span></div>
 </section>
 
-<!-- ================= S5 · WHY ARC ================= -->
 <section class="slide">
-  <div class="eyebrow"><span class="n">04</span>Why Arc</div>
-  <h2>Arc는 <span class="em">검증 가능한 자율 지출</span>을 위한 완성된 기반을 제공합니다</h2>
-  <div class="fill">
-    <div class="why">
-      <div class="fits">
-        <div class="fit"><span class="k">USDC gas</span><div><div class="t">예산·결제·가스가 하나의 안정적 단위로 정렬</div><div class="d">에이전트가 별도의 변동성 가스 토큰을 관리할 필요가 없습니다</div></div></div>
-        <div class="fit"><span class="k">&lt;1s finality</span><div><div class="t">정산 직후 다음 에이전트 행동으로 안전하게 진행</div><div class="d">확인 대기와 재조직 처리 없이 상태가 확정됩니다</div></div></div>
-        <div class="fit"><span class="k">Agent standards</span><div><div class="t">신원·평판·작업 정산을 표준으로 연결</div><div class="d">ERC-8004와 ERC-8183으로 h402의 증거를 이식 가능하게 만듭니다</div></div></div>
-      </div>
-      <div class="rails">
-        <div class="rt">Circle Agent Stack × h402</div>
-        <div class="rs">Circle은 지갑·결제·발견을 제공하고, h402는 공급자 선택과 결과 증명을 더합니다</div>
-        <div class="rail"><span class="nm2">Agent Wallets</span><span class="ok">지출 정책</span></div>
-        <div class="rail"><span class="nm2">Nanopayments</span><span class="ok">x402 결제</span></div>
-        <div class="rail"><span class="nm2">ERC-8004</span><span class="ok">신원·평판</span></div>
-        <div class="rail"><span class="nm2">ERC-8183</span><span class="ok">작업·에스크로</span></div>
-        <div class="rail arc"><span class="nm2">h402</span><span class="ok">선택 근거 + 영수증</span></div>
-        <div class="wedge">결제를 다시 만들지 않습니다. <b>이미 갖춰진 Arc 결제 스택을 실제 공급자 성능 데이터와 연결</b>해, 자율 지출을 설명 가능하고 검증 가능하게 만듭니다.</div>
-      </div>
-    </div>
+  <div class="eyebrow"><span>05</span>The receipt</div>
+  <div class="content receipt-layout">
+    <div class="code-card panel"><span class="dim">// Arc settlement receipt</span>
+<span class="blue">decisionReceipt</span> {
+  agent: <span class="mint">walletAddress</span>,
+  task: <span class="mint">"web/search"</span>,
+  policyHash: <span class="coral">0x…</span>,
+  provider: <span class="mint">"tempo-firecrawl"</span>,
+  quoteUSDC: <span class="mint">0.004</span>,
+  paymentRef: <span class="coral">x402Receipt</span>,
+  outcomeHash: <span class="coral">0x…</span>,
+  evaluator: <span class="mint">resultVerifier</span>
+}</div>
+    <div class="receipt-copy"><h3>Keep the information that makes a payment <em>explainable.</em></h3><p>The onchain record does not duplicate API output. It anchors the decision context and a tamper-evident reference to the observed result.</p><ul><li>Selection policy and USDC limit make autonomous spend reviewable.</li><li>Provider, quote, and payment reference make the settlement traceable.</li><li>Outcome hash lets an evaluator attach quality feedback without exposing private payloads.</li></ul></div>
   </div>
-  <div class="foot"><span>h402 · Build on Arc</span><span class="pg">05 / 11</span></div>
+  <div class="foot"><span class="mark">◈</span> h402 · Verified Agent Commerce <span class="pg">06 / 12</span></div>
 </section>
 
-<!-- ================= S6 · BUILD ================= -->
 <section class="slide">
-  <div class="eyebrow"><span class="n">05</span>What we build on Arc</div>
-  <h2>지금 있는 Arc 스택 위에 <span class="em">두 개의 검증 레이어</span>를 만듭니다</h2>
-  <div class="fill">
-    <div class="dels">
-      <div class="del">
-        <div class="no">Layer 1</div>
-        <div class="t">Policy-bound selection receipt</div>
-        <div class="d">에이전트의 USDC 한도 안에서 h402가 공급자를 선택하고, 선택 이유·견적·결과 해시·성능을
-        <b>Arc에서 확인 가능한 영수증</b>으로 남깁니다.</div>
-        <div class="mods">
-          <div class="mod"><div class="mt2">policy</div><div class="md">USDC 지출 한도</div></div>
-          <div class="mod"><div class="mt2">route</div><div class="md">실측 근거 선택</div></div>
-          <div class="mod"><div class="mt2">receipt</div><div class="md">결과 해시 기록</div></div>
-        </div>
-      </div>
-      <div class="del">
-        <div class="no">Layer 2</div>
-        <div class="t">Verified provider reputation &amp; jobs</div>
-        <div class="d">독립 h402 검증자가 결과 기반 피드백을 ERC-8004에 남기고, 오래 걸리거나 고가인 작업은
-        <b>ERC-8183 USDC 에스크로</b>로 전환해 결과물과 정산을 연결합니다.</div>
-        <div class="mods">
-          <div class="mod"><div class="mt2">identity</div><div class="md">ERC-8004 등록</div></div>
-          <div class="mod"><div class="mt2">feedback</div><div class="md">결과 기반 평판</div></div>
-          <div class="mod"><div class="mt2">escrow</div><div class="md">ERC-8183 작업</div></div>
-        </div>
-      </div>
+  <div class="eyebrow"><span>06</span>Use the Arc stack, do not duplicate it</div>
+  <h2 class="title">h402 is the <em>decision and evidence layer</em>, not another payment rail.</h2>
+  <div class="content">
+    <div class="standards">
+      <div class="standard panel"><div class="no">01 · CIRCLE</div><h3>Agent Wallets</h3><p>Wallet-controlled agents with clear spending boundaries and programmable policy context.</p><div class="use"><b>h402 uses it for</b>USDC budget authority</div></div>
+      <div class="standard panel"><div class="no">02 · PAYMENT</div><h3>Nanopayments + x402</h3><p>Short, service-level USDC payments remain an execution primitive supplied by the ecosystem.</p><div class="use"><b>h402 uses it for</b>Per-call provider settlement</div></div>
+      <div class="standard panel"><div class="no">03 · ERC-8004</div><h3>Identity & reputation</h3><p>Attach verifiable performance feedback to agents and providers after a paid call is evaluated.</p><div class="use"><b>h402 uses it for</b>Outcome-backed reputation</div></div>
+      <div class="standard panel"><div class="no">04 · ERC-8183</div><h3>Job settlement</h3><p>Extend from small calls to milestones, escrow, and evaluator-approved delivery for higher-value work.</p><div class="use"><b>h402 uses it for</b>Conditional job release</div></div>
     </div>
-    <div class="wallet">
-      <span class="wk">+ Circle App Kit</span>
-      <span class="wd">Unified Balance를 통해 여러 체인의 USDC를 Arc에서 즉시 쓸 수 있게 하는 데모 경로까지 포함합니다.</span>
-    </div>
+    <p class="std-note">The result: <b>existing payment rails</b> plus a portable record of why an agent spent and what that spend achieved.</p>
   </div>
-  <div class="foot"><span>h402 · Build on Arc</span><span class="pg">06 / 11</span></div>
+  <div class="foot"><span class="mark">◈</span> h402 · Verified Agent Commerce <span class="pg">07 / 12</span></div>
 </section>
 
-<!-- ================= S7 · TRACTION ================= -->
+<section class="slide grid-dot">
+  <div class="eyebrow"><span>07</span>Verified agent commerce loop</div>
+  <div class="content loop-wrap">
+    <div class="loop-copy"><h3>Every paid call can make the next choice <em>better.</em></h3><p>h402 turns one-off service payments into a repeatable feedback loop. Policies bound spending; receipts bind evidence; evaluators make outcomes useful to the market.</p><div class="mini">PRIVATE DATA STAYS OFFCHAIN<br />ONLY POLICY, REFERENCE, AND OUTCOME HASH ARE ANCHORED</div></div>
+    <div class="loop">
+      <svg viewBox="0 0 650 332" aria-hidden="true"><path d="M324 93 C520 89,605 120,582 184 C563 236,460 258,412 250" fill="none" stroke="#54719e" stroke-width="1.5" stroke-dasharray="5 7"/><path d="M404 250 C330 325,160 308,134 220 C112 146,171 103,258 94" fill="none" stroke="#54719e" stroke-width="1.5" stroke-dasharray="5 7"/><circle cx="324" cy="94" r="4" fill="#77a6ff"/><circle cx="583" cy="184" r="4" fill="#77a6ff"/><circle cx="404" cy="250" r="4" fill="#77a6ff"/><circle cx="134" cy="220" r="4" fill="#77a6ff"/></svg>
+      <div class="loop-card c1"><div class="n">01 · DECIDE</div><b>Policy-bound choice</b><p>Evaluate eligible providers within a USDC ceiling.</p></div>
+      <div class="loop-card c2 hl"><div class="n">02 · SETTLE</div><b>Pay and anchor</b><p>Execute the call, then commit the decision receipt on Arc.</p></div>
+      <div class="loop-card c3"><div class="n">03 · EVALUATE</div><b>Verify the outcome</b><p>Attach evaluator feedback to the completed task.</p></div>
+      <div class="loop-card c4"><div class="n">04 · REUSE</div><b>Improve future routing</b><p>Use outcome evidence to update provider reputation.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span class="mark">◈</span> h402 · Verified Agent Commerce <span class="pg">08 / 12</span></div>
+</section>
+
 <section class="slide">
-  <div class="eyebrow"><span class="n">06</span>Where we are</div>
-  <h2>아이디어가 아닌, <span class="em">실결제로 검증한 제품 기반</span></h2>
-  <div class="fill">
-    <div class="trac">
-      <div class="stats">
-        <div class="stat"><div class="v">152</div><div class="l">capabilities · mount 1회에 전부 사용 가능</div></div>
-        <div class="stat"><div class="v">74</div><div class="l">providers · 품질·가격 실시간 경쟁</div></div>
-        <div class="stat"><div class="v">100<span class="u">%</span></div><div class="l">전 라우트 실결제 검증 완료</div></div>
-        <div class="stat"><div class="v">Arc</div><div class="l">Testnet MVP · receipt + reputation integration</div></div>
-      </div>
-      <div class="shotwrap">
-        <img src="assets/deck/shot-h402.jpg" alt="h402 라이브 카탈로그" />
-        <div class="dbadge">LIVE</div>
-        <div class="shotcap">h402-test.hunt.town · 라이브 카탈로그</div>
-      </div>
-    </div>
+  <div class="eyebrow"><span>08</span>Live product evidence</div>
+  <h2 class="title">The marketplace already exposes <em>comparable provider choices.</em></h2>
+  <div class="content">
+    <div class="dual-shots"><div class="shot"><img src="assets/deck/live-20260729/h402-catalog.png" alt="h402 capability catalog" /><span class="label">Live catalog</span></div><div class="shot"><img src="assets/deck/live-20260729/h402-web-search.png" alt="h402 web search provider contract" /><span class="label">Provider contract</span></div></div>
+    <div class="product-caption"><div><b>Catalog surface</b><br />Capabilities, provider choices, recommendation signals, and paid-test status are already visible in the current product.</div><div><b>Contract surface</b><br />A selected provider exposes a quote, performance signals, payment context, and a native request contract.</div></div>
   </div>
-  <div class="foot"><span>h402 · Build on Arc</span><span class="pg">07 / 11</span></div>
+  <div class="foot"><span class="mark">◈</span> h402 · Verified Agent Commerce <span class="pg">09 / 12</span></div>
 </section>
 
-<!-- ================= S8 · REVENUE ================= -->
 <section class="slide">
-  <div class="eyebrow"><span class="n">07</span>Revenue model</div>
-  <h2>결과로 경쟁하는 <span class="em">Agent Commerce</span></h2>
-  <div class="fill">
-    <div class="revflow">
-      <div class="rnode"><div class="t">AI Agent</div><div class="d">정책 승인된<br /><b>USDC 지출</b></div></div>
-      <div class="arr"><svg width="40" height="12" viewBox="0 0 40 12"><line x1="0" y1="6" x2="30" y2="6" stroke="#8b8b93" stroke-width="1.5"/><path d="M30 1.5 38 6 30 10.5z" fill="#8b8b93"/></svg></div>
-      <div class="rmid">
-        <div class="f">최적의 제공자 선택이 <span class="g">USDC 결제</span>로 실행됩니다</div>
-        <div class="d">선택 근거·결과 해시를 포함한 서명 영수증 · 사용량 기반</div>
-      </div>
-      <div class="arr"><svg width="40" height="12" viewBox="0 0 40 12"><line x1="0" y1="6" x2="30" y2="6" stroke="#8b8b93" stroke-width="1.5"/><path d="M30 1.5 38 6 30 10.5z" fill="#8b8b93"/></svg></div>
-      <div class="rnode"><div class="t">Provider</div><div class="d">성과와 연결된<br /><b>USDC 정산</b></div></div>
-    </div>
-    <div class="revpts">
-      <div class="rpt"><div class="t">고정비 없는 트랜잭션 비즈니스</div><div class="d">능력·제공자 증가 → 호출 증가 → 수익 증가의 단일 구조.</div></div>
-      <div class="rpt"><div class="t">검증된 공급자에게 거래가 흐르는 시장</div><div class="d">공급자는 가격만이 아니라 실제 품질·지연시간·성공률로 경쟁하고, 우수한 결과가 다음 라우팅에 반영됩니다.</div></div>
-      <div class="rpt hl"><div class="t">Arc에서 쌓이는 신뢰 자산</div><div class="d">반복된 USDC 결제와 결과 영수증이 공급자 평판과 에이전트 의사결정의 공용 데이터가 됩니다.</div></div>
-    </div>
+  <div class="eyebrow"><span>09</span>Live agent entry points</div>
+  <h2 class="title">One mount today. <em>Verifiable autonomous spend</em> on Arc next.</h2>
+  <div class="content">
+    <div class="wide-shot shot"><img src="assets/deck/live-20260729/h402-docs.png" alt="h402 agent docs" /><span class="label">Current h402 docs</span></div>
+    <div class="split-bottom"><div class="panel"><b>Current workflow</b><br />An agent reads h402's hosted skill, creates a wallet, discovers a capability, and pays per call without per-provider keys or plans.</div><div class="panel"><b>Arc MVP extension</b><br />Before execution, h402 produces a policy-bound selection receipt; after execution, it anchors the outcome reference and exposes feedback.</div></div>
   </div>
-  <div class="foot"><span>h402 · Build on Arc</span><span class="pg">08 / 11</span></div>
+  <div class="foot"><span class="mark">◈</span> h402 · Verified Agent Commerce <span class="pg">10 / 12</span></div>
 </section>
 
-<!-- ================= S9 · TRACK RECORD ================= -->
 <section class="slide">
-  <div class="eyebrow"><span class="n">08</span>Track record</div>
-  <h2>2018년부터 15개 제품, <span class="em">결과로 검증된 팀</span></h2>
-  <div class="fill">
-    <div class="proofs">
-      <div class="proof"><div class="k">Upbit</div><div class="t">업비트 해커톤 1위 (2019)</div><div class="d">시간 토큰화 컨셉 <b>InTime</b>으로 수상. 업비트 생태계에서 이미 검증된 이력.</div></div>
-      <div class="proof"><div class="k">Global scale</div><div class="t">Steemhunt · 세계 7위 DApp</div><div class="d">최고 <b>월 41만 사용자</b>. 2018년부터 글로벌 스케일 서비스 운영.</div></div>
-      <div class="proof"><div class="k">Live protocol</div><div class="t">Mint Club · Base 앱·Farcaster 앱 주간 1위 다수</div><div class="d">글로벌 인지도의 라이브 프로토콜. Base 공동창업자 <b>Jesse Pollak</b>도 여러 차례 Mint Club에서 NFT 등 자산 발행.</div></div>
-      <div class="proof"><div class="k">Ecosystem</div><div class="t">Co-op · 월간 활성 배커 100,452명</div><div class="d">온체인 협동조합 <b>Co-op 라이브 운영 중</b>. 아카이브 15개 중 8개 + 다수 파트너 제품이 자체 프로토콜 위에서 출시.</div></div>
+  <div class="eyebrow"><span>10</span>Four-week Arc Testnet MVP</div>
+  <h2 class="title">A focused build that ends in a <em>working, inspectable flow.</em></h2>
+  <div class="content">
+    <div class="roadmap">
+      <div class="week panel"><div class="wk">WEEK 01</div><h3>Policy-aware routing</h3><ul><li>Define task, USDC cap, and provider eligibility.</li><li>Expose price, quality, latency, and availability inputs.</li><li>Generate the signed decision payload.</li></ul><div class="out">OUTPUT · DECISION SCHEMA</div></div>
+      <div class="week panel"><div class="wk">WEEK 02</div><h3>Pay + receipt on Arc</h3><ul><li>Execute a selected provider call with the existing payment primitive.</li><li>Deploy an Arc Testnet receipt contract.</li><li>Record payment reference and outcome hash.</li></ul><div class="out">OUTPUT · ONCHAIN RECEIPT</div></div>
+      <div class="week panel"><div class="wk">WEEK 03</div><h3>Outcome feedback</h3><ul><li>Attach an evaluator result to the receipt.</li><li>Map verified performance to ERC-8004 reputation.</li><li>Prototype an ERC-8183 job path for larger tasks.</li></ul><div class="out">OUTPUT · TRUST LOOP</div></div>
+      <div class="week panel"><div class="wk">WEEK 04</div><h3>Demo and handoff</h3><ul><li>Show policy → selection → payment → proof.</li><li>Publish Arc Testnet contract and public repository.</li><li>Ship a short demo video and build notes.</li></ul><div class="out">OUTPUT · HACKATHON SUBMISSION</div></div>
     </div>
-    <div class="strip">
-      <img src="assets/deck/strip-steemhunt.jpg" alt="" /><img src="assets/deck/strip-nomadtask.jpg" alt="" />
-      <img src="assets/deck/strip-neverlose.jpg" alt="" /><img src="assets/deck/strip-dixel.jpg" alt="" />
-      <img src="assets/deck/strip-farcards.jpg" alt="" /><img src="assets/deck/strip-hunt-tip.jpg" alt="" />
-      <img src="assets/deck/strip-mint-club.jpg" alt="" /><img src="assets/deck/strip-h402.jpg" alt="" />
-    </div>
-    <div class="stripcap">2018 → now · h402, Hunt Town, and Mint Club product archive</div>
+    <div class="roadmap-note">The MVP proves one claim end to end: <b>an agent's USDC spend can be attributable to a policy, a provider choice, and an observed outcome.</b></div>
   </div>
-  <div class="foot"><span>h402 · Build on Arc</span><span class="pg">09 / 11</span></div>
+  <div class="foot"><span class="mark">◈</span> h402 · Verified Agent Commerce <span class="pg">11 / 12</span></div>
 </section>
 
-<!-- ================= S10 · TEAM ================= -->
 <section class="slide">
-  <div class="eyebrow"><span class="n">09</span>Team</div>
-  <h2>빌드 · 디자인 · 그로스, <span class="em">3인 완결형 팀</span></h2>
-  <div class="fill">
-    <div class="team">
-      <div class="tm">
-        <img src="assets/deck/av-sebastian.jpg" alt="Sebastian Kim" />
-        <div class="nm">Sebastian Kim</div>
-        <div class="rl">Full-Stack Engineer</div>
-        <div class="cr">Hunt Town·Mint Club 엔지니어링 리드. 멀티체인 프로토콜 설계·구현.
-        h402의 x402/EIP-3009 결제 플로우 전체 개발. <b>Arc 영수증·평판·에스크로 연동 구현.</b></div>
-        <div class="ln">github/sebayaki · sebayaki.com</div>
-      </div>
-      <div class="tm">
-        <img src="assets/deck/av-younghwi.jpg" alt="YoungHwi Cho" />
-        <div class="nm">YoungHwi Cho</div>
-        <div class="rl">Designer</div>
-        <div class="cr">디자이너 출신 AI 빌더. QuadWork·Agent Gather·Session Glue 등 에이전트 협업
-        오픈소스 툴 파운더. <b>사람 UX를 넘어 AX(Agent Experience) 분야의 전문가.</b></div>
-        <div class="ln">github/realproject7</div>
-      </div>
-      <div class="tm">
-        <img src="assets/deck/av-woojin.jpg" alt="Woojin Jang" />
-        <div class="nm">Woojin Jang</div>
-        <div class="rl">Marketer</div>
-        <div class="cr">前 Binance 마케팅 매니저. OpenAds·Breaking News 파운더.
-        <b>거래소급 그로스 운영으로 KPI 단계(트랜잭션·유저·생태계) 견인.</b></div>
-        <div class="ln">github/openadsseries</div>
-      </div>
-    </div>
+  <div class="eyebrow"><span>11</span>Team and submission</div>
+  <div class="content team-layout">
+    <div class="team-copy"><div class="chip"><i></i>BUILDING FROM A LIVE AGENT MARKETPLACE</div><h3>We are ready to make agent payments <em>verifiable.</em></h3><p>h402 combines an operating capability marketplace with product, engineering, and growth experience. On Arc, the team will turn current paid-call evidence into an interoperable trust primitive for agent commerce.</p><div class="people"><div class="person panel"><img src="assets/avatar-sebastian.jpg" alt="Sebastian Kim" /><b>Sebastian Kim</b><span>Engineering<br />contracts & integrations</span></div><div class="person panel"><img src="assets/avatar-younghwi.jpg" alt="YoungHwi Cho" /><b>YoungHwi Cho</b><span>Product design<br />agent experience</span></div><div class="person panel"><img src="assets/avatar-woojin.png" alt="Woojin Jang" /><b>Woojin Jang</b><span>Growth<br />provider network</span></div></div></div>
+    <div class="ask accent-panel"><div class="label">Build on Arc</div><h4>Verified Agent Commerce on Arc Testnet</h4><ul><li>Use the live h402 marketplace as the initial provider and task surface.</li><li>Anchor policy-bound decision receipts after USDC service payments.</li><li>Demonstrate ERC-8004 feedback and an ERC-8183 expansion path.</li></ul><div class="links">LIVE PRODUCT · <a href="https://h402-test.hunt.town/">h402-test.hunt.town</a><br />ARC REFERENCES · <a href="https://docs.arc.io/arc-chain">Network</a> · <a href="https://docs.arc.io/build/agentic-economy">Agentic Economy</a></div></div>
   </div>
-  <div class="foot"><span>h402 · Build on Arc</span><span class="pg">10 / 11</span></div>
+  <div class="foot"><span class="mark">◈</span> h402 · Verified Agent Commerce <span class="pg">12 / 12</span></div>
 </section>
 
-<!-- ================= S11 · HACKATHON ROADMAP ================= -->
-<section class="slide">
-  <div class="eyebrow"><span class="n">10</span>4-week hackathon roadmap</div>
-  <h2>최종 데모: <span class="em">에이전트가 Arc에서 더 나은 API를 선택하고 증명</span></h2>
-  <div class="fill">
-    <div class="road">
-      <div class="ph">
-        <div class="pk">Week 1</div>
-        <div class="pt2">Agent policy + routing</div>
-        <ul>
-          <li><b>152 capabilities</b>의 실결제 데이터 활용</li>
-          <li>작업별 품질·가격·지연시간 점수화</li>
-          <li>USDC 지출 한도와 선택 근거 노출</li>
-        </ul>
-      </div>
-      <div class="ph">
-        <div class="pk">Week 2</div>
-        <div class="pt2">Nanopayment + receipt</div>
-        <ul>
-          <li>Circle Agent Wallet과 x402 결제 연결</li>
-          <li>Arc Testnet 영수증 컨트랙트 배포</li>
-          <li>실호출 e2e 데모</li>
-        </ul>
-      </div>
-      <div class="ph">
-        <div class="pk">Week 3</div>
-        <div class="pt2">Identity + job settlement</div>
-        <ul>
-          <li>ERC-8004 공급자·검증자 등록</li>
-          <li>결과 기반 평판 피드백</li>
-          <li>ERC-8183 에스크로 작업 데모</li>
-        </ul>
-      </div>
-      <div class="ph hl">
-        <div class="pk">Week 4 · Final submission</div>
-        <div class="pt2">Live Verified Agent Commerce</div>
-        <ul>
-          <li>에이전트가 실제 API를 비교·결제</li>
-          <li>Arc 영수증과 평판 트랜잭션 라이브</li>
-          <li>공개 레포 · 배포 URL · 3분 데모</li>
-        </ul>
-      </div>
-    </div>
-    <div class="closing">
-      <span class="big">Arc에서 에이전트의 선택과 지출을 검증 가능한 신뢰로 바꿉니다.</span>
-      <span class="links">github.com/realproject7/arc-hack · h402-test.hunt.town</span>
-    </div>
-  </div>
-  <div class="foot"><span>h402 · Build on Arc</span><span class="pg">11 / 11</span></div>
-</section>
-
-<script>
-(function(){var p=new URLSearchParams(location.search).get('slide');
-if(p){document.querySelectorAll('.slide').forEach(function(el,i){if(i!==(+p-1))el.style.display='none';});}})();
-</script>
 </body>
 </html>
