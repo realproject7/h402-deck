@@ -1,28 +1,36 @@
-# h402 · Verified Agent Commerce on Arc
+# h402 · AI Capability Market on Arc
 
 Build on Arc hackathon submission for **h402**.
 
-h402 does not recreate an x402 facilitator or payment rail. It adds the decision
-and evidence layer for agent commerce: a policy-bound provider choice, a USDC
-payment reference, and an outcome receipt that can improve future routing.
+Mount h402 once and an agent gets the whole capability catalog: one call path
+per capability, a pinned default provider per route, and pay-per-call USDC
+settlement on Arc through h402's self-hosted facilitator. No API keys, no
+plans, no subscriptions.
 
 ## Included
 
 - `index.html` — English-only team and product site.
-- `deck.html` — English-only 12-slide Arc submission deck.
-- `deck.pdf` — rendered submission PDF.
-- `assets/deck/live-20260729/` — current product screenshots captured from
+- `deck.pdf` — 16-page submission deck (the deliverable; `deck.html` redirects
+  to it).
+- `assets/deck/live-20260729/` — product screenshots captured from
   `https://h402-test.hunt.town/` on 29 July 2026.
 
-## Arc MVP
+## What runs today
 
-1. Define task scope, USDC cap, and provider eligibility in an agent policy.
-2. Choose a provider through h402 and settle the call using the existing
-   Circle Nanopayments/x402 payment primitive.
-3. Anchor a decision receipt on Arc Testnet with the provider, quote, payment
-   reference, and outcome hash.
-4. Use ERC-8004 feedback for verified reputation and prototype an ERC-8183
-   job path for conditional, higher-value work.
+- Live capability market at `https://h402-test.hunt.town/` — 141 capabilities,
+  71 provider contracts, 100% paid-tested (live catalog, 6 Aug 2026).
+- x402 pay-per-call on Arc Testnet: USDC quotes, local EIP-3009 signing,
+  per-call spend caps.
+- Self-hosted Arc facilitator; settlements visible on Arc Explorer
+  (chain 5042002).
+
+## Roadmap
+
+1. h402 mainnet launch on Arc Mainnet day (Sep 16, 2026).
+2. 300+ capabilities by end of 2026.
+3. Nanopayments (Circle's gas-free batched USDC on Arc) for sub-$0.0001
+   pricing.
+4. Onchain decision receipts and ERC-8004 provider reputation.
 
 ## Local preview
 
