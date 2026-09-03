@@ -53,3 +53,5 @@ python3 -m http.server 8747
 ## Vercel
 
 The site is served as a static project with no build or install command.
+Canonical URL: `https://h402-deck.vercel.app/` (deck at `/deck.pdf`).
+The old `arc-hack-dun.vercel.app` alias still resolves to the same deployment.
