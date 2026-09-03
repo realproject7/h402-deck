@@ -17,15 +17,15 @@ settlement on Base. No API keys, no plans, no subscriptions.
 
 - Live capability market at `https://h402-test.hunt.town/` — 141 capabilities,
   71 provider contracts, 100% paid-tested (live catalog, 3 Sep 2026).
-- x402 pay-per-call on Base Mainnet: USDC quotes, local EIP-3009 signing,
-  per-call spend caps.
+- x402 pay-per-call on Base Mainnet, in live testing: USDC quotes, local
+  EIP-3009 signing, per-call spend caps. Public launch targets late Sep 2026.
 - Buyer payments settle into the h402 treasury through the Coinbase CDP x402
   facilitator; providers are paid over Base x402, or Tempo MPP when a
   candidate has no Base x402 rail.
 
 ## Roadmap
 
-1. Public launch: production domain plus a published toolkit.
+1. Public launch, late Sep 2026: production domain plus a published toolkit.
 2. 300+ paid-verified capabilities by end of 2026.
 3. Circle Gateway Nanopayments for batched sub-cent calls.
 4. Portable, ERC-8004-compatible provider reputation from paid-call outcomes.
